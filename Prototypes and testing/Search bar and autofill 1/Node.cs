@@ -64,5 +64,10 @@ namespace Search_bar_and_autofill_1
             }
             throw new LetterNotFoundException();
         }
+
+        public bool getChildrenSearched()
+        {
+            return allchildrensearched;
+        }
     }
 }

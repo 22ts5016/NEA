@@ -22,7 +22,7 @@ namespace Search_bar_and_autofill_1
             string word = textBoxSearchBar.Text.ToLower();
             try
             {
-                ListOfTrees.Get()[(int)word[0] - 97].getRoot().Search(word);
+                ListOfTrees.Get()[(int)word[0] - 97].getRoot().Search(word.Substring(1));
             }
             catch (LetterNotFoundException ex)
             {
