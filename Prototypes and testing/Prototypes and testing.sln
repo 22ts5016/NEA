@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search bar and autofill 1", "Search bar and autofill 1\Search bar and autofill 1.csproj", "{94C14593-ABAE-4323-904C-E2A3A4B76BFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94C14593-ABAE-4323-904C-E2A3A4B76BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C14593-ABAE-4323-904C-E2A3A4B76BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C14593-ABAE-4323-904C-E2A3A4B76BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C14593-ABAE-4323-904C-E2A3A4B76BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B5B9979-90AA-473F-9105-AD192FDCAE2B}
+	EndGlobalSection
+EndGlobal

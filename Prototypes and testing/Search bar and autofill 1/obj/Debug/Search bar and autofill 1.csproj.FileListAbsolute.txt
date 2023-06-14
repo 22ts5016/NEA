@@ -1,0 +1,22 @@
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.exe.config
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.exe
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.pdb
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.AssemblyReference.cache
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.SuggestedBindingRedirects.cache
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Form1.resources
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Properties.Resources.resources
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.GenerateResource.cache
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.CoreCompileInputs.cache
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.exe
+D:\Toby\Homework\Computer Studies\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.pdb
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.exe.config
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.exe
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.pdb
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.AssemblyReference.cache
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.SuggestedBindingRedirects.cache
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Form1.resources
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Properties.Resources.resources
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.GenerateResource.cache
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.CoreCompileInputs.cache
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.exe
+D:\Toby\Homework\Computer Studies\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.pdb
