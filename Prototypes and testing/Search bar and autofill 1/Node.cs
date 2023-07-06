@@ -54,7 +54,7 @@ namespace Search_bar_and_autofill_1
         {
             for(int i = 0; i < children.Count; i++)
             {
-                if (word.Length == 0)
+                if (word.Length == 1)
                 {
                     return null;
                 }
