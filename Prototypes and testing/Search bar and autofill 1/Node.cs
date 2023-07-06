@@ -9,43 +9,40 @@ namespace Search_bar_and_autofill_1
     internal class Node
     {
         private char name;
-        private int weight;
         private bool allchildrensearched;
         private List<Node> children;
+        private string[] popular;
 
-        public Node(char inname)
+        public Node(char inname, int inweight)
         {
             children = new List<Node>();
             name = inname;
+            BubbleSort(inweight);
             allchildrensearched = false;
+            popular = new string[5];
         }
 
-        public void AddNode(string word)
+        public void AddNode(string word, int weight)
         {
-            for(int i = 0; i < children.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
                 if (word[0] == children[i].name)
                 {
-                    children[i].AddNode(word.Substring(1));
+                    children[i].AddNode(word.Substring(1), weight);
                     return;
                 }
             }
-            children.Add(new Node(word[0]));
+            children.Add(new Node(word[0], weight));
             if (word.Length == 1)
             {
                 return;
             }
-            children[children.Count - 1].AddNode(word.Substring(1));
+            children[children.Count - 1].AddNode(word.Substring(1), weight);
         }
 
         public char getName()
         {
             return name;
-        }
-
-        public int getWeight()
-        {
-            return weight;
         }
 
         public List<Node> getChildren()
@@ -57,6 +54,10 @@ namespace Search_bar_and_autofill_1
         {
             for(int i = 0; i < children.Count; i++)
             {
+                if (word.Length == 0)
+                {
+                    return null;
+                }
                 if(word[0] == children[i].name)
                 {
                     return word[0] + children[i].Search(word.Substring(1));
@@ -68,6 +69,11 @@ namespace Search_bar_and_autofill_1
         public bool getChildrenSearched()
         {
             return allchildrensearched;
+        }
+
+        public void BubbleSort(int inweight)
+        {
+
         }
     }
 }

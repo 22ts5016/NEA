@@ -6,23 +6,18 @@ using System.Threading.Tasks;
 
 namespace Search_bar_and_autofill_1
 {
-    internal class RootedTree
+    internal static class RootedTree
     {
-        private Node root;
-
-        public RootedTree(Node inroot)
+        private static Node root = new Node(',',0);
+        public static void AddWord(string word)
         {
-            root = inroot;
+            string[] words = word.Split(',');
+            
+            root.AddNode(words[1],int.Parse(words[0]));
         }
-
-        public Node getRoot()
+        public static Node getRoot()
         {
             return root;
-        }
-
-        public void AddWord(string word)
-        {
-            root.AddNode(word.Substring(1));
         }
     }
 }

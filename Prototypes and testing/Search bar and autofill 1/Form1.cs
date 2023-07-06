@@ -22,19 +22,32 @@ namespace Search_bar_and_autofill_1
             string word = textBoxSearchBar.Text.ToLower();
             try
             {
-                ListOfTrees.Get()[(int)word[0] - 97].getRoot().Search(word.Substring(1));
+                Option1Label.Text = word[0] + RootedTree.getRoot().Search(word);
+
             }
             catch (LetterNotFoundException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            catch (IndexOutOfRangeException)
+            {
+                
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("That is not a valid start letter, please try again");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ListOfTrees.Get()[0].AddWord("abc");
-            ListOfTrees.Get()[0].AddWord("abcd");
-            //MessageBox.Show(ListOfTrees.Get()[0].getRoot().getChildren()[0].getName().ToString());
+            RootedTree.AddWord("56,abc*");
+            RootedTree.AddWord("8,abcd*");
+            RootedTree.AddWord("10,abce*");
+            MessageBox.Show(RootedTree.getRoot().getChildren()[0].getName().ToString());
+            string word = "abc*";
+            MessageBox.Show(RootedTree.getRoot().Search(word));
+            //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getChildren()[0].getChildren()[1].getName().ToString());
         }
     }
 }
