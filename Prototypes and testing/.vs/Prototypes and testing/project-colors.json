@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "94c14593-abae-4323-904c-e2a3a4b76bfc": {
+      "ProjectGuid": "94c14593-abae-4323-904c-e2a3a4b76bfc",
+      "DisplayName": "Search bar and autofill 1",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
