@@ -20,9 +20,16 @@ namespace Search_bar_and_autofill_1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string word = textBoxSearchBar.Text.ToLower();
+            string[] options = new string[5];
             try
             {
-                Option1Label.Text = word[0] + RootedTree.getRoot().Search(word);
+                options = RootedTree.getRoot().Search(word);
+                Option1Label.Text = options[0];
+                Option2Label.Text = options[1];
+                Option3Label.Text = options[2];
+                Option4Label.Text = options[3];
+                Option5Label.Text = options[4];
+                
 
             }
             catch (LetterNotFoundException ex)
@@ -44,9 +51,11 @@ namespace Search_bar_and_autofill_1
             RootedTree.AddWord("56,abc*");
             RootedTree.AddWord("8,abcd*");
             RootedTree.AddWord("10,abce*");
-            MessageBox.Show(RootedTree.getRoot().getChildren()[0].getName().ToString());
-            string word = "abc*";
-            MessageBox.Show(RootedTree.getRoot().Search(word));
+
+            //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getName().ToString());
+            //string word = "abc*";
+            //MessageBox.Show(RootedTree.getRoot().Search(word));
+
             //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getChildren()[0].getChildren()[1].getName().ToString());
         }
     }
