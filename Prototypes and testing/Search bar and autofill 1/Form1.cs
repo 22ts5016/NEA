@@ -24,6 +24,13 @@ namespace Search_bar_and_autofill_1
             try
             {
                 options = RootedTree.getRoot().Search(word);
+                for(int i = 0; i < options.Length; i++)
+                {
+                    if(options[i] != null)
+                    {
+                        options[i] = word + options[i];
+                    }
+                }
                 Option1Label.Text = options[0];
                 Option2Label.Text = options[1];
                 Option3Label.Text = options[2];
@@ -48,10 +55,10 @@ namespace Search_bar_and_autofill_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RootedTree.AddWord("6,abc4*");
-            RootedTree.AddWord("8,abcd3*");
-            RootedTree.AddWord("10,abce2*");
-            RootedTree.AddWord("20,ae1*");
+            RootedTree.AddWord("6,abc*");
+            RootedTree.AddWord("8,abcd*");
+            RootedTree.AddWord("10,abce*");
+            RootedTree.AddWord("20,ae*");
 
             //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getName().ToString());
             //string word = "abc*";

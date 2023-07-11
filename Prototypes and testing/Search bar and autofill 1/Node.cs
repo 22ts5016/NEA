@@ -9,7 +9,6 @@ namespace Search_bar_and_autofill_1
     internal class Node
     {
         private char name;
-        private bool allchildrensearched;
         private List<Node> children;
         private int[] popularW;
         private char[] popularC;
@@ -21,9 +20,6 @@ namespace Search_bar_and_autofill_1
             name = inname;
             popularW = new int[5];
             popularC = new char[5];
-            //Sort(inweight, name);
-            allchildrensearched = false;
-            
         }
 
         public void AddNode(string word, int weight)
@@ -73,17 +69,14 @@ namespace Search_bar_and_autofill_1
                                 break;
                             }
                         }
+                        nodessearched[j] = true;
                     }
+                    ResetBools();
                     return temp;
                 }
                 if (word[0] == children[i].name)
                 {
-                    string[] returned = children[i].Search(word.Substring(1));
-                    for (int j = 0; j < 5; j++)
-                    {
-                        returned[j] = popularC[j] + returned[j];
-                    }
-                    return returned;
+                    return children[i].Search(word.Substring(1));
                 }
             }
             throw new LetterNotFoundException();
@@ -109,12 +102,7 @@ namespace Search_bar_and_autofill_1
                     }
                 }
             }
-            return "";
-        }
-
-        public bool getChildrenSearched()
-        {
-            return allchildrensearched;
+            return "error";
         }
 
         public void Sort(int inweight, char inchar)
