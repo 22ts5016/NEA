@@ -48,9 +48,10 @@ namespace Search_bar_and_autofill_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RootedTree.AddWord("56,abc*");
-            RootedTree.AddWord("8,abcd*");
-            RootedTree.AddWord("10,abce*");
+            RootedTree.AddWord("6,abc4*");
+            RootedTree.AddWord("8,abcd3*");
+            RootedTree.AddWord("10,abce2*");
+            RootedTree.AddWord("20,ae1*");
 
             //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getName().ToString());
             //string word = "abc*";

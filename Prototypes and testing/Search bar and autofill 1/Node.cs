@@ -12,14 +12,15 @@ namespace Search_bar_and_autofill_1
         private bool allchildrensearched;
         private List<Node> children;
         private int[] popularW;
-        private string[] popularC;
+        private char[] popularC;
+        private bool[] nodessearched = { false, false, false, false, false };
 
         public Node(char inname, int inweight)
         {
             children = new List<Node>();
             name = inname;
             popularW = new int[5];
-            popularC = new string[5];
+            popularC = new char[5];
             //Sort(inweight, name);
             allchildrensearched = false;
             
@@ -66,17 +67,10 @@ namespace Search_bar_and_autofill_1
                     {
                         foreach (Node n in children)
                         {
-                            try
+                            if (n.name == popularC[j] && popularC != null)
                             {
-                                if (n.name == char.Parse(popularC[j]))
-                                {
-                                    temp[i] = getPopular();
-                                    break;
-                                }
-                            }
-                            catch (ArgumentNullException)
-                            {
-
+                                temp[j] = n.getPopular();
+                                break;
                             }
                         }
                     }
@@ -97,13 +91,22 @@ namespace Search_bar_and_autofill_1
 
         public string getPopular()
         {
-            bool[] nodessearched = { false, false, false, false, false };
-
             for(int i = 0; i < nodessearched.Length; i++)
             {
                 if (!nodessearched[i])
                 {
-                    return popularC[i];
+                    if(popularC[i] == '*')
+                    {
+                        return name.ToString();
+                    }
+                    foreach (Node n in children)
+                    {
+                        if (n.name == popularC[i])
+                        {
+                            nodessearched[i] = true;
+                            return name + n.getPopular();
+                        }
+                    }
                 }
             }
             return "";
@@ -117,17 +120,35 @@ namespace Search_bar_and_autofill_1
         public void Sort(int inweight, char inchar)
         {
             int compW = inweight;
-            string compC = inchar.ToString();
+            char compC = inchar;
             for (int i = 0; i < popularW.Length; i++)
             {
                 if (popularW[i] < compW)
                 {
                     int tempW = popularW[i];
-                    string tempC = popularC[i];
-                    popularC[i] = compC.ToString();
+                    char tempC = popularC[i];
+                    popularC[i] = compC;
                     popularW[i] = compW;
                     compW = tempW;
                     compC = tempC;
+                }
+            }
+        }
+
+        public void ResetBools()
+        {
+            for(int i = 0; i < nodessearched.Length; i++)
+            {
+                if (nodessearched[i])
+                {
+                    foreach (Node n in children)
+                    {
+                        if (n.name == popularC[i])
+                        {
+                            n.ResetBools();
+                        }
+                    }
+                    nodessearched[i] = false;
                 }
             }
         }
