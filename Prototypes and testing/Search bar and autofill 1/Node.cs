@@ -47,11 +47,6 @@ namespace Search_bar_and_autofill_1
             return name;
         }
 
-        public List<Node> getChildren()
-        {
-            return children;
-        }
-
         public string[] Search(string word)
         {
             for (int i = 0; i < children.Count; i++)
@@ -90,6 +85,7 @@ namespace Search_bar_and_autofill_1
                 {
                     if(popularC[i] == '*')
                     {
+                        nodessearched[i] = true;
                         return name.ToString();
                     }
                     foreach (Node n in children)
