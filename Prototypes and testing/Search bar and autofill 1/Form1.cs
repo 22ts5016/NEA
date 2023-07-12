@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Search_bar_and_autofill_1
 {
     public partial class Form1 : Form
     {
+        private string fileName = "DemoWords.txt";
+        private string test = "test.txt";
+
         public Form1()
         {
             InitializeComponent();
@@ -55,16 +59,7 @@ namespace Search_bar_and_autofill_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RootedTree.AddWord("6,abc*");
-            RootedTree.AddWord("8,abcd*");
-            RootedTree.AddWord("10,abce*");
-            RootedTree.AddWord("20,ae*");
-
-            //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getName().ToString());
-            //string word = "abc*";
-            //MessageBox.Show(RootedTree.getRoot().Search(word));
-
-            //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getChildren()[0].getChildren()[1].getName().ToString());
+            AddDemoWords();
         }
 
         private void AddWordButton_Click(object sender, EventArgs e)
@@ -89,6 +84,22 @@ namespace Search_bar_and_autofill_1
         {
             WordTextBox.Clear();
             WeightTextBox.Clear();
+        }
+
+        private void AddDemoWords()
+        {
+            Random rnd = new Random();
+            string[] hold = new string[2];
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                string line;
+                while (sr.EndOfStream == false)
+                {
+                    line = sr.ReadLine();
+                    hold = line.Split(',');
+                    RootedTree.AddWord(hold[0] + "," + hold[1].ToLower() + "*");
+                }
+            }
         }
     }
 }
