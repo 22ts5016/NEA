@@ -102,7 +102,7 @@ namespace Search_bar_and_autofill_1
                     }
                 }
             }
-            return "error";
+            return "";
         }
 
         public void Sort(int inweight, char inchar)

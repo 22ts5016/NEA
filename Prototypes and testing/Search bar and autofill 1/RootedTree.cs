@@ -12,7 +12,11 @@ namespace Search_bar_and_autofill_1
         public static void AddWord(string word)
         {
             string[] words = word.Split(',');
-            
+            if (words[1] == "*")
+            {
+                throw new FormatException();
+            }
+
             root.AddNode(words[1],int.Parse(words[0]));
         }
         public static Node getRoot()

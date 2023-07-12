@@ -66,5 +66,29 @@ namespace Search_bar_and_autofill_1
 
             //MessageBox.Show(RootedTree.getRoot().getChildren()[0].getChildren()[0].getChildren()[1].getName().ToString());
         }
+
+        private void AddWordButton_Click(object sender, EventArgs e)
+        {
+            bool valid = true;
+            try
+            {
+                RootedTree.AddWord(WeightTextBox.Text + "," + WordTextBox.Text + "*");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid word.");
+                valid = false;
+            }
+            if (valid)
+            {
+                MessageBox.Show("Word added!");
+            }
+        }
+
+        private void ClearButon_Click(object sender, EventArgs e)
+        {
+            WordTextBox.Clear();
+            WeightTextBox.Clear();
+        }
     }
 }
