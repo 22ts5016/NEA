@@ -14,8 +14,6 @@ namespace Search_bar_and_autofill_1
     public partial class Form1 : Form
     {
         private string fileName = "DemoWords.txt";
-        private string test = "test.txt";
-
         public Form1()
         {
             InitializeComponent();
@@ -67,16 +65,19 @@ namespace Search_bar_and_autofill_1
             bool valid = true;
             try
             {
-                RootedTree.AddWord(WeightTextBox.Text + "," + WordTextBox.Text + "*");
+                if (RootedTree.getRoot().checkDupe(WordTextBox.Text.ToLower()))
+                {
+                    valid = false;
+                    MessageBox.Show("Duplicate word!");
+                }
+                else
+                {
+                    RootedTree.AddWord(WeightTextBox.Text + "," + WordTextBox.Text + "*");
+                }
             }
             catch (FormatException)
             {
                 MessageBox.Show("Invalid word.");
-                valid = false;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show("Duplicate word added!");
                 valid = false;
             }
             if (valid)

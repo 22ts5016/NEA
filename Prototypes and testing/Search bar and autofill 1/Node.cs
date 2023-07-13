@@ -101,6 +101,22 @@ namespace Search_bar_and_autofill_1
             return "";
         }
 
+        public bool checkDupe(string word)
+        {
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (word == "" && children[i].name == '*')
+                {
+                    return true;
+                }
+                else if (word.Length != 0 && word[0] == children[i].getName())
+                {
+                    return children[i].checkDupe(word.Substring(1));
+                }
+            }
+            return false;
+        }
+
         public void Sort(int inweight, char inchar)
         {
             int compW = inweight;
