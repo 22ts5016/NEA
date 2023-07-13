@@ -74,6 +74,11 @@ namespace Search_bar_and_autofill_1
                 MessageBox.Show("Invalid word.");
                 valid = false;
             }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Duplicate word added!");
+                valid = false;
+            }
             if (valid)
             {
                 MessageBox.Show("Word added!");
