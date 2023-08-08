@@ -71,12 +71,6 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateAccountSignIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateAccountSignIn.Designer.cs">
-      <DependentUpon>CreateAccountSignIn.cs</DependentUpon>
-    </Compile>
     <Compile Include="FirstScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,9 +89,6 @@
     <Compile Include="CurrentUser.cs" />
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateAccountSignIn.resx">
-      <DependentUpon>CreateAccountSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FirstScreen.resx">
       <DependentUpon>FirstScreen.cs</DependentUpon>

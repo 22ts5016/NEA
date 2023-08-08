@@ -97,6 +97,7 @@
             // 
             // DepartmentComboBox
             // 
+            this.DepartmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartmentComboBox.FormattingEnabled = true;
             this.DepartmentComboBox.Items.AddRange(new object[] {
             "Front end",
@@ -171,6 +172,8 @@
             // 
             // RoleComboBox
             // 
+            this.RoleComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.RoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoleComboBox.FormattingEnabled = true;
             this.RoleComboBox.Items.AddRange(new object[] {
             "CA",
@@ -179,7 +182,7 @@
             this.RoleComboBox.Location = new System.Drawing.Point(201, 283);
             this.RoleComboBox.Name = "RoleComboBox";
             this.RoleComboBox.Size = new System.Drawing.Size(105, 21);
-            this.RoleComboBox.TabIndex = 15;
+            this.RoleComboBox.TabIndex = 7;
             // 
             // CreateAccount
             // 

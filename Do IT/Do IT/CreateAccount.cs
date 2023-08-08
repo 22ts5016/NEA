@@ -21,8 +21,10 @@ namespace Do_IT
         private void CreateAccountButton_Click(object sender, EventArgs e)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Employees VALUES ('{EmployeeIDNumberLabel.Text}', '{ForenameTextBox.Text}', '{SurnameTextBox.Text}', '{RoleComboBox.Text}', '{DepartmentComboBox.Text}', '{UsernameTextBox.Text}', '{PasswordTextBox}')", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Employees VALUES ('{EmployeeIDNumberLabel.Text}', '{ForenameTextBox.Text}', '{SurnameTextBox.Text}', '{RoleComboBox.Text}', '{DepartmentComboBox.Text}', '{UsernameTextBox.Text}', '{PasswordTextBox.Text}')", Forms.conn);
             sql.ExecuteNonQuery();
+            MessageBox.Show("Account created!");
+
             Forms.conn.Close();
         }
 

@@ -20,6 +20,8 @@ namespace Do_IT
         private void MainMenu_Load(object sender, EventArgs e)
         {
             MessageBox.Show(CurrentUser.role);
+            Forms.createaccount.Show();
+            this.Hide();
         }
     }
 }
