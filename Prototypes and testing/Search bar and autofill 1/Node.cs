@@ -123,7 +123,7 @@ namespace Search_bar_and_autofill_1
             char compC = inchar;
             for (int i = 0; i < popularW.Length; i++)
             {
-                if (popularW[i] < compW)
+                if (popularW[i] <= compW)
                 {
                     int tempW = popularW[i];
                     char tempC = popularC[i];

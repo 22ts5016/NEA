@@ -72,7 +72,7 @@ namespace Search_bar_and_autofill_1
                 }
                 else
                 {
-                    RootedTree.AddWord(WeightTextBox.Text + "," + WordTextBox.Text + "*");
+                    RootedTree.AddWord(WeightTextBox.Text + "," + WordTextBox.Text.ToLower() + "*");
                 }
             }
             catch (FormatException)
@@ -106,6 +106,31 @@ namespace Search_bar_and_autofill_1
                     RootedTree.AddWord(hold[0] + "," + hold[1].ToLower() + "*");
                 }
             }
+        }
+
+        private void Option1Label_Click(object sender, EventArgs e)
+        {
+            textBoxSearchBar.Text = Option1Label.Text;
+        }
+
+        private void Option2Label_Click(object sender, EventArgs e)
+        {
+            textBoxSearchBar.Text = Option2Label.Text;
+        }
+
+        private void Option3Label_Click(object sender, EventArgs e)
+        {
+            textBoxSearchBar.Text = Option3Label.Text;
+        }
+
+        private void Option4Label_Click(object sender, EventArgs e)
+        {
+            textBoxSearchBar.Text = Option4Label.Text;
+        }
+
+        private void Option5Label_Click(object sender, EventArgs e)
+        {
+            textBoxSearchBar.Text = Option5Label.Text;
         }
     }
 }
