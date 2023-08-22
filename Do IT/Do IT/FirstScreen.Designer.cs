@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.NameLabel = new System.Windows.Forms.Label();
-            this.ExitButton = new System.Windows.Forms.Button();
             this.SignInLabel = new System.Windows.Forms.Label();
             this.UsernameTextBox = new System.Windows.Forms.TextBox();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SignInButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameLabel
@@ -49,16 +49,6 @@
             this.NameLabel.TabIndex = 0;
             this.NameLabel.Text = "Do IT";
             this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Location = new System.Drawing.Point(1412, 759);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(160, 90);
-            this.ExitButton.TabIndex = 1;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = true;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // SignInLabel
             // 
@@ -114,6 +104,16 @@
             this.SignInButton.UseVisualStyleBackColor = true;
             this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click);
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Location = new System.Drawing.Point(1412, 759);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(160, 90);
+            this.ExitButton.TabIndex = 1;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // FirstScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,13 +139,13 @@
         #endregion
 
         private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Label SignInLabel;
         private System.Windows.Forms.TextBox UsernameTextBox;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button SignInButton;
+        private System.Windows.Forms.Button ExitButton;
     }
 }
 

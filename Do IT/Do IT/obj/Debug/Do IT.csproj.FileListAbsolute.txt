@@ -20,3 +20,12 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\bin\Debug\EntityFramework.SqlS
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.xml
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.MainMenu.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ProductQuery.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.LocationManagement.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.Orders.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockManagement.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources

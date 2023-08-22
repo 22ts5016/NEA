@@ -36,7 +36,14 @@ namespace Do_IT
             reader = sql.ExecuteReader();
             reader.Read();
             EmployeeIDNumberLabel.Text = (int.Parse((reader["EmployeeID"].ToString())) + 1).ToString();
+            reader.Close();
             Forms.conn.Close();
+        }
+
+        private void MainMenuButton_Click(object sender, EventArgs e)
+        {
+            Forms.mainmenu.Show();
+            this.Hide();
         }
     }
 }

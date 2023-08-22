@@ -19,9 +19,69 @@ namespace Do_IT
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(CurrentUser.role);
-            Forms.createaccount.Show();
+            Forms.firstscreen.Dispose();
+            if(CurrentUser.role != "CA")
+            {
+                EmployeesButton.Visible = true;
+                if(CurrentUser.role == "Store Manager" || CurrentUser.role == "Deputy Store Manager")
+                {
+                    AddProductButton.Visible = true;
+                    AddLocationButton.Visible = true;
+                }
+            }
+        }
+
+        private void PeoductQueryButton_Click(object sender, EventArgs e)
+        {
+            Forms.productquery.Show();
             this.Hide();
+        }
+
+        private void AddProductButton_Click(object sender, EventArgs e)
+        {
+            Forms.addproduct.Show();
+            this.Hide();
+        }
+
+        private void LocationManagementButton_Click(object sender, EventArgs e)
+        {
+            Forms.locationmanagement.Show();
+            this.Hide();
+        }
+
+        private void AddLocationButton_Click(object sender, EventArgs e)
+        {
+            Forms.addlocation.Show();
+            this.Hide();
+        }
+
+        private void EmployeesButton_Click(object sender, EventArgs e)
+        {
+            Forms.employees.Show();
+            this.Hide();
+        }
+
+        private void OrdersButton_Click(object sender, EventArgs e)
+        {
+            Forms.orders.Show();
+            this.Hide();
+        }
+
+        private void StockManagementButton_Click(object sender, EventArgs e)
+        {
+            Forms.stockmanagement.Show();
+            this.Hide();
+        }
+
+        private void CustomerDetailsButton_Click(object sender, EventArgs e)
+        {
+            Forms.customerdetails.Show();
+            this.Hide();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Forms.CloseAll();
         }
     }
 }

@@ -13,18 +13,11 @@ namespace Do_IT
 {
     public partial class FirstScreen : Form
     {
+        private static bool AddedWords = false;
+
         public FirstScreen()
         {
             InitializeComponent();
-        }
-
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void FirstScreen_Load(object sender, EventArgs e)
-        {
         }
 
         private void SignInButton_Click(object sender, EventArgs e)
@@ -42,8 +35,8 @@ namespace Do_IT
                     CurrentUser.role = (string)reader["Role"];
                     CurrentUser.department = (string)reader["Department"];
                     CurrentUser.ID = Convert.ToInt32(reader["EmployeeID"]);
+                    reader.Close();
                     Forms.conn.Close();
-
                     Forms.mainmenu.Show();
                     this.Hide();
                     invaid = false;
@@ -54,6 +47,20 @@ namespace Do_IT
                 Forms.conn.Close();
                 MessageBox.Show("Invalid username or password");
             }
+        }
+
+        private void FirstScreen_Load(object sender, EventArgs e)
+        {
+            if (!AddedWords)
+            {
+                Forms.productquery.AddWords();
+                AddedWords = true;
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Forms.CloseAll();
         }
     }
 }
