@@ -37,5 +37,21 @@ namespace Do_IT
             addlocation.Close();
             createaccount.Close();
         }
+
+        public static void Action(string type, string action)
+        {
+            conn.Open();
+            SQLiteCommand sql = new SQLiteCommand("SELECT ActionID FROM Actions ORDER BY EmployeeID DESC", Forms.conn);
+            SQLiteDataReader reader;
+            reader = sql.ExecuteReader();
+            reader.Read();
+            string  actionid = (int.Parse((reader["ActionID"].ToString())) + 1).ToString();
+            reader.Close();
+            conn.Close();
+            conn.Open();
+            SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionid}', '{CurrentUser.ID}', '{type}', '{action}')", Forms.conn);
+            sql2.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }

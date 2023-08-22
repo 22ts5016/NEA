@@ -23,7 +23,7 @@ namespace Do_IT
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            //if (EANCheck(BarcodeTextBox.Text))
+            if (EANCheck(BarcodeTextBox.Text))
             {
                 byte[] imageBytes;
                 using (MemoryStream ms = new MemoryStream())
@@ -52,6 +52,7 @@ namespace Do_IT
 
                 Forms.conn.Close();
                 MessageBox.Show("Product Added");
+                //Forms.Action("New product", $"Added product {BarcodeTextBox.Text}");
                 Reset();
             }
         }
