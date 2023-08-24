@@ -24,5 +24,11 @@ namespace Do_IT
             PriceLabel.Text = DisplayedItemInfo.price.ToString();
             ProductImagePictureBox.Image = DisplayedItemInfo.image;
         }
+
+        private void MainMenuButton_Click(object sender, EventArgs e)
+        {
+            Forms.mainmenu.Show();
+            this.Hide();
+        }
     }
 }

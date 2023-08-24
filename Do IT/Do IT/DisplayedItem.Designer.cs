@@ -32,6 +32,7 @@
             this.ProductImagePictureBox = new System.Windows.Forms.PictureBox();
             this.PriceLabel = new System.Windows.Forms.Label();
             this.ProductDescrpitionLabel = new System.Windows.Forms.Label();
+            this.MainMenuButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ProductImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,11 +73,22 @@
             this.ProductDescrpitionLabel.TabIndex = 3;
             this.ProductDescrpitionLabel.Text = "null";
             // 
+            // MainMenuButton
+            // 
+            this.MainMenuButton.Location = new System.Drawing.Point(1412, 759);
+            this.MainMenuButton.Name = "MainMenuButton";
+            this.MainMenuButton.Size = new System.Drawing.Size(160, 90);
+            this.MainMenuButton.TabIndex = 10;
+            this.MainMenuButton.Text = "Main Menu";
+            this.MainMenuButton.UseVisualStyleBackColor = true;
+            this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
+            // 
             // DisplayedItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.ProductDescrpitionLabel);
             this.Controls.Add(this.PriceLabel);
             this.Controls.Add(this.ProductImagePictureBox);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.PictureBox ProductImagePictureBox;
         private System.Windows.Forms.Label PriceLabel;
         private System.Windows.Forms.Label ProductDescrpitionLabel;
+        private System.Windows.Forms.Button MainMenuButton;
     }
 }

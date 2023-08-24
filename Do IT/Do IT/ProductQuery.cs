@@ -116,16 +116,7 @@ namespace Do_IT
                 
                 if (reader.Read())
                 {
-                    DisplayedItemInfo.name = (string)reader["ProductName"];
-                    DisplayedItemInfo.barcode = (string)reader["Barcode"];
-                    DisplayedItemInfo.description = (string)reader["ProductDescription"];
-                    DisplayedItemInfo.price = Convert.ToDouble(reader["Price"]);
-                    DisplayedItemInfo.stock = Convert.ToInt32(reader["StockCount"]);
-                    DisplayedItemInfo.isle = Convert.ToInt32(reader["Isle"]);
-                    DisplayedItemInfo.bay = Convert.ToInt32(reader["Bay"]);
-                    DisplayedItemInfo.sequence = Convert.ToInt32(reader["Sequence"]);
-                    DisplayedItemInfo.image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
-                    Forms.displayitem.Show();
+                    FillDisplayedItemInfo(reader);
                     this.Hide();
                 }
                 else
@@ -166,6 +157,20 @@ namespace Do_IT
         private void Option5Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option5Label.Text;
+        }
+
+        private void FillDisplayedItemInfo(SQLiteDataReader reader)
+        {
+            DisplayedItemInfo.name = (string)reader["ProductName"];
+            DisplayedItemInfo.barcode = (string)reader["Barcode"];
+            DisplayedItemInfo.description = (string)reader["ProductDescription"];
+            DisplayedItemInfo.price = Convert.ToDouble(reader["Price"]);
+            DisplayedItemInfo.stock = Convert.ToInt32(reader["StockCount"]);
+            DisplayedItemInfo.isle = Convert.ToInt32(reader["Isle"]);
+            DisplayedItemInfo.bay = Convert.ToInt32(reader["Bay"]);
+            DisplayedItemInfo.sequence = Convert.ToInt32(reader["Sequence"]);
+            DisplayedItemInfo.image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
+            Forms.displayitem.Show();
         }
     }
 }

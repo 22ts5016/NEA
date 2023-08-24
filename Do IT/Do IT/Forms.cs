@@ -47,8 +47,6 @@ namespace Do_IT
             reader.Read();
             string  actionid = (int.Parse((reader["ActionID"].ToString())) + 1).ToString();
             reader.Close();
-            conn.Close();
-            conn.Open();
             SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionid}', '{CurrentUser.ID}', '{type}', '{action}')", Forms.conn);
             sql2.ExecuteNonQuery();
             conn.Close();

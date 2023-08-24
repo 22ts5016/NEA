@@ -25,35 +25,38 @@ namespace Do_IT
         {
             if (EANCheck(BarcodeTextBox.Text))
             {
-                byte[] imageBytes;
-                using (MemoryStream ms = new MemoryStream())
+                if (NotRepeatedBarcode(BarcodeTextBox.Text))
                 {
-                    ImagePictureBox.Image.Save(ms, ImagePictureBox.Image.RawFormat);
-                    imageBytes = ms.ToArray();
-                }
-                string description = ProductDescriptionTextBox.Text;
-                for (int i = 100; i < description.Length; i += 100)
-                {
-                    if (description[i] == ' ')
+                    byte[] imageBytes;
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        description = description.Substring(0, i) + "\n" + description.Substring(i + 1);
+                        ImagePictureBox.Image.Save(ms, ImagePictureBox.Image.RawFormat);
+                        imageBytes = ms.ToArray();
                     }
-                    else
+                    string description = ProductDescriptionTextBox.Text;
+                    for (int i = 100; i < description.Length; i += 100)
                     {
-                        i -= 99;
+                        if (description[i] == ' ')
+                        {
+                            description = description.Substring(0, i) + "\n" + description.Substring(i + 1);
+                        }
+                        else
+                        {
+                            i -= 99;
+                        }
                     }
-                }
-                Forms.conn.Open();
-                using (SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Products VALUES ('{BarcodeTextBox.Text}', \"'{ProductNameTextBox.Text}'\", \"{description}\", '{double.Parse(PriceTextBox.Text)}', '{int.Parse(StockCountTextBox.Text)}', '0',@image)", Forms.conn))
-                {
-                    sql.Parameters.AddWithValue("@image", imageBytes);
-                    sql.ExecuteNonQuery();
-                }
+                    Forms.conn.Open();
+                    using (SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Products VALUES ('{BarcodeTextBox.Text}', \"{ProductNameTextBox.Text}\", \"{description}\", '{double.Parse(PriceTextBox.Text)}', '{int.Parse(StockCountTextBox.Text)}', '0',@image)", Forms.conn))
+                    {
+                        sql.Parameters.AddWithValue("@image", imageBytes);
+                        sql.ExecuteNonQuery();
+                    }
 
-                Forms.conn.Close();
-                MessageBox.Show("Product Added");
-                //Forms.Action("New product", $"Added product {BarcodeTextBox.Text}");
-                Reset();
+                    Forms.conn.Close();
+                    MessageBox.Show("Product Added");
+                    Forms.Action("New product", $"Added product {BarcodeTextBox.Text}");
+                    Reset();
+                }
             }
         }
 
@@ -119,6 +122,32 @@ namespace Do_IT
         private void AddProduct_Load(object sender, EventArgs e)
         {
             blank =  new Bitmap(ImagePictureBox.Image);
+        }
+
+        private bool NotRepeatedBarcode(string barcode)
+        {
+            bool valid;
+            Forms.conn.Open();
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
+            SQLiteDataReader reader = sql.ExecuteReader();
+            if (reader.Read())
+            {
+                if((string)reader["Barcode"] == barcode)
+                {
+                    valid = true;
+                }
+                else
+                {
+                    valid = false;
+                }
+            }
+            else
+            {
+                valid = false;
+            }
+            reader.Close();
+            Forms.conn.Close();
+            return valid;
         }
     }
 }
