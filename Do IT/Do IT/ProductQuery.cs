@@ -110,13 +110,18 @@ namespace Do_IT
             else
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, Locations WHERE Products.Barcode = {SearchTextBox.Text} AND Locations.Barcode = {SearchTextBox.Text}", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = {SearchTextBox.Text} AND ProductLocations.Barcode = {SearchTextBox.Text}", Forms.conn);
                 SQLiteDataReader reader;
                 reader = sql.ExecuteReader();
                 
                 if (reader.Read())
                 {
                     FillDisplayedItemInfo(reader);
+                    while (reader.Read())
+                    {
+                        FillDisplayedItemInfo(reader);
+                    }
+                    Forms.displayeditem.Show();
                     this.Hide();
                 }
                 else
@@ -137,40 +142,55 @@ namespace Do_IT
         private void Option1Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option1Label.Text;
+            DisableLabels();
         }
 
         private void Option2Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option2Label.Text;
+            DisableLabels();
         }
 
         private void Option3Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option3Label.Text;
+            DisableLabels();
         }
 
         private void Option4Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option4Label.Text;
+            DisableLabels();
         }
 
         private void Option5Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option5Label.Text;
+            DisableLabels();
         }
 
-        private void FillDisplayedItemInfo(SQLiteDataReader reader)
+        private void DisableLabels()
         {
-            DisplayedItemInfo.name = (string)reader["ProductName"];
-            DisplayedItemInfo.barcode = (string)reader["Barcode"];
-            DisplayedItemInfo.description = (string)reader["ProductDescription"];
-            DisplayedItemInfo.price = Convert.ToDouble(reader["Price"]);
-            DisplayedItemInfo.stock = Convert.ToInt32(reader["StockCount"]);
-            DisplayedItemInfo.isle = Convert.ToInt32(reader["Isle"]);
-            DisplayedItemInfo.bay = Convert.ToInt32(reader["Bay"]);
-            DisplayedItemInfo.sequence = Convert.ToInt32(reader["Sequence"]);
-            DisplayedItemInfo.image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
-            Forms.displayitem.Show();
+            Option1Label.Visible = false;
+            Option2Label.Visible = false;
+            Option3Label.Visible = false;
+            Option4Label.Visible = false;
+            Option5Label.Visible = false;
+            SearchTextBox.SelectionStart = SearchTextBox.Text.Length;
+        }
+
+        public void FillDisplayedItemInfo(SQLiteDataReader reader)
+        {
+            Forms.displayeditem.name = (string)reader["ProductName"];
+            Forms.displayeditem.barcode = (string)reader["Barcode"];
+            Forms.displayeditem.description = (string)reader["ProductDescription"];
+            Forms.displayeditem.price = Convert.ToDouble(reader["Price"]);
+            Forms.displayeditem.stock = Convert.ToInt32(reader["StockCount"]);
+            Forms.displayeditem.type.Add((string)reader["Type"]);
+            Forms.displayeditem.isle.Add(Convert.ToInt32(reader["Isle"]));
+            Forms.displayeditem.bay.Add(Convert.ToInt32(reader["Bay"]));
+            Forms.displayeditem.sequence.Add((string)reader["Sequence"]);
+            Forms.displayeditem.image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
         }
     }
 }

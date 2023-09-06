@@ -34,6 +34,13 @@
             this.BayTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.MainMenuButton = new System.Windows.Forms.Button();
+            this.SellingButton = new System.Windows.Forms.Button();
+            this.SellingLabel = new System.Windows.Forms.Label();
+            this.OverstockLabel = new System.Windows.Forms.Label();
+            this.OverstockButton = new System.Windows.Forms.Button();
+            this.MultiLocationButton = new System.Windows.Forms.Button();
+            this.MultiLocationLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // IsleLabel
@@ -78,6 +85,7 @@
             this.SearchButton.TabIndex = 4;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // MainMenuButton
             // 
@@ -89,11 +97,94 @@
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
+            // SellingButton
+            // 
+            this.SellingButton.Location = new System.Drawing.Point(161, 273);
+            this.SellingButton.Name = "SellingButton";
+            this.SellingButton.Size = new System.Drawing.Size(763, 41);
+            this.SellingButton.TabIndex = 6;
+            this.SellingButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SellingButton.UseVisualStyleBackColor = true;
+            this.SellingButton.Visible = false;
+            this.SellingButton.Click += new System.EventHandler(this.SellingButton_Click);
+            // 
+            // SellingLabel
+            // 
+            this.SellingLabel.AutoSize = true;
+            this.SellingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SellingLabel.Location = new System.Drawing.Point(157, 235);
+            this.SellingLabel.Name = "SellingLabel";
+            this.SellingLabel.Size = new System.Drawing.Size(56, 20);
+            this.SellingLabel.TabIndex = 7;
+            this.SellingLabel.Text = "Selling";
+            this.SellingLabel.Visible = false;
+            // 
+            // OverstockLabel
+            // 
+            this.OverstockLabel.AutoSize = true;
+            this.OverstockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OverstockLabel.Location = new System.Drawing.Point(157, 444);
+            this.OverstockLabel.Name = "OverstockLabel";
+            this.OverstockLabel.Size = new System.Drawing.Size(80, 20);
+            this.OverstockLabel.TabIndex = 8;
+            this.OverstockLabel.Text = "Overstock";
+            this.OverstockLabel.Visible = false;
+            // 
+            // OverstockButton
+            // 
+            this.OverstockButton.Location = new System.Drawing.Point(161, 478);
+            this.OverstockButton.Name = "OverstockButton";
+            this.OverstockButton.Size = new System.Drawing.Size(763, 41);
+            this.OverstockButton.TabIndex = 9;
+            this.OverstockButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OverstockButton.UseVisualStyleBackColor = true;
+            this.OverstockButton.Visible = false;
+            this.OverstockButton.Click += new System.EventHandler(this.OverstockButton_Click);
+            // 
+            // MultiLocationButton
+            // 
+            this.MultiLocationButton.Location = new System.Drawing.Point(161, 376);
+            this.MultiLocationButton.Name = "MultiLocationButton";
+            this.MultiLocationButton.Size = new System.Drawing.Size(763, 41);
+            this.MultiLocationButton.TabIndex = 10;
+            this.MultiLocationButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MultiLocationButton.UseVisualStyleBackColor = true;
+            this.MultiLocationButton.Visible = false;
+            this.MultiLocationButton.Click += new System.EventHandler(this.MultiLocationButton_Click);
+            // 
+            // MultiLocationLabel
+            // 
+            this.MultiLocationLabel.AutoSize = true;
+            this.MultiLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MultiLocationLabel.Location = new System.Drawing.Point(157, 337);
+            this.MultiLocationLabel.Name = "MultiLocationLabel";
+            this.MultiLocationLabel.Size = new System.Drawing.Size(103, 20);
+            this.MultiLocationLabel.TabIndex = 11;
+            this.MultiLocationLabel.Text = "MultiLocation";
+            this.MultiLocationLabel.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(693, 41);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(231, 30);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "View Products Without Locations";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LocationManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.MultiLocationLabel);
+            this.Controls.Add(this.MultiLocationButton);
+            this.Controls.Add(this.OverstockButton);
+            this.Controls.Add(this.OverstockLabel);
+            this.Controls.Add(this.SellingLabel);
+            this.Controls.Add(this.SellingButton);
             this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.BayTextBox);
@@ -111,10 +202,17 @@
         #endregion
 
         private System.Windows.Forms.Label IsleLabel;
-        private System.Windows.Forms.TextBox IsleTextBox;
         private System.Windows.Forms.Label BayLabel;
-        private System.Windows.Forms.TextBox BayTextBox;
-        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button MainMenuButton;
+        private System.Windows.Forms.Button SellingButton;
+        private System.Windows.Forms.Label SellingLabel;
+        private System.Windows.Forms.Label OverstockLabel;
+        private System.Windows.Forms.Button OverstockButton;
+        private System.Windows.Forms.Button MultiLocationButton;
+        private System.Windows.Forms.Label MultiLocationLabel;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox IsleTextBox;
+        public System.Windows.Forms.TextBox BayTextBox;
+        public System.Windows.Forms.Button SearchButton;
     }
 }

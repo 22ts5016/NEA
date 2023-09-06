@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PeoductQueryButton = new System.Windows.Forms.Button();
+            this.ProductQueryButton = new System.Windows.Forms.Button();
             this.LocationManagementButton = new System.Windows.Forms.Button();
             this.EmployeesButton = new System.Windows.Forms.Button();
             this.OrdersButton = new System.Windows.Forms.Button();
@@ -39,22 +39,22 @@
             this.ExitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // PeoductQueryButton
+            // ProductQueryButton
             // 
-            this.PeoductQueryButton.Location = new System.Drawing.Point(91, 63);
-            this.PeoductQueryButton.Name = "PeoductQueryButton";
-            this.PeoductQueryButton.Size = new System.Drawing.Size(181, 107);
-            this.PeoductQueryButton.TabIndex = 0;
-            this.PeoductQueryButton.Text = "Product Query";
-            this.PeoductQueryButton.UseVisualStyleBackColor = true;
-            this.PeoductQueryButton.Click += new System.EventHandler(this.PeoductQueryButton_Click);
+            this.ProductQueryButton.Location = new System.Drawing.Point(91, 63);
+            this.ProductQueryButton.Name = "ProductQueryButton";
+            this.ProductQueryButton.Size = new System.Drawing.Size(181, 107);
+            this.ProductQueryButton.TabIndex = 1;
+            this.ProductQueryButton.Text = "Product Query";
+            this.ProductQueryButton.UseVisualStyleBackColor = true;
+            this.ProductQueryButton.Click += new System.EventHandler(this.PeoductQueryButton_Click);
             // 
             // LocationManagementButton
             // 
             this.LocationManagementButton.Location = new System.Drawing.Point(318, 63);
             this.LocationManagementButton.Name = "LocationManagementButton";
             this.LocationManagementButton.Size = new System.Drawing.Size(181, 107);
-            this.LocationManagementButton.TabIndex = 1;
+            this.LocationManagementButton.TabIndex = 2;
             this.LocationManagementButton.Text = "Location Management";
             this.LocationManagementButton.UseVisualStyleBackColor = true;
             this.LocationManagementButton.Click += new System.EventHandler(this.LocationManagementButton_Click);
@@ -64,7 +64,7 @@
             this.EmployeesButton.Location = new System.Drawing.Point(91, 472);
             this.EmployeesButton.Name = "EmployeesButton";
             this.EmployeesButton.Size = new System.Drawing.Size(181, 107);
-            this.EmployeesButton.TabIndex = 2;
+            this.EmployeesButton.TabIndex = 6;
             this.EmployeesButton.Text = "Employees";
             this.EmployeesButton.UseVisualStyleBackColor = true;
             this.EmployeesButton.Visible = false;
@@ -105,7 +105,7 @@
             this.AddProductButton.Location = new System.Drawing.Point(318, 472);
             this.AddProductButton.Name = "AddProductButton";
             this.AddProductButton.Size = new System.Drawing.Size(181, 107);
-            this.AddProductButton.TabIndex = 6;
+            this.AddProductButton.TabIndex = 7;
             this.AddProductButton.Text = "Add Product";
             this.AddProductButton.UseVisualStyleBackColor = true;
             this.AddProductButton.Visible = false;
@@ -116,7 +116,7 @@
             this.AddLocationButton.Location = new System.Drawing.Point(561, 472);
             this.AddLocationButton.Name = "AddLocationButton";
             this.AddLocationButton.Size = new System.Drawing.Size(181, 107);
-            this.AddLocationButton.TabIndex = 7;
+            this.AddLocationButton.TabIndex = 8;
             this.AddLocationButton.Text = "Add Location";
             this.AddLocationButton.UseVisualStyleBackColor = true;
             this.AddLocationButton.Visible = false;
@@ -127,7 +127,7 @@
             this.ExitButton.Location = new System.Drawing.Point(1412, 759);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(160, 90);
-            this.ExitButton.TabIndex = 8;
+            this.ExitButton.TabIndex = 9;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
@@ -145,7 +145,7 @@
             this.Controls.Add(this.OrdersButton);
             this.Controls.Add(this.EmployeesButton);
             this.Controls.Add(this.LocationManagementButton);
-            this.Controls.Add(this.PeoductQueryButton);
+            this.Controls.Add(this.ProductQueryButton);
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
@@ -156,7 +156,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button PeoductQueryButton;
+        private System.Windows.Forms.Button ProductQueryButton;
         private System.Windows.Forms.Button LocationManagementButton;
         private System.Windows.Forms.Button EmployeesButton;
         private System.Windows.Forms.Button OrdersButton;

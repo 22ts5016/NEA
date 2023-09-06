@@ -28,5 +28,11 @@ namespace Do_IT
             Forms.createaccount.Show();
             this.Hide();
         }
+
+        private void ViewEmployeeActionsButton_Click(object sender, EventArgs e)
+        {
+            Forms.viewemployeeactions.Show();
+            this.Hide();
+        }
     }
 }

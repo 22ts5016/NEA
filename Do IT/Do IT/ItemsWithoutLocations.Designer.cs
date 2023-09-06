@@ -1,6 +1,6 @@
 ﻿namespace Do_IT
 {
-    partial class Employees
+    partial class ItemsWithoutLocations
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.MainMenuButton = new System.Windows.Forms.Button();
-            this.AddEmployeeButton = new System.Windows.Forms.Button();
-            this.ViewEmployeeActionsButton = new System.Windows.Forms.Button();
+            this.LayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.AddSelectedItemsToLocationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -38,42 +38,42 @@
             this.MainMenuButton.Location = new System.Drawing.Point(1412, 759);
             this.MainMenuButton.Name = "MainMenuButton";
             this.MainMenuButton.Size = new System.Drawing.Size(160, 90);
-            this.MainMenuButton.TabIndex = 1;
+            this.MainMenuButton.TabIndex = 8;
             this.MainMenuButton.Text = "Main Menu";
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // AddEmployeeButton
+            // LayoutPanel
             // 
-            this.AddEmployeeButton.Location = new System.Drawing.Point(112, 67);
-            this.AddEmployeeButton.Name = "AddEmployeeButton";
-            this.AddEmployeeButton.Size = new System.Drawing.Size(176, 116);
-            this.AddEmployeeButton.TabIndex = 2;
-            this.AddEmployeeButton.Text = "Add Employee";
-            this.AddEmployeeButton.UseVisualStyleBackColor = true;
-            this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
+            this.LayoutPanel.AutoScroll = true;
+            this.LayoutPanel.Location = new System.Drawing.Point(12, 59);
+            this.LayoutPanel.Name = "LayoutPanel";
+            this.LayoutPanel.Size = new System.Drawing.Size(1394, 694);
+            this.LayoutPanel.TabIndex = 9;
             // 
-            // ViewEmployeeActionsButton
+            // AddSelectedItemsToLocationButton
             // 
-            this.ViewEmployeeActionsButton.Location = new System.Drawing.Point(346, 67);
-            this.ViewEmployeeActionsButton.Name = "ViewEmployeeActionsButton";
-            this.ViewEmployeeActionsButton.Size = new System.Drawing.Size(176, 116);
-            this.ViewEmployeeActionsButton.TabIndex = 3;
-            this.ViewEmployeeActionsButton.Text = "View Employees Actions";
-            this.ViewEmployeeActionsButton.UseVisualStyleBackColor = true;
-            this.ViewEmployeeActionsButton.Click += new System.EventHandler(this.ViewEmployeeActionsButton_Click);
+            this.AddSelectedItemsToLocationButton.Location = new System.Drawing.Point(1412, 663);
+            this.AddSelectedItemsToLocationButton.Name = "AddSelectedItemsToLocationButton";
+            this.AddSelectedItemsToLocationButton.Size = new System.Drawing.Size(160, 90);
+            this.AddSelectedItemsToLocationButton.TabIndex = 10;
+            this.AddSelectedItemsToLocationButton.Text = "Add Selected Items to Location";
+            this.AddSelectedItemsToLocationButton.UseVisualStyleBackColor = true;
+            this.AddSelectedItemsToLocationButton.Click += new System.EventHandler(this.AddSelectedItemsToLocationButton_Click);
             // 
-            // Employees
+            // ItemsWithoutLocations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.ViewEmployeeActionsButton);
-            this.Controls.Add(this.AddEmployeeButton);
+            this.Controls.Add(this.AddSelectedItemsToLocationButton);
+            this.Controls.Add(this.LayoutPanel);
             this.Controls.Add(this.MainMenuButton);
-            this.Name = "Employees";
+            this.Name = "ItemsWithoutLocations";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Employees";
+            this.Text = "Items Without Locations";
+            this.Load += new System.EventHandler(this.ItemsWithoutLocations_Load);
             this.ResumeLayout(false);
 
         }
@@ -81,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.Button MainMenuButton;
-        private System.Windows.Forms.Button AddEmployeeButton;
-        private System.Windows.Forms.Button ViewEmployeeActionsButton;
+        private System.Windows.Forms.FlowLayoutPanel LayoutPanel;
+        private System.Windows.Forms.Button AddSelectedItemsToLocationButton;
     }
 }

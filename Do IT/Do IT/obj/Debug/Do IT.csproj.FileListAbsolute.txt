@@ -60,3 +60,10 @@ C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.exe
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.pdb
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsWithoutLocations.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddItemToLocation.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsInABay.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeActions.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockAdjustment.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.resources

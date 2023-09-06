@@ -57,7 +57,7 @@
             this.SignInLabel.Location = new System.Drawing.Point(574, 216);
             this.SignInLabel.Name = "SignInLabel";
             this.SignInLabel.Size = new System.Drawing.Size(104, 31);
-            this.SignInLabel.TabIndex = 2;
+            this.SignInLabel.TabIndex = 0;
             this.SignInLabel.Text = "Sign in:";
             // 
             // UsernameTextBox
@@ -65,14 +65,14 @@
             this.UsernameTextBox.Location = new System.Drawing.Point(674, 289);
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(388, 20);
-            this.UsernameTextBox.TabIndex = 3;
+            this.UsernameTextBox.TabIndex = 1;
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(674, 375);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(388, 20);
-            this.PasswordTextBox.TabIndex = 4;
+            this.PasswordTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -81,7 +81,7 @@
             this.label1.Location = new System.Drawing.Point(670, 266);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Username:";
             // 
             // label2
@@ -91,7 +91,7 @@
             this.label2.Location = new System.Drawing.Point(670, 352);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Password:";
             // 
             // SignInButton
@@ -99,7 +99,7 @@
             this.SignInButton.Location = new System.Drawing.Point(674, 431);
             this.SignInButton.Name = "SignInButton";
             this.SignInButton.Size = new System.Drawing.Size(160, 90);
-            this.SignInButton.TabIndex = 7;
+            this.SignInButton.TabIndex = 3;
             this.SignInButton.Text = "Sign in";
             this.SignInButton.UseVisualStyleBackColor = true;
             this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click);
@@ -109,7 +109,7 @@
             this.ExitButton.Location = new System.Drawing.Point(1412, 759);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(160, 90);
-            this.ExitButton.TabIndex = 1;
+            this.ExitButton.TabIndex = 4;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
