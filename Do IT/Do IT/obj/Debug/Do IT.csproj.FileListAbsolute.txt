@@ -67,3 +67,41 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeAc
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockAdjustment.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\Do IT.exe.config
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\Do IT.exe
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\Do IT.pdb
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.dll
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.SqlServer.dll
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.dll
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.EF6.dll
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.Linq.dll
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.xml
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.SqlServer.xml
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.xml
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.AssemblyReference.cache
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.SuggestedBindingRedirects.cache
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddItemToLocation.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateAccount.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.FirstScreen.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsInABay.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsWithoutLocations.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.LocationManagement.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.MainMenu.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Orders.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ProductQuery.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Properties.Resources.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockAdjustment.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockManagement.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeActions.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.GenerateResource.cache
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CoreCompileInputs.cache
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.exe
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.pdb
