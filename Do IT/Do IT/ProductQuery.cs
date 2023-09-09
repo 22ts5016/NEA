@@ -107,17 +107,21 @@ namespace Do_IT
             if (ProductNameCheckBox.Checked)
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT COUNT(*) FROM Products, ProductLocations WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
                 SQLiteDataReader reader;
                 reader = sql.ExecuteReader();
+                reader.Read();
+                itemscout = reader.GetInt32(0);
 
-                while (reader.Read())
-                {
-                    itemscout++;
-                }
+
+
+
+                SQLiteCommand sql2 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                reader = sql2.ExecuteReader();
 
                 if(itemscout == 1)
                 {
+                    reader.Read();
                     FillDisplayedItemInfo(reader);
 
                     Forms.displayeditem.Show();
@@ -132,7 +136,7 @@ namespace Do_IT
                 SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
                 SQLiteDataReader reader;
                 reader = sql.ExecuteReader();
-                
+
                 if (reader.Read())
                 {
                     FillDisplayedItemInfo(reader);
