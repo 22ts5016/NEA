@@ -14,6 +14,7 @@ namespace Do_IT
 {
     public partial class ProductQuery : Form
     {
+        private int itemscout;
         public ProductQuery()
         {
             InitializeComponent();
@@ -98,19 +99,37 @@ namespace Do_IT
 
         private void ProductQuery_Load(object sender, EventArgs e)
         {
-
+            itemscout = 0;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
             if (ProductNameCheckBox.Checked)
             {
+                Forms.conn.Open();
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                SQLiteDataReader reader;
+                reader = sql.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    itemscout++;
+                }
+
+                if(itemscout == 1)
+                {
+                    FillDisplayedItemInfo(reader);
+
+                    Forms.displayeditem.Show();
+                    this.Hide();
+                }
+                reader.Close();
+                Forms.conn.Close();
             }
             else
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = {SearchTextBox.Text} AND ProductLocations.Barcode = {SearchTextBox.Text}", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
                 SQLiteDataReader reader;
                 reader = sql.ExecuteReader();
                 

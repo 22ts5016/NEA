@@ -105,3 +105,40 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.exe
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.pdb
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\Do IT.exe.config
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\Do IT.exe
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\Do IT.pdb
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.dll
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.dll
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.xml
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\bin\Debug\System.Data.SQLite.xml
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.AssemblyReference.cache
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddItemToLocation.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateAccount.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.FirstScreen.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsInABay.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsWithoutLocations.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.LocationManagement.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.MainMenu.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Orders.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ProductQuery.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Properties.Resources.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockAdjustment.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockManagement.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeActions.resources
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.GenerateResource.cache
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CoreCompileInputs.cache
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.exe
+C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.pdb
