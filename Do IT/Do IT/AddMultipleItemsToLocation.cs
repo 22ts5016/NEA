@@ -49,10 +49,13 @@ namespace Do_IT
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (LocationManagement.CheckValidLocation(IsleTextBox.Text, BayTextBox.Text))
+            string isle = IsleTextBox.Text, bay = BayTextBox.Text;
+            if (LocationManagement.CheckValidLocation(isle, bay))
             {
                 string values = "";
                 string type;
+                string barcode;
+                List<string> barcodelist = new List<string>();
                 string[] items = ActualItemsLabel.Text.Split('\n');
 
                 if (MultiLocationCheck.Checked)
@@ -70,21 +73,35 @@ namespace Do_IT
                     {
                         values += ',';
                     }
-                    values += $"('{items[i].Substring(0,13)}', '{IsleTextBox.Text}', '{BayTextBox.Text}', 'null', '{type}')";
+                    barcode = items[i].Substring(0, 13);
+                    barcodelist.Add(barcode);
+                    values += $"('{barcode}', '{isle}', '{bay}', 'null', '{type}')";
                 }
 
                 Forms.conn.Open();
                 SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES {values}", Forms.conn);
                 sql.ExecuteNonQuery();
                 Forms.conn.Close();
+
+                Forms.itemswithoutlocations.Show();
+                Forms.addmultipleitemstolocation = new AddMultipleItemsToLocation();
+                string listofitems = "";
+                for(int i = 0; i < barcodelist.Count; i++)
+                {
+                    listofitems += barcodelist[i];
+                    if (i < barcodelist.Count - 1)
+                    {
+                        listofitems += ',';
+                    }
+                     
+                }
+                Forms.viewemployeeactions.Action(2, $"Added: {listofitems} to {isle},{bay} type:{type}");
+                this.Dispose();
             }
             else
             {
                 MessageBox.Show("Invalid location");
             }
-            Forms.itemswithoutlocations.Show();
-            Forms.addmultipleitemstolocation = new AddMultipleItemsToLocation();
-            this.Dispose();
         }
 
         private void UnlocatedProductsButton_Click(object sender, EventArgs e)

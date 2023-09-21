@@ -152,5 +152,38 @@ namespace Do_IT
                 }
             }
         }
+
+        public void ClearTree(Node node)
+        {
+            if(node == null)
+            {
+                return;
+            }
+
+            foreach(Node n in node.children)
+            {
+                ClearTree(n);
+            }
+
+            node.children.Clear();
+        }
+
+        public string SearchForStartOfRemoval(string word, int weight)
+        {
+            if (weight >= popularW[4])
+            {
+                ClearTree(this);
+                return name.ToString();
+            }
+
+            foreach(Node n in children)
+            {
+                if(n.name == word[0])
+                {
+                    return name + n.SearchForStartOfRemoval(word.Substring(1), weight);
+                }
+            }
+            return "Error";
+        }
     }
 }

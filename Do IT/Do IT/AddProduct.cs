@@ -52,7 +52,7 @@ namespace Do_IT
                         sql.ExecuteNonQuery();
                     }
                     MessageBox.Show("Product Added");
-                    Forms.Action("New product", $"Added product {BarcodeTextBox.Text}");
+                    Forms.viewemployeeactions.Action(5, $"Added product {BarcodeTextBox.Text}");
                     Reset();
                 }
             }

@@ -37,6 +37,7 @@
             this.AddProductButton = new System.Windows.Forms.Button();
             this.AddLocationButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.RemoveProductButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProductQueryButton
@@ -113,7 +114,7 @@
             // 
             // AddLocationButton
             // 
-            this.AddLocationButton.Location = new System.Drawing.Point(561, 472);
+            this.AddLocationButton.Location = new System.Drawing.Point(798, 472);
             this.AddLocationButton.Name = "AddLocationButton";
             this.AddLocationButton.Size = new System.Drawing.Size(181, 107);
             this.AddLocationButton.TabIndex = 8;
@@ -132,11 +133,23 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // RemoveProductButton
+            // 
+            this.RemoveProductButton.Location = new System.Drawing.Point(561, 472);
+            this.RemoveProductButton.Name = "RemoveProductButton";
+            this.RemoveProductButton.Size = new System.Drawing.Size(181, 107);
+            this.RemoveProductButton.TabIndex = 10;
+            this.RemoveProductButton.Text = "Remove Product";
+            this.RemoveProductButton.UseVisualStyleBackColor = true;
+            this.RemoveProductButton.Visible = false;
+            this.RemoveProductButton.Click += new System.EventHandler(this.RemoveProductButton_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.RemoveProductButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.AddLocationButton);
             this.Controls.Add(this.AddProductButton);
@@ -165,5 +178,6 @@
         private System.Windows.Forms.Button AddProductButton;
         private System.Windows.Forms.Button AddLocationButton;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button RemoveProductButton;
     }
 }

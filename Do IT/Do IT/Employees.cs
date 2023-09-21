@@ -34,5 +34,14 @@ namespace Do_IT
             Forms.viewemployeeactions.Show();
             this.Hide();
         }
+
+        private void Employees_Load(object sender, EventArgs e)
+        {
+            if(CurrentUser.role == "Store Manager")
+            {
+                AddEmployeeButton.Visible = true;
+                ResetPasswordButton.Visible = true;
+            }
+        }
     }
 }

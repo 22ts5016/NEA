@@ -31,6 +31,7 @@
             this.MainMenuButton = new System.Windows.Forms.Button();
             this.AddEmployeeButton = new System.Windows.Forms.Button();
             this.ViewEmployeeActionsButton = new System.Windows.Forms.Button();
+            this.ResetPasswordButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -45,17 +46,18 @@
             // 
             // AddEmployeeButton
             // 
-            this.AddEmployeeButton.Location = new System.Drawing.Point(112, 67);
+            this.AddEmployeeButton.Location = new System.Drawing.Point(360, 64);
             this.AddEmployeeButton.Name = "AddEmployeeButton";
             this.AddEmployeeButton.Size = new System.Drawing.Size(176, 116);
             this.AddEmployeeButton.TabIndex = 2;
             this.AddEmployeeButton.Text = "Add Employee";
             this.AddEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEmployeeButton.Visible = false;
             this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
             // 
             // ViewEmployeeActionsButton
             // 
-            this.ViewEmployeeActionsButton.Location = new System.Drawing.Point(346, 67);
+            this.ViewEmployeeActionsButton.Location = new System.Drawing.Point(112, 64);
             this.ViewEmployeeActionsButton.Name = "ViewEmployeeActionsButton";
             this.ViewEmployeeActionsButton.Size = new System.Drawing.Size(176, 116);
             this.ViewEmployeeActionsButton.TabIndex = 3;
@@ -63,17 +65,29 @@
             this.ViewEmployeeActionsButton.UseVisualStyleBackColor = true;
             this.ViewEmployeeActionsButton.Click += new System.EventHandler(this.ViewEmployeeActionsButton_Click);
             // 
+            // ResetPasswordButton
+            // 
+            this.ResetPasswordButton.Location = new System.Drawing.Point(619, 64);
+            this.ResetPasswordButton.Name = "ResetPasswordButton";
+            this.ResetPasswordButton.Size = new System.Drawing.Size(176, 116);
+            this.ResetPasswordButton.TabIndex = 4;
+            this.ResetPasswordButton.Text = "Reset Password";
+            this.ResetPasswordButton.UseVisualStyleBackColor = true;
+            this.ResetPasswordButton.Visible = false;
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.ResetPasswordButton);
             this.Controls.Add(this.ViewEmployeeActionsButton);
             this.Controls.Add(this.AddEmployeeButton);
             this.Controls.Add(this.MainMenuButton);
             this.Name = "Employees";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees";
+            this.Load += new System.EventHandler(this.Employees_Load);
             this.ResumeLayout(false);
 
         }
@@ -83,5 +97,6 @@
         private System.Windows.Forms.Button MainMenuButton;
         private System.Windows.Forms.Button AddEmployeeButton;
         private System.Windows.Forms.Button ViewEmployeeActionsButton;
+        private System.Windows.Forms.Button ResetPasswordButton;
     }
 }

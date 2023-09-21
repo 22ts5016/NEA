@@ -93,14 +93,16 @@ namespace Do_IT
                 if (!repeatedsequence)
                 {
                     Forms.conn.Open();
-                    SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{BarcodeTextBox.Text}', '{IsleTextBox.Text}', '{BayTextBox.Text}', '{seq}', '{type}')", Forms.conn);
+                    string barcode = BarcodeTextBox.Text, isle = IsleTextBox.Text, bay = BayTextBox.Text;
+                    SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{barcode}', '{isle}', '{bay}', '{seq}', '{type}')", Forms.conn);
                     sql.ExecuteNonQuery();
-                    SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = 't' WHERE Barcode = {BarcodeTextBox.Text}", Forms.conn);
+                    SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = 't' WHERE Barcode = {barcode}", Forms.conn);
                     sql2.ExecuteNonQuery();
                     Forms.conn.Close();
                     MessageBox.Show("Item Added Successfully");
                     Forms.locationmanagement.Show();
                     Forms.additemtolocation = new AddItemToLocation();
+                    Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{type}");
                     this.Dispose();
                 }
                 else

@@ -75,22 +75,14 @@ namespace Do_IT
         public static bool CheckValidLocation(string isle, string bay)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Bays FROM ValidLocations WHERE Isle = '{isle}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Bay FROM ValidLocations WHERE Isle = '{isle}' AND Bay = '{bay}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
             if (reader.Read())
             {
-                string[] bays = ((string)reader["Bays"]).Split(',');
-
-                foreach (string item in bays)
-                {
-                    if (item == bay)
-                    {
-                        reader.Close();
-                        Forms.conn.Close();
-                        return true;
-                    }
-                }
+                reader.Close();
+                Forms.conn.Close();
+                return true;
             }
             reader.Close();
             Forms.conn.Close();

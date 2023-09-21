@@ -25,7 +25,7 @@ namespace Do_IT
             sql.ExecuteNonQuery();
             MessageBox.Show("Account created!");
             Forms.conn.Close();
-            Forms.Action("Create Account", $"Account made for {ForenameTextBox.Text} {SurnameTextBox.Text}");
+            Forms.viewemployeeactions.Action(4, $"Account made for {ForenameTextBox.Text} {SurnameTextBox.Text}");
         }
 
         private void CreateAccount_Load(object sender, EventArgs e)

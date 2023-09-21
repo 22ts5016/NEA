@@ -9,15 +9,15 @@ namespace Do_IT
     internal class RootedTree
     {
         private static Node root = new Node(',', 0);
-        public static void AddWord(string word)
+
+        public static void AddWord(int weight, string word)
         {
-            string[] words = word.Split(',');
-            if (words[1] == "*")
+            if (word == "*")
             {
                 throw new FormatException();
             }
 
-            root.AddNode(words[1], int.Parse(words[0]));
+            root.AddNode(word, weight);
         }
         public static Node getRoot()
         {

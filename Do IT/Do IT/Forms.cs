@@ -27,6 +27,7 @@ namespace Do_IT
         public static DisplayedItem displayeditem = new DisplayedItem();
         public static ItemsWithoutLocations itemswithoutlocations = new ItemsWithoutLocations();
         public static AddItemToLocation additemtolocation = new AddItemToLocation();
+        public static RemoveProduct removeproduct = new RemoveProduct();
         public static AddMultipleItemsToLocation addmultipleitemstolocation = new AddMultipleItemsToLocation();
         public static ItemsInABay itemsinabay = new ItemsInABay();
 
@@ -61,20 +62,6 @@ namespace Do_IT
             //displayitem.Dispose();
             //itemswithoutlocations.Dispose();
             //additemtolocation.Dispose();
-        }
-
-        public static void Action(string type, string action)
-        {
-            conn.Open();
-            SQLiteCommand sql = new SQLiteCommand("SELECT ActionID FROM Actions ORDER BY EmployeeID DESC", Forms.conn);
-            SQLiteDataReader reader;
-            reader = sql.ExecuteReader();
-            reader.Read();
-            string  actionid = (int.Parse((reader["ActionID"].ToString())) + 1).ToString();
-            reader.Close();
-            SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionid}', '{CurrentUser.ID}', '{type}', '{action}')", Forms.conn);
-            sql2.ExecuteNonQuery();
-            conn.Close();
         }
     }
 }

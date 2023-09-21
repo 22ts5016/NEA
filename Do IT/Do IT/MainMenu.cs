@@ -26,6 +26,7 @@ namespace Do_IT
                 if(CurrentUser.role == "Store Manager" || CurrentUser.role == "Deputy Store Manager")
                 {
                     AddProductButton.Visible = true;
+                    RemoveProductButton.Visible = true;
                     AddLocationButton.Visible = true;
                 }
             }
@@ -90,6 +91,13 @@ namespace Do_IT
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Forms.CloseAll();
+        }
+
+        private void RemoveProductButton_Click(object sender, EventArgs e)
+        {
+            Forms.removeproduct.Show();
+            Forms.mainmenu.ProductQueryButton.Select();
+            this.Hide();
         }
     }
 }

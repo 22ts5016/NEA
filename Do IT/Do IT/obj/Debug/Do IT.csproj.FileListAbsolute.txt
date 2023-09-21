@@ -142,3 +142,4 @@ C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csp
 C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
 C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.exe
 C:\Users\Rob\Documents\Toby\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.pdb
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveProduct.resources
