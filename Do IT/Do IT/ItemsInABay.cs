@@ -75,7 +75,7 @@ namespace Do_IT
             SQLiteDataReader reader = sql.ExecuteReader();
             while (reader.Read())
             {
-                Forms.productquery.FillDisplayedItemInfo(reader);
+                Forms.productquery.FillDisplayedItemInfo(reader, true);
             }
             reader.Close();
             Forms.conn.Close();

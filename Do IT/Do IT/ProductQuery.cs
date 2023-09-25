@@ -25,10 +25,40 @@ namespace Do_IT
             if (ProductNameCheckBox.Checked)
             {
                 BarcodeCheckBox.Checked = false;
+                ExactProductNameCheckBox.Checked = false;
             }
             else
             {
-                BarcodeCheckBox.Checked = true;
+                if(!ExactProductNameCheckBox.Checked && !BarcodeCheckBox.Checked)
+                {
+                    ProductNameCheckBox.Checked = true;
+                }
+                else
+                {
+                    BarcodeCheckBox.Checked = false;
+                    ExactProductNameCheckBox.Checked = false;
+                }
+            }
+        }
+
+        private void ExactProductNameCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ExactProductNameCheckBox.Checked)
+            {
+                BarcodeCheckBox.Checked = false;
+                ProductNameCheckBox.Checked = false;
+            }
+            else
+            {
+                if (!ProductNameCheckBox.Checked && !BarcodeCheckBox.Checked)
+                {
+                    ExactProductNameCheckBox.Checked = true;
+                }
+                else
+                {
+                    BarcodeCheckBox.Checked = false;
+                    ProductNameCheckBox.Checked = false;
+                }
             }
         }
 
@@ -36,29 +66,36 @@ namespace Do_IT
         {
             if (BarcodeCheckBox.Checked)
             {
+                ExactProductNameCheckBox.Checked = false;
                 ProductNameCheckBox.Checked = false;
             }
             else
             {
-                ProductNameCheckBox.Checked = true;
+                if (!ExactProductNameCheckBox.Checked && !ProductNameCheckBox.Checked)
+                {
+                    BarcodeCheckBox.Checked = true;
+                }
+                else
+                {
+                    ExactProductNameCheckBox.Checked = false;
+                    ProductNameCheckBox.Checked = false;
+                }
             }
         }
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (ProductNameCheckBox.Checked)
+            LayoutPanel1.Visible = false;
+            if (ProductNameCheckBox.Checked || ExactProductNameCheckBox.Checked)
             {
                 string word = SearchTextBox.Text.ToLower();
                 if(word.Length == 0)
                 {
-                    DisableLabels();
+                    LabelStatus(false);
                 }
                 else
                 {
-                    if(word.Length == 1)
-                    {
-                        EnableLabels();
-                    }
+                    LabelStatus(true);
                     string[] options = new string[5];
                     try
                     {
@@ -80,7 +117,7 @@ namespace Do_IT
                     }
                     catch (LetterNotFoundException)
                     {
-
+                        LabelStatus(false);
                     }
                     catch (IndexOutOfRangeException)
                     {
@@ -115,63 +152,89 @@ namespace Do_IT
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            LayoutPanel1.Controls.Clear();
+            LayoutPanel1.Visible = true;
+            LabelStatus(false);
+            Forms.conn.Open();
             if (ProductNameCheckBox.Checked)
             {
-                Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT COUNT(*) FROM Products WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}'", Forms.conn);
-                SQLiteDataReader reader;
-                reader = sql.ExecuteReader();
-                reader.Read();
-                itemscout = reader.GetInt32(0);
+                string a = GetParameters(SearchTextBox.Text);
+                
+                SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName Price, StockCount, Weight, Image FROM Products WHERE {a} ORDER BY Weight DESC", Forms.conn);
+                SQLiteDataReader reader = sql.ExecuteReader();
 
-                if (itemscout == 1)
+                while (reader.Read())
                 {
-                    string name = SearchTextBox.Text;
-                    SQLiteCommand sql2 = new SQLiteCommand($"SELECT Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
-                    SQLiteDataReader reader2 = sql2.ExecuteReader();
-                    reader2.Read();
+                    PictureBox image = new PictureBox();
+                    image.Size = new Size(284, 284);
+                    image.Image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
+                    LayoutPanel1.Controls.Add(image);
+                }
+                Forms.conn.Close();
+            }
+            else if (ExactProductNameCheckBox.Checked)
+            {
+                string name = SearchTextBox.Text;
+                SQLiteCommand sql3 = new SQLiteCommand($"SELECT Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+                SQLiteDataReader reader3 = sql3.ExecuteReader();
+                if (reader3.Read())
+                {
+                    int weight = Convert.ToInt32(reader3["Weight"]) + 1;
+                    SQLiteCommand sql4 = new SQLiteCommand($"UPDATE Products SET Weight = {weight} WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+                    sql4.ExecuteNonQuery();
 
-                    int weight = Convert.ToInt32(reader2["Weight"]) + 1;
-                    SQLiteCommand sql3 = new SQLiteCommand($"UPDATE Products SET Weight = {weight} WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
-                    sql3.ExecuteNonQuery();
+                    SQLiteCommand sql5 = new SQLiteCommand($"SELECT Located FROM Products WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}'", Forms.conn);
+                    SQLiteDataReader reader5 = sql5.ExecuteReader();
+                    reader5.Read();
+
+                    SQLiteCommand sql6;
+                    bool located;
+                    if ((string)reader5["Located"] == "t")
+                    {
+                        sql6 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                        located = true;
+                    }
+                    else
+                    {
+                        sql6 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}'", Forms.conn);
+                        located = false;
+                    }
+
+                    SQLiteDataReader reader6 = sql6.ExecuteReader();
+                    reader6.Read();
+                    FillDisplayedItemInfo(reader6, located);
+                    reader6.Close();
 
 
-                    SQLiteCommand sql4 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
-                    SQLiteDataReader reader4 = sql4.ExecuteReader();
-
-                    reader4.Read();
-                    FillDisplayedItemInfo(reader4);
 
                     Forms.displayeditem.Show();
                     this.Hide();
-                    EnableLabels();
+                    LabelStatus(true);
                     SearchTextBox.Text = "";
-                    reader2.Close();
-                    reader4.Close();
+                    reader3.Close();
+                    reader5.Close();
+                    reader6.Close();
 
                     string start = "null";
 
                     start = RootedTree.getRoot().SearchForStartOfRemoval(name.ToLower() + "*", weight);
 
-                    SQLiteCommand sql5 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE ProductName LIKE '{start.Substring(1)}%'", Forms.conn);
-                    SQLiteDataReader reader5 = sql5.ExecuteReader();
+                    SQLiteCommand sql7 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE ProductName LIKE '{start.Substring(1)}%'", Forms.conn);
+                    SQLiteDataReader reader7 = sql7.ExecuteReader();
 
-                    while (reader5.Read())
+                    while (reader7.Read())
                     {
-                        RootedTree.AddWord(Convert.ToInt32(reader5["Weight"]), ((string)reader5["ProductName"]).ToLower() + '*');
+                        RootedTree.AddWord(Convert.ToInt32(reader7["Weight"]), ((string)reader7["ProductName"]).ToLower() + '*');
                     }
-
-                    reader5.Close();
+                    reader7.Close();
                 }
                 else
                 {
-                    SQLiteCommand sql3 = new SQLiteCommand($"Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ", Forms.conn);
+                    MessageBox.Show("That is not the name of an item");
                 }
-
-                reader.Close();
                 Forms.conn.Close();
             }
-            else
+            else if(BarcodeCheckBox.Checked)
             {
                 Forms.conn.Open();
                 SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
@@ -180,11 +243,21 @@ namespace Do_IT
 
                 if (reader.Read())
                 {
-                    FillDisplayedItemInfo(reader);
-                    while (reader.Read())
+                    bool located = CheckLocated(SearchTextBox.Text, "barcode");
+
+                    if (located)
                     {
-                        FillDisplayedItemInfo(reader);
+                        FillDisplayedItemInfo(reader, true);
+                        while (reader.Read())
+                        {
+                            FillDisplayedItemInfo(reader, true);
+                        }
                     }
+                    else
+                    {
+                        FillDisplayedItemInfo(reader, false);
+                    }
+                    
                     Forms.displayeditem.Show();
                     this.Hide();
                 }
@@ -206,64 +279,113 @@ namespace Do_IT
         private void Option1Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option1Label.Text;
-            DisableLabels();
+            ExactProductNameCheckBox.Checked = true;
+            LabelStatus(false);
         }
 
         private void Option2Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option2Label.Text;
-            DisableLabels();
+            ExactProductNameCheckBox.Checked = true;
+            LabelStatus(false);
         }
 
         private void Option3Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option3Label.Text;
-            DisableLabels();
+            ExactProductNameCheckBox.Checked = true;
+            LabelStatus(false);
         }
 
         private void Option4Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option4Label.Text;
-            DisableLabels();
+            ExactProductNameCheckBox.Checked = true;
+            LabelStatus(false);
         }
 
         private void Option5Label_Click(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option5Label.Text;
-            DisableLabels();
+            ExactProductNameCheckBox.Checked = true;
+            LabelStatus(false);
         }
 
-        private void DisableLabels()
+        private void LabelStatus(bool status)
         {
-            Option1Label.Visible = false;
-            Option2Label.Visible = false;
-            Option3Label.Visible = false;
-            Option4Label.Visible = false;
-            Option5Label.Visible = false;
-            SearchTextBox.SelectionStart = SearchTextBox.Text.Length;
+            if(status)
+            {
+                Option1Label.Visible = true;
+                Option2Label.Visible = true;
+                Option3Label.Visible = true;
+                Option4Label.Visible = true;
+                Option5Label.Visible = true;
+            }
+            else
+            {
+                Option1Label.Visible = false;
+                Option2Label.Visible = false;
+                Option3Label.Visible = false;
+                Option4Label.Visible = false;
+                Option5Label.Visible = false;
+            }
         }
 
-        private void EnableLabels()
-        {
-            Option1Label.Visible = true;
-            Option2Label.Visible = true;
-            Option3Label.Visible = true;
-            Option4Label.Visible = true;
-            Option5Label.Visible = true;
-        }
-
-        public void FillDisplayedItemInfo(SQLiteDataReader reader)
+        public void FillDisplayedItemInfo(SQLiteDataReader reader, bool located)
         {
             Forms.displayeditem.name = (string)reader["ProductName"];
             Forms.displayeditem.barcode = (string)reader["Barcode"];
             Forms.displayeditem.description = (string)reader["ProductDescription"];
             Forms.displayeditem.price = Convert.ToDouble(reader["Price"]);
             Forms.displayeditem.stock = Convert.ToInt32(reader["StockCount"]);
-            Forms.displayeditem.type.Add((string)reader["Type"]);
-            Forms.displayeditem.isle.Add(Convert.ToInt32(reader["Isle"]));
-            Forms.displayeditem.bay.Add(Convert.ToInt32(reader["Bay"]));
-            Forms.displayeditem.sequence.Add((string)reader["Sequence"]);
+            if(located)
+            {
+                Forms.displayeditem.type.Add((string)reader["Type"]);
+                Forms.displayeditem.isle.Add(Convert.ToInt32(reader["Isle"]));
+                Forms.displayeditem.bay.Add(Convert.ToInt32(reader["Bay"]));
+                Forms.displayeditem.sequence.Add((string)reader["Sequence"]);
+            }
             Forms.displayeditem.image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
+        }
+
+        private string GetParameters(string text)
+        {
+            string query = "";
+            foreach(string word in text.Split(' '))
+            {
+                query += "OR ProductName LIKE '%" + word + "%' ";
+            }
+            return query.Substring(3);
+        }
+
+        public bool CheckLocated(string name, string type)
+        {
+            type = type.ToLower();
+            Forms.conn.Open();
+            SQLiteCommand sql;
+            if(type == "barcode")
+            {
+                sql = new SQLiteCommand($"SELECT Located FROM Products WHERE Barcode = '{name}'", Forms.conn);
+            }
+            else if(type == "name")
+            {
+                sql = new SQLiteCommand($"SELECT Located FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+            }
+            else
+            {
+                sql = null;
+            }
+            SQLiteDataReader reader = sql.ExecuteReader();
+            reader.Read();
+            if ((string)reader["Located"] == "t")
+            {
+                reader.Close();
+                Forms.conn.Close();
+                return true;
+            }
+            reader.Close();
+            Forms.conn.Close();
+            return false;
         }
     }
 }
