@@ -31,12 +31,12 @@ namespace Do_IT
                 int selling = 0, multi = 0, over = 0;
                 string type;
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Type FROM ProductLocations WHERE Isle = '{IsleTextBox.Text}' and Bay = '{BayTextBox.Text}'", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT LocationType FROM ProductLocations, LocationTypes WHERE Isle = '{IsleTextBox.Text}' and Bay = '{BayTextBox.Text}' AND LocationTypeID = Type", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    type = (string)reader["Type"];
+                    type = (string)reader["LocationType"];
 
                     if(type == "Selling")
                     {

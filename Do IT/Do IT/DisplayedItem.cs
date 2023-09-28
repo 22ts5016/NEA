@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace Do_IT
 {
@@ -20,7 +21,7 @@ namespace Do_IT
         public List<int> isle = new List<int>();
         public List<int> bay = new List<int>();
         public List<string> sequence = new List<string>();
-        public List<string> type = new List<string>();
+        public List<int> type = new List<int>();
         public Bitmap image;
 
         public DisplayedItem()
@@ -36,8 +37,10 @@ namespace Do_IT
             PriceLabel.Text = '£' + price.ToString();
             CurrentStockLabel.Text = "Curent Stock: " + stock;
             ProductImagePictureBox.Image = image;
-
-            for(int i = 0; i < isle.Count; i++)
+            Forms.conn.Open();
+            SQLiteCommand sql;
+            SQLiteDataReader reader;
+            for (int i = 0; i < isle.Count; i++)
             {
                 Button btn1 = new Button();
                 btn1.Name = i + "_" + isle[i] + "_Button";
@@ -61,11 +64,16 @@ namespace Do_IT
 
                 Button btn4 = new Button();
                 btn4.Name = i + "_" + isle[i] + "_" + bay[i] + "_Type_Button";
-                btn4.Text = type[i].ToString();
+                sql = new SQLiteCommand($"SELECT LocationType FROM LocationTypes WHERE LocationTypeID = '{type[i]}'", Forms.conn);
+                reader = sql.ExecuteReader();
+                reader.Read();
+                btn4.Text = (string)reader["LocationType"];
+                reader.Close();
                 btn4.Width = 100;
                 btn4.Click += Btn4_Click;
                 LayoutPanel1.Controls.Add(btn4);
             }
+            Forms.conn.Close();
         }
 
         private void Btn1_Click(object sender, EventArgs e)

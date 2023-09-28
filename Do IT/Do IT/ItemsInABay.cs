@@ -26,6 +26,18 @@ namespace Do_IT
         private void ItemsInABay_Load(object sender, EventArgs e)
         {
             TypeLabel.Text = type + ':';
+            if(type == "Selling")
+            {
+                type = "1";                
+            }
+            else if (type == "MultiLocation")
+            {
+                type = "2";
+            }
+            else if (type == "Overstock")
+            {
+                type = "3";
+            }
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"SELECT Products.barcode, ProductName FROM Products, ProductLocations WHERE Isle = '{isle}' AND Bay = '{bay}' AND Type = '{type}' AND Products.barcode = ProductLocations.Barcode", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();

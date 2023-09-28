@@ -30,7 +30,7 @@ namespace Do_IT
         private void ItemsWithoutLocations_Load(object sender, EventArgs e)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode FROM Products WHERE Located = 'f'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode FROM Products WHERE Located = '2'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             string name, barcode;
             while (reader.Read())

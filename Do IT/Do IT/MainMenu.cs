@@ -20,7 +20,7 @@ namespace Do_IT
         private void MainMenu_Load(object sender, EventArgs e)
         {
             Forms.firstscreen.Dispose();
-            if(CurrentUser.role != "CA")
+            if(CurrentUser.role != "Customer Advisor")
             {
                 EmployeesButton.Visible = true;
                 if(CurrentUser.role == "Store Manager" || CurrentUser.role == "Deputy Store Manager")

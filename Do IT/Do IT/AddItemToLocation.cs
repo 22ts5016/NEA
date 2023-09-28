@@ -68,25 +68,26 @@ namespace Do_IT
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            string seq, type;
+            string seq;
+            int type;
             bool repeatedsequence = false;
             if(LocationManagement.CheckValidLocation(IsleTextBox.Text, BayTextBox.Text) && CheckValidItem(BarcodeTextBox.Text, ItemNameTextBox.Text))
             {
                 if (SellingCheck.Checked)
                 {
                     seq = SequenceTextBox.Text;
-                    type = "Selling";
+                    type = 1;
                     repeatedsequence = CheckSequence(IsleTextBox.Text, BayTextBox.Text, seq);
                 }
                 else
                 {
                     if (MultiLocationCheck.Checked)
                     {
-                        type = "MultiLocation";
+                        type = 2;
                     }
                     else
                     {
-                        type = "Overstock";
+                        type = 3;
                     }
                     seq = "null";
                 }
@@ -96,13 +97,17 @@ namespace Do_IT
                     string barcode = BarcodeTextBox.Text, isle = IsleTextBox.Text, bay = BayTextBox.Text;
                     SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{barcode}', '{isle}', '{bay}', '{seq}', '{type}')", Forms.conn);
                     sql.ExecuteNonQuery();
-                    SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = 't' WHERE Barcode = {barcode}", Forms.conn);
+                    SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = '1' WHERE Barcode = {barcode}", Forms.conn);
                     sql2.ExecuteNonQuery();
-                    Forms.conn.Close();
                     MessageBox.Show("Item Added Successfully");
                     Forms.locationmanagement.Show();
                     Forms.additemtolocation = new AddItemToLocation();
-                    Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{type}");
+                    SQLiteCommand sql3 = new SQLiteCommand($"SELECT LocationType FROM LocationTypes WHERE LocationtypeID = '{type}'", Forms.conn);
+                    SQLiteDataReader reader = sql3.ExecuteReader();
+                    reader.Read();
+                    Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{(string)reader["LocationType"]}");
+                    reader.Close();
+                    Forms.conn.Close();
                     this.Dispose();
                 }
                 else

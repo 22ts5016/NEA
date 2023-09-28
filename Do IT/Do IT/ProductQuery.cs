@@ -14,7 +14,7 @@ namespace Do_IT
 {
     public partial class ProductQuery : Form
     {
-        private int itemscout;
+        private int itemscount;
         public ProductQuery()
         {
             InitializeComponent();
@@ -147,7 +147,7 @@ namespace Do_IT
 
         private void ProductQuery_Load(object sender, EventArgs e)
         {
-            itemscout = 0;
+            itemscount = 0;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -155,9 +155,9 @@ namespace Do_IT
             LayoutPanel1.Controls.Clear();
             LayoutPanel1.Visible = true;
             LabelStatus(false);
-            Forms.conn.Open();
             if (ProductNameCheckBox.Checked)
             {
+                Forms.conn.Open();
                 string a = GetParameters(SearchTextBox.Text);
                 
                 SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName Price, StockCount, Weight, Image FROM Products WHERE {a} ORDER BY Weight DESC", Forms.conn);
@@ -174,6 +174,7 @@ namespace Do_IT
             }
             else if (ExactProductNameCheckBox.Checked)
             {
+                Forms.conn.Open();
                 string name = SearchTextBox.Text;
                 SQLiteCommand sql3 = new SQLiteCommand($"SELECT Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
                 SQLiteDataReader reader3 = sql3.ExecuteReader();
@@ -189,7 +190,7 @@ namespace Do_IT
 
                     SQLiteCommand sql6;
                     bool located;
-                    if ((string)reader5["Located"] == "t")
+                    if (Convert.ToInt32(reader5["Located"]) == 1)
                     {
                         sql6 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
                         located = true;
@@ -201,19 +202,22 @@ namespace Do_IT
                     }
 
                     SQLiteDataReader reader6 = sql6.ExecuteReader();
-                    reader6.Read();
-                    FillDisplayedItemInfo(reader6, located);
+                    while (reader6.Read())
+                    {
+                        FillDisplayedItemInfo(reader6, located);
+                    }
+                    
+                    reader3.Close();
+                    reader5.Close();
                     reader6.Close();
-
-
-
+                    Forms.conn.Close();
                     Forms.displayeditem.Show();
                     this.Hide();
                     LabelStatus(true);
                     SearchTextBox.Text = "";
-                    reader3.Close();
-                    reader5.Close();
-                    reader6.Close();
+                    
+
+                    Forms.conn.Open();
 
                     string start = "null";
 
@@ -236,6 +240,7 @@ namespace Do_IT
             }
             else if(BarcodeCheckBox.Checked)
             {
+                bool located = CheckLocated(SearchTextBox.Text, "barcode");
                 Forms.conn.Open();
                 SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
                 SQLiteDataReader reader;
@@ -243,7 +248,7 @@ namespace Do_IT
 
                 if (reader.Read())
                 {
-                    bool located = CheckLocated(SearchTextBox.Text, "barcode");
+                    
 
                     if (located)
                     {
@@ -340,7 +345,7 @@ namespace Do_IT
             Forms.displayeditem.stock = Convert.ToInt32(reader["StockCount"]);
             if(located)
             {
-                Forms.displayeditem.type.Add((string)reader["Type"]);
+                Forms.displayeditem.type.Add(Convert.ToInt32(reader["Type"]));
                 Forms.displayeditem.isle.Add(Convert.ToInt32(reader["Isle"]));
                 Forms.displayeditem.bay.Add(Convert.ToInt32(reader["Bay"]));
                 Forms.displayeditem.sequence.Add((string)reader["Sequence"]);
@@ -377,7 +382,7 @@ namespace Do_IT
             }
             SQLiteDataReader reader = sql.ExecuteReader();
             reader.Read();
-            if ((string)reader["Located"] == "t")
+            if ((string)reader["Located"] == "1")
             {
                 reader.Close();
                 Forms.conn.Close();
