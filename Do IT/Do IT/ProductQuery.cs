@@ -160,15 +160,70 @@ namespace Do_IT
                 Forms.conn.Open();
                 string a = GetParameters(SearchTextBox.Text);
                 
-                SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName Price, StockCount, Weight, Image FROM Products WHERE {a} ORDER BY Weight DESC", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} ORDER BY Weight DESC", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
+
+                string name, barcode;
 
                 while (reader.Read())
                 {
+                    name = (string)reader["ProductName"];
+                    barcode = (string)reader["Barcode"];
+
                     PictureBox image = new PictureBox();
                     image.Size = new Size(284, 284);
                     image.Image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
                     LayoutPanel1.Controls.Add(image);
+
+                    TableLayoutPanel table = new TableLayoutPanel();
+
+                    table.Name = name;
+                    table.Height = 284;
+                    table.Width = 700;
+                    table.ColumnCount = 2;
+                    table.RowCount = 3;
+
+                    Label namelabel = new Label();
+                    namelabel.Text = name;
+                    namelabel.Font = new Font(namelabel.Font.FontFamily, 13);
+                    namelabel.Name = name;
+                    namelabel.AutoSize = true;
+                    namelabel.Margin = new Padding(0, 0, 0, 10);
+
+                    table.Controls.Add(namelabel, 0, 0);
+
+                    Label barcodelabel = new Label();
+                    barcodelabel.Text = barcode;
+                    barcodelabel.Font = new Font(barcodelabel.Font.FontFamily, 10);
+                    barcodelabel.Name = barcode;
+                    barcodelabel.AutoSize = true;
+                    barcodelabel.Margin = new Padding(0, 0, 0, 150);
+
+                    table.Controls.Add(barcodelabel, 0 , 1);
+
+                    Label stocklabel = new Label();
+                    stocklabel.Text = "Stock: " + Convert.ToInt32(reader["StockCount"]);
+                    stocklabel.Font = new Font(stocklabel.Font.FontFamily, 10);
+                    stocklabel.Name = name + "_Stock";
+                    stocklabel.AutoSize = true;
+                    
+                    table.Controls.Add(stocklabel, 0, 2);
+
+                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                    table.ColumnStyles[0].Width = 900;
+
+                    Label pricelabel = new Label();
+                    pricelabel.Text = "£" + Convert.ToDecimal(reader["Price"]);
+                    pricelabel.Font = new Font(pricelabel.Font.FontFamily, 10);
+                    pricelabel.Name = name + "_Stock";
+                    pricelabel.AutoSize = true;
+
+                    table.Controls.Add(pricelabel, 1, 0);
+
+
+                    
+                    LayoutPanel1.Controls.Add(table);
+
                 }
                 Forms.conn.Close();
             }
@@ -295,21 +350,21 @@ namespace Do_IT
             LabelStatus(false);
         }
 
-        private void Option3Label_Click(object sender, EventArgs e)
+        private void Option3Label_Click_1(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option3Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
         }
 
-        private void Option4Label_Click(object sender, EventArgs e)
+        private void Option4Label_Click_1(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option4Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
         }
 
-        private void Option5Label_Click(object sender, EventArgs e)
+        private void Option5Label_Click_1(object sender, EventArgs e)
         {
             SearchTextBox.Text = Option5Label.Text;
             ExactProductNameCheckBox.Checked = true;
@@ -368,11 +423,11 @@ namespace Do_IT
             type = type.ToLower();
             Forms.conn.Open();
             SQLiteCommand sql;
-            if(type == "barcode")
+            if (type == "barcode")
             {
                 sql = new SQLiteCommand($"SELECT Located FROM Products WHERE Barcode = '{name}'", Forms.conn);
             }
-            else if(type == "name")
+            else if (type == "name")
             {
                 sql = new SQLiteCommand($"SELECT Located FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
             }

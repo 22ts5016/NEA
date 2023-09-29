@@ -111,6 +111,18 @@ namespace Do_IT
             Forms.additemtolocation.barcode = barcode;
             reader.Close();
             Forms.conn.Close();
+            //switch (type)
+            //{
+            //    case "1":
+            //        Forms.additemtolocation.SellingCheck.Checked = true;
+            //        break;
+            //    case "2":
+            //        Forms.additemtolocation.MultiLocationCheck.Checked = true;
+            //        break;
+            //    case "3":
+            //        Forms.additemtolocation.OverstockCheck.Checked = true;
+            //        break;
+            //}
             Forms.additemtolocation.Show();
             Forms.itemsinabay = new ItemsInABay();
             this.Dispose();
@@ -145,15 +157,15 @@ namespace Do_IT
             Forms.additemtolocation.completeinfo = false;
             switch (type)
             {
-                case "Selling":
+                case "1":
                     Forms.additemtolocation.SellingCheck.Checked = true;
                     break;
-                case "MultiLocation":
+                case "2":
                     Forms.additemtolocation.MultiLocationCheck.Checked = true;
                     Forms.additemtolocation.SequenceLabel.Visible = false;
                     Forms.additemtolocation.SequenceTextBox.Visible = false;
                     break;
-                case "Overstock":
+                case "3":
                     Forms.additemtolocation.OverstockCheck.Checked = true;
                     Forms.additemtolocation.SequenceLabel.Visible = false;
                     Forms.additemtolocation.SequenceTextBox.Visible = false;

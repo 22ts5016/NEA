@@ -125,6 +125,7 @@
             // 
             // LayoutPanel1
             // 
+            this.LayoutPanel1.AutoScroll = true;
             this.LayoutPanel1.Location = new System.Drawing.Point(96, 96);
             this.LayoutPanel1.Name = "LayoutPanel1";
             this.LayoutPanel1.Size = new System.Drawing.Size(1310, 753);
@@ -138,6 +139,7 @@
             this.Option5Label.Name = "Option5Label";
             this.Option5Label.Size = new System.Drawing.Size(0, 13);
             this.Option5Label.TabIndex = 14;
+            this.Option5Label.Click += new System.EventHandler(this.Option5Label_Click_1);
             // 
             // Option4Label
             // 
@@ -146,6 +148,7 @@
             this.Option4Label.Name = "Option4Label";
             this.Option4Label.Size = new System.Drawing.Size(0, 13);
             this.Option4Label.TabIndex = 13;
+            this.Option4Label.Click += new System.EventHandler(this.Option4Label_Click_1);
             // 
             // Option3Label
             // 
@@ -154,6 +157,7 @@
             this.Option3Label.Name = "Option3Label";
             this.Option3Label.Size = new System.Drawing.Size(0, 13);
             this.Option3Label.TabIndex = 12;
+            this.Option3Label.Click += new System.EventHandler(this.Option3Label_Click_1);
             // 
             // ProductQuery
             // 
@@ -163,11 +167,11 @@
             this.Controls.Add(this.Option5Label);
             this.Controls.Add(this.Option4Label);
             this.Controls.Add(this.Option3Label);
+            this.Controls.Add(this.Option2Label);
+            this.Controls.Add(this.Option1Label);
             this.Controls.Add(this.ExactProductNameCheckBox);
             this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.Option2Label);
-            this.Controls.Add(this.Option1Label);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.BarcodeCheckBox);
             this.Controls.Add(this.ProductNameCheckBox);

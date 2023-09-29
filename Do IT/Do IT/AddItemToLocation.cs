@@ -105,9 +105,10 @@ namespace Do_IT
                     SQLiteCommand sql3 = new SQLiteCommand($"SELECT LocationType FROM LocationTypes WHERE LocationtypeID = '{type}'", Forms.conn);
                     SQLiteDataReader reader = sql3.ExecuteReader();
                     reader.Read();
-                    Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{(string)reader["LocationType"]}");
+                    string stringtype = (string)reader["LocationType"];
                     reader.Close();
                     Forms.conn.Close();
+                    Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{stringtype}");
                     this.Dispose();
                 }
                 else
