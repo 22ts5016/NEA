@@ -179,7 +179,7 @@ namespace Do_IT
 
                     table.Name = name;
                     table.Height = 284;
-                    table.Width = 700;
+                    table.Width = 800;
                     table.ColumnCount = 2;
                     table.RowCount = 3;
 
