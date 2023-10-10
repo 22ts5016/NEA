@@ -25,7 +25,7 @@ namespace Do_IT
         {
             if (EANCheck(BarcodeTextBox.Text))
             {
-                if (NotRepeatedBarcode(BarcodeTextBox.Text))
+                if (!RepeatedBarcode(BarcodeTextBox.Text))
                 {
                     byte[] imageBytes;
                     using (MemoryStream ms = new MemoryStream())
@@ -122,9 +122,9 @@ namespace Do_IT
             blank =  new Bitmap(ImagePictureBox.Image);
         }
 
-        private bool NotRepeatedBarcode(string barcode)
+        private bool RepeatedBarcode(string barcode)
         {
-            bool valid;
+            bool repeated;
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
@@ -132,20 +132,20 @@ namespace Do_IT
             {
                 if((string)reader["Barcode"] == barcode)
                 {
-                    valid = true;
+                    repeated = true;
                 }
                 else
                 {
-                    valid = false;
+                    repeated = false;
                 }
             }
             else
             {
-                valid = false;
+                repeated = false;
             }
             reader.Close();
             Forms.conn.Close();
-            return valid;
+            return repeated;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Do_IT
         {
             if (!AddedWords)
             {
-                Forms.productquery.AddWords();
+                ProductQuery.AddWords();
                 AddedWords = true;
             }
         }

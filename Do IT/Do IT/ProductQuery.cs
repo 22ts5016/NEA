@@ -131,7 +131,7 @@ namespace Do_IT
             }
         }
 
-        public void AddWords()
+        public static void AddWords()
         {
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Weight FROM Products", Forms.conn);
@@ -179,7 +179,7 @@ namespace Do_IT
 
                     table.Name = name;
                     table.Height = 284;
-                    table.Width = 800;
+                    table.Width = 1000;
                     table.ColumnCount = 2;
                     table.RowCount = 3;
 
@@ -210,7 +210,7 @@ namespace Do_IT
                     table.Controls.Add(stocklabel, 0, 2);
 
                     table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.ColumnStyles[0].Width = 900;
+                    table.ColumnStyles[0].Width = 800;
 
                     Label pricelabel = new Label();
                     pricelabel.Text = "£" + Convert.ToDecimal(reader["Price"]);
@@ -297,7 +297,15 @@ namespace Do_IT
             {
                 bool located = CheckLocated(SearchTextBox.Text, "barcode");
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                SQLiteCommand sql;
+                if (located)
+                {
+                    sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                }
+                else
+                {
+                    sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE Products.Barcode = '{SearchTextBox.Text}'", Forms.conn);
+                }
                 SQLiteDataReader reader;
                 reader = sql.ExecuteReader();
 
@@ -317,16 +325,17 @@ namespace Do_IT
                     {
                         FillDisplayedItemInfo(reader, false);
                     }
-                    
+                    reader.Close();
+                    Forms.conn.Close();
                     Forms.displayeditem.Show();
                     this.Hide();
                 }
                 else
                 {
+                    reader.Close();
+                    Forms.conn.Close();
                     MessageBox.Show("Invalid barcode");
                 }
-                reader.Close();
-                Forms.conn.Close();
             }
         }
 
@@ -418,7 +427,7 @@ namespace Do_IT
             return query.Substring(3);
         }
 
-        public bool CheckLocated(string name, string type)
+        private bool CheckLocated(string name, string type)
         {
             type = type.ToLower();
             Forms.conn.Open();
@@ -437,7 +446,23 @@ namespace Do_IT
             }
             SQLiteDataReader reader = sql.ExecuteReader();
             reader.Read();
-            if ((string)reader["Located"] == "1")
+            if (Convert.ToInt32(reader["Located"]) == 1)
+            {
+                reader.Close();
+                Forms.conn.Close();
+                return true;
+            }
+            reader.Close();
+            Forms.conn.Close();
+            return false;
+        }
+
+        public static bool CheckValidBarcode(string barcode)
+        {
+            Forms.conn.Open();
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM Products WHERE Barcode = {barcode}", Forms.conn);
+            SQLiteDataReader reader = sql.ExecuteReader();
+            if (reader.Read())
             {
                 reader.Close();
                 Forms.conn.Close();
