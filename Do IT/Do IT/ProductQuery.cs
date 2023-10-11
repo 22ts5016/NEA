@@ -14,7 +14,6 @@ namespace Do_IT
 {
     public partial class ProductQuery : Form
     {
-        private int itemscount;
         public ProductQuery()
         {
             InitializeComponent();
@@ -147,7 +146,7 @@ namespace Do_IT
 
         private void ProductQuery_Load(object sender, EventArgs e)
         {
-            itemscount = 0;
+            SortByComboBox.SelectedIndex = 0;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -159,8 +158,26 @@ namespace Do_IT
             {
                 Forms.conn.Open();
                 string a = GetParameters(SearchTextBox.Text);
-                
-                SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} ORDER BY Weight DESC", Forms.conn);
+                string sortby = "";
+                switch (SortByComboBox.SelectedIndex)
+                {
+                    case 0:
+                        sortby = "ORDER BY Weight DESC";
+                        break;
+                    case 1:
+                        sortby = "ORDER BY Price DESC";
+                        break;
+                    case 2:
+                        sortby = "ORDER BY Price ASC";
+                        break;
+                    case 3:
+                        sortby = "ORDER BY ProductName ASC";
+                        break;
+                    case 4:
+                        sortby = "AND StockCount > 0";
+                        break;
+                }
+                SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} {sortby}", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
                 string name, barcode;
@@ -179,7 +196,7 @@ namespace Do_IT
 
                     table.Name = name;
                     table.Height = 284;
-                    table.Width = 1000;
+                    table.Width = 950;
                     table.ColumnCount = 2;
                     table.RowCount = 3;
 
@@ -226,6 +243,7 @@ namespace Do_IT
 
                 }
                 Forms.conn.Close();
+                ItemCountLabel.Text = LayoutPanel1.Controls.Count / 2 + " products displayed";
             }
             else if (ExactProductNameCheckBox.Checked)
             {
@@ -471,6 +489,14 @@ namespace Do_IT
             reader.Close();
             Forms.conn.Close();
             return false;
+        }
+
+        private void SortByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SearchTextBox.Text != "" && ProductNameCheckBox.Checked)
+            {
+                SearchButton_Click(sender, e);
+            }
         }
     }
 }

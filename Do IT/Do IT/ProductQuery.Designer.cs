@@ -40,6 +40,9 @@
             this.Option5Label = new System.Windows.Forms.Label();
             this.Option4Label = new System.Windows.Forms.Label();
             this.Option3Label = new System.Windows.Forms.Label();
+            this.SortByComboBox = new System.Windows.Forms.ComboBox();
+            this.SortByLabel = new System.Windows.Forms.Label();
+            this.ItemCountLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ProductNameCheckBox
@@ -159,11 +162,47 @@
             this.Option3Label.TabIndex = 12;
             this.Option3Label.Click += new System.EventHandler(this.Option3Label_Click_1);
             // 
+            // SortByComboBox
+            // 
+            this.SortByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SortByComboBox.FormattingEnabled = true;
+            this.SortByComboBox.Items.AddRange(new object[] {
+            "Most Searched",
+            "Price: High - Low",
+            "Price: Low - High",
+            "Alphabetical",
+            "Stock Available"});
+            this.SortByComboBox.Location = new System.Drawing.Point(1165, 59);
+            this.SortByComboBox.Name = "SortByComboBox";
+            this.SortByComboBox.Size = new System.Drawing.Size(113, 21);
+            this.SortByComboBox.TabIndex = 15;
+            this.SortByComboBox.SelectedIndexChanged += new System.EventHandler(this.SortByComboBox_SelectedIndexChanged);
+            // 
+            // SortByLabel
+            // 
+            this.SortByLabel.AutoSize = true;
+            this.SortByLabel.Location = new System.Drawing.Point(1115, 61);
+            this.SortByLabel.Name = "SortByLabel";
+            this.SortByLabel.Size = new System.Drawing.Size(44, 13);
+            this.SortByLabel.TabIndex = 16;
+            this.SortByLabel.Text = "Sort By:";
+            // 
+            // ItemCountLabel
+            // 
+            this.ItemCountLabel.AutoSize = true;
+            this.ItemCountLabel.Location = new System.Drawing.Point(1412, 743);
+            this.ItemCountLabel.Name = "ItemCountLabel";
+            this.ItemCountLabel.Size = new System.Drawing.Size(0, 13);
+            this.ItemCountLabel.TabIndex = 17;
+            // 
             // ProductQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.ItemCountLabel);
+            this.Controls.Add(this.SortByLabel);
+            this.Controls.Add(this.SortByComboBox);
             this.Controls.Add(this.Option5Label);
             this.Controls.Add(this.Option4Label);
             this.Controls.Add(this.Option3Label);
@@ -199,5 +238,8 @@
         private System.Windows.Forms.Label Option5Label;
         private System.Windows.Forms.Label Option4Label;
         private System.Windows.Forms.Label Option3Label;
+        private System.Windows.Forms.ComboBox SortByComboBox;
+        private System.Windows.Forms.Label SortByLabel;
+        private System.Windows.Forms.Label ItemCountLabel;
     }
 }
