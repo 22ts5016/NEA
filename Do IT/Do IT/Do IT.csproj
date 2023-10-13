@@ -192,6 +192,12 @@
     <Compile Include="ViewEmployeeActions.Designer.cs">
       <DependentUpon>ViewEmployeeActions.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewOrder.Designer.cs">
+      <DependentUpon>ViewOrder.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddItemToLocation.resx">
       <DependentUpon>AddItemToLocation.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewEmployeeActions.resx">
       <DependentUpon>ViewEmployeeActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewOrder.resx">
+      <DependentUpon>ViewOrder.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

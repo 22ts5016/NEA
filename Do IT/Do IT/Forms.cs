@@ -15,6 +15,7 @@ namespace Do_IT
         public static ProductQuery productquery = new ProductQuery();
         public static LocationManagement locationmanagement = new LocationManagement();
         public static Orders orders = new Orders();
+        public static ViewOrder vieworder = new ViewOrder();
         public static StockManagement stockmanagement = new StockManagement();
         public static StockAdjustment stockadjustment = new StockAdjustment();
         public static StockWriteOff stockwriteoff = new StockWriteOff();

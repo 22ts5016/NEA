@@ -498,5 +498,10 @@ namespace Do_IT
                 SearchButton_Click(sender, e);
             }
         }
+
+        private void ItemCountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

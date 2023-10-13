@@ -107,7 +107,7 @@
             // 
             // MainMenuButton
             // 
-            this.MainMenuButton.Location = new System.Drawing.Point(1412, 759);
+            this.MainMenuButton.Location = new System.Drawing.Point(1415, 759);
             this.MainMenuButton.Name = "MainMenuButton";
             this.MainMenuButton.Size = new System.Drawing.Size(160, 90);
             this.MainMenuButton.TabIndex = 9;
@@ -131,7 +131,7 @@
             this.LayoutPanel1.AutoScroll = true;
             this.LayoutPanel1.Location = new System.Drawing.Point(96, 96);
             this.LayoutPanel1.Name = "LayoutPanel1";
-            this.LayoutPanel1.Size = new System.Drawing.Size(1310, 753);
+            this.LayoutPanel1.Size = new System.Drawing.Size(1313, 753);
             this.LayoutPanel1.TabIndex = 11;
             this.LayoutPanel1.Visible = false;
             // 
@@ -181,7 +181,7 @@
             // SortByLabel
             // 
             this.SortByLabel.AutoSize = true;
-            this.SortByLabel.Location = new System.Drawing.Point(1115, 61);
+            this.SortByLabel.Location = new System.Drawing.Point(1115, 63);
             this.SortByLabel.Name = "SortByLabel";
             this.SortByLabel.Size = new System.Drawing.Size(44, 13);
             this.SortByLabel.TabIndex = 16;
@@ -190,10 +190,11 @@
             // ItemCountLabel
             // 
             this.ItemCountLabel.AutoSize = true;
-            this.ItemCountLabel.Location = new System.Drawing.Point(1412, 743);
+            this.ItemCountLabel.Location = new System.Drawing.Point(935, 63);
             this.ItemCountLabel.Name = "ItemCountLabel";
             this.ItemCountLabel.Size = new System.Drawing.Size(0, 13);
-            this.ItemCountLabel.TabIndex = 17;
+            this.ItemCountLabel.TabIndex = 0;
+            this.ItemCountLabel.Click += new System.EventHandler(this.ItemCountLabel_Click);
             // 
             // ProductQuery
             // 

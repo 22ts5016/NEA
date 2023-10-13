@@ -22,5 +22,11 @@ namespace Do_IT
             Forms.mainmenu.Show();
             this.Hide();
         }
+
+        private void ViewOrderButton_Click(object sender, EventArgs e)
+        {
+            Forms.vieworder.Show();
+            this.Hide();
+        }
     }
 }
