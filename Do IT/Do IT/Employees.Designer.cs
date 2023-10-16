@@ -74,6 +74,7 @@
             this.ResetPasswordButton.Text = "Reset Password";
             this.ResetPasswordButton.UseVisualStyleBackColor = true;
             this.ResetPasswordButton.Visible = false;
+            this.ResetPasswordButton.Click += new System.EventHandler(this.ResetPasswordButton_Click);
             // 
             // Employees
             // 

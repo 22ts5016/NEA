@@ -43,5 +43,11 @@ namespace Do_IT
                 ResetPasswordButton.Visible = true;
             }
         }
+
+        private void ResetPasswordButton_Click(object sender, EventArgs e)
+        {
+            Forms.resetpassword.Show();
+            this.Hide();
+        }
     }
 }

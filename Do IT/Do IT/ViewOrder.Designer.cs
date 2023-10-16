@@ -90,10 +90,10 @@
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TableLayoutPanel.Controls.Add(this.EmailTitleLabel, 7, 0);
             this.TableLayoutPanel.Controls.Add(this.PhoneNumberTitleLabel, 6, 0);
@@ -117,7 +117,7 @@
             // 
             this.EmailTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EmailTitleLabel.AutoSize = true;
-            this.EmailTitleLabel.Location = new System.Drawing.Point(1043, 0);
+            this.EmailTitleLabel.Location = new System.Drawing.Point(963, 0);
             this.EmailTitleLabel.Name = "EmailTitleLabel";
             this.EmailTitleLabel.Size = new System.Drawing.Size(73, 13);
             this.EmailTitleLabel.TabIndex = 7;
@@ -127,7 +127,7 @@
             // 
             this.PhoneNumberTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PhoneNumberTitleLabel.AutoSize = true;
-            this.PhoneNumberTitleLabel.Location = new System.Drawing.Point(871, 0);
+            this.PhoneNumberTitleLabel.Location = new System.Drawing.Point(811, 0);
             this.PhoneNumberTitleLabel.Name = "PhoneNumberTitleLabel";
             this.PhoneNumberTitleLabel.Size = new System.Drawing.Size(78, 13);
             this.PhoneNumberTitleLabel.TabIndex = 6;
@@ -137,7 +137,7 @@
             // 
             this.PostcodeTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PostcodeTitleLabel.AutoSize = true;
-            this.PostcodeTitleLabel.Location = new System.Drawing.Point(744, 0);
+            this.PostcodeTitleLabel.Location = new System.Drawing.Point(724, 0);
             this.PostcodeTitleLabel.Name = "PostcodeTitleLabel";
             this.PostcodeTitleLabel.Size = new System.Drawing.Size(52, 13);
             this.PostcodeTitleLabel.TabIndex = 5;
@@ -198,7 +198,7 @@
             // 
             this.OrderTypeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.OrderTypeLabel.AutoSize = true;
-            this.OrderTypeLabel.Location = new System.Drawing.Point(1185, 0);
+            this.OrderTypeLabel.Location = new System.Drawing.Point(1145, 0);
             this.OrderTypeLabel.Name = "OrderTypeLabel";
             this.OrderTypeLabel.Size = new System.Drawing.Size(60, 13);
             this.OrderTypeLabel.TabIndex = 8;

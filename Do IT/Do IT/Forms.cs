@@ -22,6 +22,7 @@ namespace Do_IT
         public static CustomerDetails customerdetails = new CustomerDetails();
         public static Employees employees = new Employees();
         public static ViewEmployeeActions viewemployeeactions = new ViewEmployeeActions();
+        public static ResetPassword resetpassword = new ResetPassword();
         public static AddProduct addproduct = new AddProduct();
         public static AddLocation addlocation = new AddLocation();
         public static CreateAccount createaccount = new CreateAccount();

@@ -167,6 +167,12 @@
     <Compile Include="RemoveProduct.Designer.cs">
       <DependentUpon>RemoveProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="RootedTree.cs" />
     <Compile Include="StockAdjustment.cs">
       <SubType>Form</SubType>
@@ -254,6 +260,9 @@
     </Compile>
     <EmbeddedResource Include="RemoveProduct.resx">
       <DependentUpon>RemoveProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustment.resx">
       <DependentUpon>StockAdjustment.cs</DependentUpon>
