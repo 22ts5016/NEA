@@ -201,7 +201,7 @@ namespace Do_IT
                     table.RowCount = 3;
 
                     Label namelabel = new Label();
-                    namelabel.Text = name;
+                    namelabel.Text = name + "_Label";
                     namelabel.Font = new Font(namelabel.Font.FontFamily, 13);
                     namelabel.Name = name;
                     namelabel.AutoSize = true;
@@ -212,7 +212,7 @@ namespace Do_IT
                     Label barcodelabel = new Label();
                     barcodelabel.Text = barcode;
                     barcodelabel.Font = new Font(barcodelabel.Font.FontFamily, 10);
-                    barcodelabel.Name = barcode;
+                    barcodelabel.Name = barcode + "_Label";
                     barcodelabel.AutoSize = true;
                     barcodelabel.Margin = new Padding(0, 0, 0, 150);
 
@@ -232,7 +232,7 @@ namespace Do_IT
                     Label pricelabel = new Label();
                     pricelabel.Text = "£" + Convert.ToDecimal(reader["Price"]);
                     pricelabel.Font = new Font(pricelabel.Font.FontFamily, 10);
-                    pricelabel.Name = name + "_Stock";
+                    pricelabel.Name = name + "_Price";
                     pricelabel.AutoSize = true;
 
                     table.Controls.Add(pricelabel, 1, 0);

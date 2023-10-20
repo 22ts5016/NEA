@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SignInButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.RevealPasswordButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameLabel
@@ -114,11 +115,22 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // RevealPasswordButton
+            // 
+            this.RevealPasswordButton.Location = new System.Drawing.Point(1087, 375);
+            this.RevealPasswordButton.Name = "RevealPasswordButton";
+            this.RevealPasswordButton.Size = new System.Drawing.Size(67, 20);
+            this.RevealPasswordButton.TabIndex = 12;
+            this.RevealPasswordButton.Text = "Reveal";
+            this.RevealPasswordButton.UseVisualStyleBackColor = true;
+            this.RevealPasswordButton.Click += new System.EventHandler(this.RevealPasswordButton_Click);
+            // 
             // FirstScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.RevealPasswordButton);
             this.Controls.Add(this.SignInButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button SignInButton;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button RevealPasswordButton;
     }
 }
 

@@ -51,6 +51,7 @@ namespace Do_IT
 
         private void FirstScreen_Load(object sender, EventArgs e)
         {
+            PasswordTextBox.UseSystemPasswordChar = true;
             if (!AddedWords)
             {
                 ProductQuery.AddWords();
@@ -61,6 +62,18 @@ namespace Do_IT
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Forms.CloseAll();
+        }
+
+        private void RevealPasswordButton_Click(object sender, EventArgs e)
+        {
+            if (PasswordTextBox.UseSystemPasswordChar)
+            {
+                PasswordTextBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                PasswordTextBox.UseSystemPasswordChar = true;
+            }
         }
     }
 }

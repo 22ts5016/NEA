@@ -32,7 +32,7 @@
             this.OrderNumberLabel = new System.Windows.Forms.Label();
             this.OrderNumberTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.DetailsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.EmailTitleLabel = new System.Windows.Forms.Label();
             this.PhoneNumberTitleLabel = new System.Windows.Forms.Label();
             this.PostcodeTitleLabel = new System.Windows.Forms.Label();
@@ -43,7 +43,8 @@
             this.ForenameTitelLabel = new System.Windows.Forms.Label();
             this.OrderTypeLabel = new System.Windows.Forms.Label();
             this.OrderStatusTitleLabel = new System.Windows.Forms.Label();
-            this.TableLayoutPanel.SuspendLayout();
+            this.MainLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.DetailsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -82,36 +83,36 @@
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // TableLayoutPanel
+            // DetailsTableLayoutPanel
             // 
-            this.TableLayoutPanel.ColumnCount = 10;
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.TableLayoutPanel.Controls.Add(this.EmailTitleLabel, 7, 0);
-            this.TableLayoutPanel.Controls.Add(this.PhoneNumberTitleLabel, 6, 0);
-            this.TableLayoutPanel.Controls.Add(this.PostcodeTitleLabel, 5, 0);
-            this.TableLayoutPanel.Controls.Add(this.AddressTitleLabel, 4, 0);
-            this.TableLayoutPanel.Controls.Add(this.SurnameTitleLabel, 3, 0);
-            this.TableLayoutPanel.Controls.Add(this.TtitleTitleLabel, 1, 0);
-            this.TableLayoutPanel.Controls.Add(this.CustomerNumberTitleLabel, 0, 0);
-            this.TableLayoutPanel.Controls.Add(this.ForenameTitelLabel, 2, 0);
-            this.TableLayoutPanel.Controls.Add(this.OrderTypeLabel, 8, 0);
-            this.TableLayoutPanel.Controls.Add(this.OrderStatusTitleLabel, 9, 0);
-            this.TableLayoutPanel.Location = new System.Drawing.Point(74, 106);
-            this.TableLayoutPanel.Name = "TableLayoutPanel";
-            this.TableLayoutPanel.RowCount = 2;
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(1300, 100);
-            this.TableLayoutPanel.TabIndex = 10;
+            this.DetailsTableLayoutPanel.ColumnCount = 10;
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.DetailsTableLayoutPanel.Controls.Add(this.EmailTitleLabel, 7, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.PhoneNumberTitleLabel, 6, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.PostcodeTitleLabel, 5, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.AddressTitleLabel, 4, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.SurnameTitleLabel, 3, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.TtitleTitleLabel, 1, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.CustomerNumberTitleLabel, 0, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.ForenameTitelLabel, 2, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.OrderTypeLabel, 8, 0);
+            this.DetailsTableLayoutPanel.Controls.Add(this.OrderStatusTitleLabel, 9, 0);
+            this.DetailsTableLayoutPanel.Location = new System.Drawing.Point(74, 106);
+            this.DetailsTableLayoutPanel.Name = "DetailsTableLayoutPanel";
+            this.DetailsTableLayoutPanel.RowCount = 2;
+            this.DetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DetailsTableLayoutPanel.Size = new System.Drawing.Size(1300, 100);
+            this.DetailsTableLayoutPanel.TabIndex = 10;
             // 
             // EmailTitleLabel
             // 
@@ -214,12 +215,21 @@
             this.OrderStatusTitleLabel.TabIndex = 9;
             this.OrderStatusTitleLabel.Text = "Status";
             // 
+            // MainLayoutPanel
+            // 
+            this.MainLayoutPanel.AutoScroll = true;
+            this.MainLayoutPanel.Location = new System.Drawing.Point(74, 235);
+            this.MainLayoutPanel.Name = "MainLayoutPanel";
+            this.MainLayoutPanel.Size = new System.Drawing.Size(1300, 614);
+            this.MainLayoutPanel.TabIndex = 11;
+            // 
             // ViewOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.TableLayoutPanel);
+            this.Controls.Add(this.MainLayoutPanel);
+            this.Controls.Add(this.DetailsTableLayoutPanel);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.OrderNumberTextBox);
             this.Controls.Add(this.OrderNumberLabel);
@@ -227,8 +237,8 @@
             this.Name = "ViewOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewOrder";
-            this.TableLayoutPanel.ResumeLayout(false);
-            this.TableLayoutPanel.PerformLayout();
+            this.DetailsTableLayoutPanel.ResumeLayout(false);
+            this.DetailsTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,7 +250,7 @@
         private System.Windows.Forms.Label OrderNumberLabel;
         private System.Windows.Forms.TextBox OrderNumberTextBox;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel DetailsTableLayoutPanel;
         private System.Windows.Forms.Label TtitleTitleLabel;
         private System.Windows.Forms.Label CustomerNumberTitleLabel;
         private System.Windows.Forms.Label ForenameTitelLabel;
@@ -251,5 +261,6 @@
         private System.Windows.Forms.Label SurnameTitleLabel;
         private System.Windows.Forms.Label OrderTypeLabel;
         private System.Windows.Forms.Label OrderStatusTitleLabel;
+        private System.Windows.Forms.FlowLayoutPanel MainLayoutPanel;
     }
 }

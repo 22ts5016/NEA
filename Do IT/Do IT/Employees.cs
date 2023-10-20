@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,11 +38,17 @@ namespace Do_IT
 
         private void Employees_Load(object sender, EventArgs e)
         {
-            if(CurrentUser.role == "Store Manager")
+            Forms.conn.Open();
+            SQLiteCommand sql = new SQLiteCommand("SELECT Role FROM Roles WHERE RoleID = '1'", Forms.conn);
+            SQLiteDataReader reader = sql.ExecuteReader();
+            reader.Read();
+            if(CurrentUser.role != (string)reader["Role"])
             {
                 AddEmployeeButton.Visible = true;
                 ResetPasswordButton.Visible = true;
             }
+            reader.Close();
+            Forms.conn.Close();
         }
 
         private void ResetPasswordButton_Click(object sender, EventArgs e)
