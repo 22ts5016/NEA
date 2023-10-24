@@ -147,3 +147,13 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveProduct.
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewOrder.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewOrder.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ResetPassword.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddItemToLocation.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsInABay.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ItemsWithoutLocations.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveProduct.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ResetPassword.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockAdjustment.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeActions.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewOrder.resources
