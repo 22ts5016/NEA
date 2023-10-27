@@ -114,5 +114,22 @@ namespace Do_IT
             Forms.displayeditem = new DisplayedItem();
             this.Dispose();
         }
+
+        private void AddToOrderButton_Click(object sender, EventArgs e)
+        {
+            if (!Forms.createorder.barcodesinorder.Contains(barcode))
+            {
+                Forms.createorder.barcodesinorder.Add(barcode);
+            }
+
+            MessageBox.Show(barcode + " Added to order");
+        }
+
+        private void CurrentOrderButton_Click(object sender, EventArgs e)
+        {
+            Forms.createorder.Show();
+            Forms.displayeditem = new DisplayedItem();
+            this.Dispose();
+        }
     }
 }

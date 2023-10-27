@@ -14,6 +14,8 @@ namespace Do_IT
 {
     public partial class ViewOrder : Form
     {
+        private double totalcost;
+
         public ViewOrder()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace Do_IT
         {
             Forms.conn.Open();
             //SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, Image FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND EntryID = OrderInfo.OrderID", Forms.conn);
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, Image, Quantity FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderInfo.OrderID = '1' AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderInfo.OrderID = '1' AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
             if (reader.Read())
@@ -47,99 +49,152 @@ namespace Do_IT
         {
             Label temp;
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = Convert.ToInt32(reader["CustomerID"]).ToString();
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 0, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Title"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 1, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Forename"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 2, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Surname"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 3, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Address"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 4, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Postcode"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 5, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["PhoneNumber"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 6, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Email"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 7, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["OrderType"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 8, 1);
 
-            temp = CreateLabel();
+            temp = CreateLabel("top");
             temp.Text = (string)reader["Status"];
             temp.Name = "" + "_Label";
 
             DetailsTableLayoutPanel.Controls.Add(temp, 9, 1);
 
-            string barcode;
+            string barcode, productname;
             do
             {
                 barcode = (string)reader["Barcode"];
-
-                PictureBox image = new PictureBox();
-                image.Size = new Size(142, 142);
-                image.SizeMode = PictureBoxSizeMode.Zoom;
-                image.Image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
-                MainLayoutPanel.Controls.Add(image);
+                productname = (string)reader["ProductName"];
 
                 TableLayoutPanel table = new TableLayoutPanel();
 
                 table.Name = barcode + "_Table";
                 table.Height = 142;
-                table.Width = 1100;
-                table.ColumnCount = 2;
+                table.Width = 1280;
+                table.ColumnCount = 6;
                 table.RowCount = 1;
 
-                temp = CreateLabel();
+                PictureBox image = new PictureBox();
+                image.Size = new Size(142, 142);
+                image.SizeMode = PictureBoxSizeMode.Zoom;
+                image.Image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
+                image.Name = barcode + "_PictureBox";
+
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(image, 0, 0);
+                table.ColumnStyles[0].Width = 142;
+
+                temp = CreateLabel("middle");
                 temp.Text = barcode;
                 temp.Name = barcode + "_Label";
 
-                table.Controls.Add(temp, 0, 0);
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(temp, 1, 0);
+                table.ColumnStyles[1].Width = 158;
+
+                temp = CreateLabel("middle");
+                temp.Text = productname;
+                temp.Name = productname + "_Label";
+
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(temp, 2, 0);
+                table.ColumnStyles[2].Width = 500;
+
+                temp = CreateLabel("middle");
+                temp.Text = Convert.ToInt32(reader["Quantity"]).ToString();
+                temp.Name = barcode + "_Quantity_Label";
+
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(temp, 3, 0);
+                table.ColumnStyles[3].Width = 100;
+
+                temp = CreateLabel("middle");
+                temp.Text = '£' + Convert.ToDouble(reader["Price"]).ToString();
+                temp.Name = barcode + "_Price_Label";
+
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(temp, 4, 0);
+                table.ColumnStyles[4].Width = 200;
+
+                temp = CreateLabel("middle");
+                totalcost += Convert.ToInt32(reader["Quantity"]) * Convert.ToDouble(reader["Price"]);
+                temp.Text = '£' + (Convert.ToInt32(reader["Quantity"]) * Convert.ToDouble(reader["Price"])).ToString();
+                temp.Name = barcode + "_TotalPrice_Label";
+
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(temp, 5, 0);
+                table.ColumnStyles[5].Width = 180;
+
+
+
+
 
                 MainLayoutPanel.Controls.Add(table);
             }
             while (reader.Read());
+            TotalCostLabel.Text += totalcost.ToString();
         }
-        private Label CreateLabel()
+        public Label CreateLabel(string type)
         {
             Label label = new Label();
-            label.Anchor = AnchorStyles.Top;
+            if(type == "top")
+            {
+                label.Anchor = AnchorStyles.Top;
+            }
+            else if(type == "middle")
+            {
+                label.Anchor = AnchorStyles.None;
+
+            }
             label.AutoSize = true;
             return label;
         }

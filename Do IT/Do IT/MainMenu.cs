@@ -20,14 +20,15 @@ namespace Do_IT
         private void MainMenu_Load(object sender, EventArgs e)
         {
             Forms.firstscreen.Dispose();
-            if(CurrentUser.role != "Customer Advisor")
+            if(1 < CurrentUser.clearance)
             {
                 EmployeesButton.Visible = true;
-                if(CurrentUser.role == "Store Manager" || CurrentUser.role == "Deputy Store Manager")
+                if(2 < CurrentUser.clearance)
                 {
                     AddProductButton.Visible = true;
                     RemoveProductButton.Visible = true;
                     AddLocationButton.Visible = true;
+                    RemoveLocationButton.Visible = true;
                 }
             }
         }

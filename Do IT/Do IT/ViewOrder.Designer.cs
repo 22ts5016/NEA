@@ -45,11 +45,13 @@
             this.OrderStatusTitleLabel = new System.Windows.Forms.Label();
             this.MainLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.OrderHeadersTable = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.PriceHeaderLabel = new System.Windows.Forms.Label();
+            this.QuantityHeaderLabel = new System.Windows.Forms.Label();
             this.BarcodeHeaderLabel = new System.Windows.Forms.Label();
             this.ImageHeaderLabel = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.ProductnameHeaderLabel = new System.Windows.Forms.Label();
+            this.TotalPriceHeaderLabel = new System.Windows.Forms.Label();
+            this.TotalCostLabel = new System.Windows.Forms.Label();
             this.DetailsTableLayoutPanel.SuspendLayout();
             this.OrderHeadersTable.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +104,7 @@
             this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.DetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.DetailsTableLayoutPanel.Controls.Add(this.EmailTitleLabel, 7, 0);
             this.DetailsTableLayoutPanel.Controls.Add(this.PhoneNumberTitleLabel, 6, 0);
             this.DetailsTableLayoutPanel.Controls.Add(this.PostcodeTitleLabel, 5, 0);
@@ -118,7 +120,7 @@
             this.DetailsTableLayoutPanel.RowCount = 2;
             this.DetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.DetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.DetailsTableLayoutPanel.Size = new System.Drawing.Size(1300, 100);
+            this.DetailsTableLayoutPanel.Size = new System.Drawing.Size(1315, 100);
             this.DetailsTableLayoutPanel.TabIndex = 10;
             // 
             // EmailTitleLabel
@@ -216,7 +218,7 @@
             // 
             this.OrderStatusTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.OrderStatusTitleLabel.AutoSize = true;
-            this.OrderStatusTitleLabel.Location = new System.Drawing.Point(1256, 0);
+            this.OrderStatusTitleLabel.Location = new System.Drawing.Point(1264, 0);
             this.OrderStatusTitleLabel.Name = "OrderStatusTitleLabel";
             this.OrderStatusTitleLabel.Size = new System.Drawing.Size(37, 13);
             this.OrderStatusTitleLabel.TabIndex = 9;
@@ -227,54 +229,56 @@
             this.MainLayoutPanel.AutoScroll = true;
             this.MainLayoutPanel.Location = new System.Drawing.Point(74, 304);
             this.MainLayoutPanel.Name = "MainLayoutPanel";
-            this.MainLayoutPanel.Size = new System.Drawing.Size(1300, 545);
+            this.MainLayoutPanel.Size = new System.Drawing.Size(1315, 545);
             this.MainLayoutPanel.TabIndex = 11;
             // 
             // OrderHeadersTable
             // 
-            this.OrderHeadersTable.ColumnCount = 5;
+            this.OrderHeadersTable.ColumnCount = 6;
             this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
-            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 542F));
-            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
-            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.OrderHeadersTable.Controls.Add(this.label4, 4, 0);
-            this.OrderHeadersTable.Controls.Add(this.label5, 3, 0);
+            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
+            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
+            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.OrderHeadersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.OrderHeadersTable.Controls.Add(this.PriceHeaderLabel, 4, 0);
+            this.OrderHeadersTable.Controls.Add(this.QuantityHeaderLabel, 3, 0);
             this.OrderHeadersTable.Controls.Add(this.BarcodeHeaderLabel, 1, 0);
             this.OrderHeadersTable.Controls.Add(this.ImageHeaderLabel, 0, 0);
-            this.OrderHeadersTable.Controls.Add(this.label8, 2, 0);
+            this.OrderHeadersTable.Controls.Add(this.ProductnameHeaderLabel, 2, 0);
+            this.OrderHeadersTable.Controls.Add(this.TotalPriceHeaderLabel, 5, 0);
             this.OrderHeadersTable.Location = new System.Drawing.Point(74, 256);
             this.OrderHeadersTable.Name = "OrderHeadersTable";
             this.OrderHeadersTable.RowCount = 1;
             this.OrderHeadersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.OrderHeadersTable.Size = new System.Drawing.Size(1300, 28);
+            this.OrderHeadersTable.Size = new System.Drawing.Size(1280, 28);
             this.OrderHeadersTable.TabIndex = 12;
             // 
-            // label4
+            // PriceHeaderLabel
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1109, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Address";
+            this.PriceHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PriceHeaderLabel.AutoSize = true;
+            this.PriceHeaderLabel.Location = new System.Drawing.Point(984, 0);
+            this.PriceHeaderLabel.Name = "PriceHeaderLabel";
+            this.PriceHeaderLabel.Size = new System.Drawing.Size(31, 13);
+            this.PriceHeaderLabel.TabIndex = 4;
+            this.PriceHeaderLabel.Text = "Price";
             // 
-            // label5
+            // QuantityHeaderLabel
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(866, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Quantity";
+            this.QuantityHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.QuantityHeaderLabel.AutoSize = true;
+            this.QuantityHeaderLabel.Location = new System.Drawing.Point(827, 0);
+            this.QuantityHeaderLabel.Name = "QuantityHeaderLabel";
+            this.QuantityHeaderLabel.Size = new System.Drawing.Size(46, 13);
+            this.QuantityHeaderLabel.TabIndex = 3;
+            this.QuantityHeaderLabel.Text = "Quantity";
             // 
             // BarcodeHeaderLabel
             // 
             this.BarcodeHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BarcodeHeaderLabel.AutoSize = true;
-            this.BarcodeHeaderLabel.Location = new System.Drawing.Point(184, 0);
+            this.BarcodeHeaderLabel.Location = new System.Drawing.Point(197, 0);
             this.BarcodeHeaderLabel.Name = "BarcodeHeaderLabel";
             this.BarcodeHeaderLabel.Size = new System.Drawing.Size(47, 13);
             this.BarcodeHeaderLabel.TabIndex = 1;
@@ -291,22 +295,42 @@
             this.ImageHeaderLabel.TabIndex = 0;
             this.ImageHeaderLabel.Text = "Image";
             // 
-            // label8
+            // ProductnameHeaderLabel
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(507, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Product Name";
+            this.ProductnameHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ProductnameHeaderLabel.AutoSize = true;
+            this.ProductnameHeaderLabel.Location = new System.Drawing.Point(512, 0);
+            this.ProductnameHeaderLabel.Name = "ProductnameHeaderLabel";
+            this.ProductnameHeaderLabel.Size = new System.Drawing.Size(75, 13);
+            this.ProductnameHeaderLabel.TabIndex = 2;
+            this.ProductnameHeaderLabel.Text = "Product Name";
+            // 
+            // TotalPriceHeaderLabel
+            // 
+            this.TotalPriceHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TotalPriceHeaderLabel.AutoSize = true;
+            this.TotalPriceHeaderLabel.Location = new System.Drawing.Point(1161, 0);
+            this.TotalPriceHeaderLabel.Name = "TotalPriceHeaderLabel";
+            this.TotalPriceHeaderLabel.Size = new System.Drawing.Size(58, 13);
+            this.TotalPriceHeaderLabel.TabIndex = 5;
+            this.TotalPriceHeaderLabel.Text = "Total Price";
+            // 
+            // TotalCostLabel
+            // 
+            this.TotalCostLabel.AutoSize = true;
+            this.TotalCostLabel.Location = new System.Drawing.Point(1409, 730);
+            this.TotalCostLabel.Name = "TotalCostLabel";
+            this.TotalCostLabel.Size = new System.Drawing.Size(67, 13);
+            this.TotalCostLabel.TabIndex = 13;
+            this.TotalCostLabel.Text = "Total Cost: £";
             // 
             // ViewOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.OrderHeadersTable);
             this.Controls.Add(this.MainLayoutPanel);
             this.Controls.Add(this.DetailsTableLayoutPanel);
@@ -345,10 +369,12 @@
         private System.Windows.Forms.Label OrderStatusTitleLabel;
         private System.Windows.Forms.FlowLayoutPanel MainLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel OrderHeadersTable;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label PriceHeaderLabel;
+        private System.Windows.Forms.Label QuantityHeaderLabel;
         private System.Windows.Forms.Label BarcodeHeaderLabel;
         private System.Windows.Forms.Label ImageHeaderLabel;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ProductnameHeaderLabel;
+        private System.Windows.Forms.Label TotalPriceHeaderLabel;
+        private System.Windows.Forms.Label TotalCostLabel;
     }
 }

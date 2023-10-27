@@ -26,7 +26,7 @@ namespace Do_IT
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
         {
-            Forms.createaccount.Show();
+            Forms.addemployee.Show();
             this.Hide();
         }
 
@@ -38,22 +38,23 @@ namespace Do_IT
 
         private void Employees_Load(object sender, EventArgs e)
         {
-            Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand("SELECT Role FROM Roles WHERE RoleID = '1'", Forms.conn);
-            SQLiteDataReader reader = sql.ExecuteReader();
-            reader.Read();
-            if(CurrentUser.role != (string)reader["Role"])
+            if(2 < CurrentUser.clearance)
             {
-                AddEmployeeButton.Visible = true;
                 ResetPasswordButton.Visible = true;
+                ViewEmployeeDetailsButton.Visible = true;
+                AddEmployeeButton.Visible = true;
             }
-            reader.Close();
-            Forms.conn.Close();
         }
 
         private void ResetPasswordButton_Click(object sender, EventArgs e)
         {
             Forms.resetpassword.Show();
+            this.Hide();
+        }
+
+        private void ViewEmployeeDetailsButton_Click(object sender, EventArgs e)
+        {
+            Forms.viewemployeedetails.Show();
             this.Hide();
         }
     }

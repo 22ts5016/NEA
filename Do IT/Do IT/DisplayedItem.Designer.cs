@@ -40,6 +40,8 @@
             this.LayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.CurrentStockLabel = new System.Windows.Forms.Label();
             this.BarcodeLabel = new System.Windows.Forms.Label();
+            this.AddToOrderButton = new System.Windows.Forms.Button();
+            this.CurrentOrderButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ProductImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +136,7 @@
             this.LayoutPanel1.AutoScroll = true;
             this.LayoutPanel1.Location = new System.Drawing.Point(297, 515);
             this.LayoutPanel1.Name = "LayoutPanel1";
-            this.LayoutPanel1.Size = new System.Drawing.Size(424, 255);
+            this.LayoutPanel1.Size = new System.Drawing.Size(424, 246);
             this.LayoutPanel1.TabIndex = 18;
             // 
             // CurrentStockLabel
@@ -157,12 +159,34 @@
             this.BarcodeLabel.TabIndex = 20;
             this.BarcodeLabel.Text = "null";
             // 
+            // AddToOrderButton
+            // 
+            this.AddToOrderButton.Location = new System.Drawing.Point(832, 671);
+            this.AddToOrderButton.Name = "AddToOrderButton";
+            this.AddToOrderButton.Size = new System.Drawing.Size(160, 90);
+            this.AddToOrderButton.TabIndex = 21;
+            this.AddToOrderButton.Text = "Add to order";
+            this.AddToOrderButton.UseVisualStyleBackColor = true;
+            this.AddToOrderButton.Click += new System.EventHandler(this.AddToOrderButton_Click);
+            // 
+            // CurrentOrderButton
+            // 
+            this.CurrentOrderButton.Location = new System.Drawing.Point(1412, 663);
+            this.CurrentOrderButton.Name = "CurrentOrderButton";
+            this.CurrentOrderButton.Size = new System.Drawing.Size(160, 90);
+            this.CurrentOrderButton.TabIndex = 22;
+            this.CurrentOrderButton.Text = "Current Order";
+            this.CurrentOrderButton.UseVisualStyleBackColor = true;
+            this.CurrentOrderButton.Click += new System.EventHandler(this.CurrentOrderButton_Click);
+            // 
             // DisplayedItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.CurrentOrderButton);
+            this.Controls.Add(this.AddToOrderButton);
             this.Controls.Add(this.BarcodeLabel);
             this.Controls.Add(this.CurrentStockLabel);
             this.Controls.Add(this.LayoutPanel1);
@@ -199,5 +223,7 @@
         private System.Windows.Forms.FlowLayoutPanel LayoutPanel1;
         private System.Windows.Forms.Label CurrentStockLabel;
         private System.Windows.Forms.Label BarcodeLabel;
+        private System.Windows.Forms.Button AddToOrderButton;
+        private System.Windows.Forms.Button CurrentOrderButton;
     }
 }

@@ -201,7 +201,8 @@ namespace Do_IT
                     table.RowCount = 3;
 
                     Label namelabel = new Label();
-                    namelabel.Text = name + "_Label";
+                    namelabel.Name = name + "_Label";
+                    namelabel.Text = name;
                     namelabel.Font = new Font(namelabel.Font.FontFamily, 13);
                     namelabel.Name = name;
                     namelabel.AutoSize = true;
@@ -237,8 +238,16 @@ namespace Do_IT
 
                     table.Controls.Add(pricelabel, 1, 0);
 
+                    Button button = new Button();
+                    button.Font = new Font(button.Font.FontFamily, 10);
+                    button.Name = barcode + "_AddToOrder_Button";
+                    button.Text = "Add To Order";
+                    button.Size = new Size(100, 100);
 
-                    
+                    button.Click += Button_Click;
+
+                    table.Controls.Add(button, 1, 1);
+
                     LayoutPanel1.Controls.Add(table);
 
                 }
@@ -355,6 +364,19 @@ namespace Do_IT
                     MessageBox.Show("Invalid barcode");
                 }
             }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            string barcode = button.Name.Split('_')[0];
+
+            if (!Forms.createorder.barcodesinorder.Contains(barcode))
+            {
+                Forms.createorder.barcodesinorder.Add(barcode);
+            }
+
+            MessageBox.Show(barcode + " Added to order");
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)
@@ -491,17 +513,14 @@ namespace Do_IT
             return false;
         }
 
+
+        // IS THIS ALLOWED?
         private void SortByComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(SearchTextBox.Text != "" && ProductNameCheckBox.Checked)
             {
                 SearchButton_Click(sender, e);
             }
-        }
-
-        private void ItemCountLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

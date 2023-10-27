@@ -1,6 +1,6 @@
 ﻿namespace Do_IT
 {
-    partial class Orders
+    partial class CreateOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.MainMenuButton = new System.Windows.Forms.Button();
-            this.CreateOrderButton = new System.Windows.Forms.Button();
-            this.ViewOrderButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ProductQueryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -38,42 +38,39 @@
             this.MainMenuButton.Location = new System.Drawing.Point(1412, 759);
             this.MainMenuButton.Name = "MainMenuButton";
             this.MainMenuButton.Size = new System.Drawing.Size(160, 90);
-            this.MainMenuButton.TabIndex = 1;
+            this.MainMenuButton.TabIndex = 2;
             this.MainMenuButton.Text = "Main Menu";
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // CreateOrderButton
+            // flowLayoutPanel1
             // 
-            this.CreateOrderButton.Location = new System.Drawing.Point(379, 55);
-            this.CreateOrderButton.Name = "CreateOrderButton";
-            this.CreateOrderButton.Size = new System.Drawing.Size(181, 107);
-            this.CreateOrderButton.TabIndex = 2;
-            this.CreateOrderButton.Text = "Create Order";
-            this.CreateOrderButton.UseVisualStyleBackColor = true;
-            this.CreateOrderButton.Click += new System.EventHandler(this.CreateOrderButton_Click);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(71, 304);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1300, 545);
+            this.flowLayoutPanel1.TabIndex = 3;
             // 
-            // ViewOrderButton
+            // ProductQueryButton
             // 
-            this.ViewOrderButton.Location = new System.Drawing.Point(106, 55);
-            this.ViewOrderButton.Name = "ViewOrderButton";
-            this.ViewOrderButton.Size = new System.Drawing.Size(181, 107);
-            this.ViewOrderButton.TabIndex = 3;
-            this.ViewOrderButton.Text = "View Order";
-            this.ViewOrderButton.UseVisualStyleBackColor = true;
-            this.ViewOrderButton.Click += new System.EventHandler(this.ViewOrderButton_Click);
+            this.ProductQueryButton.Location = new System.Drawing.Point(1412, 663);
+            this.ProductQueryButton.Name = "ProductQueryButton";
+            this.ProductQueryButton.Size = new System.Drawing.Size(160, 90);
+            this.ProductQueryButton.TabIndex = 4;
+            this.ProductQueryButton.Text = "Product Query";
+            this.ProductQueryButton.UseVisualStyleBackColor = true;
+            this.ProductQueryButton.Click += new System.EventHandler(this.ProductQueryButton_Click);
             // 
-            // Orders
+            // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.ViewOrderButton);
-            this.Controls.Add(this.CreateOrderButton);
+            this.Controls.Add(this.ProductQueryButton);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.MainMenuButton);
-            this.Name = "Orders";
+            this.Name = "CreateOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Orders";
+            this.Text = "CreateOrder";
             this.ResumeLayout(false);
 
         }
@@ -81,7 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Button MainMenuButton;
-        private System.Windows.Forms.Button CreateOrderButton;
-        private System.Windows.Forms.Button ViewOrderButton;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button ProductQueryButton;
     }
 }

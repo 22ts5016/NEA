@@ -1,6 +1,6 @@
 ﻿namespace Do_IT
 {
-    partial class CreateAccount
+    partial class AddEmployee
     {
         /// <summary>
         /// Required designer variable.

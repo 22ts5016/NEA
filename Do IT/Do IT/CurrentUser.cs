@@ -10,7 +10,8 @@ namespace Do_IT
     {
         public static string name;
         public static string role;
+        public static int clearance;
         public static string department;
-        public static int ID;
+        public static int employeeID;
     }
 }

@@ -48,8 +48,6 @@
             // ProductNameCheckBox
             // 
             this.ProductNameCheckBox.AutoSize = true;
-            this.ProductNameCheckBox.Checked = true;
-            this.ProductNameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ProductNameCheckBox.Location = new System.Drawing.Point(96, 60);
             this.ProductNameCheckBox.Name = "ProductNameCheckBox";
             this.ProductNameCheckBox.Size = new System.Drawing.Size(94, 17);
@@ -194,7 +192,6 @@
             this.ItemCountLabel.Name = "ItemCountLabel";
             this.ItemCountLabel.Size = new System.Drawing.Size(0, 13);
             this.ItemCountLabel.TabIndex = 0;
-            this.ItemCountLabel.Click += new System.EventHandler(this.ItemCountLabel_Click);
             // 
             // ProductQuery
             // 

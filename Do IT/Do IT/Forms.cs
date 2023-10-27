@@ -14,8 +14,14 @@ namespace Do_IT
         public static MainMenu mainmenu = new MainMenu();
         public static ProductQuery productquery = new ProductQuery();
         public static LocationManagement locationmanagement = new LocationManagement();
+        public static ItemsWithoutLocations itemswithoutlocations = new ItemsWithoutLocations();
+        public static ItemsInABay itemsinabay = new ItemsInABay();
+        public static AddItemToLocation additemtolocation = new AddItemToLocation();
+        public static AddMultipleItemsToLocation addmultipleitemstolocation = new AddMultipleItemsToLocation();
+        public static DisplayedItem displayeditem = new DisplayedItem();
         public static Orders orders = new Orders();
         public static ViewOrder vieworder = new ViewOrder();
+        public static CreateOrder createorder = new CreateOrder();
         public static StockManagement stockmanagement = new StockManagement();
         public static StockAdjustment stockadjustment = new StockAdjustment();
         public static StockWriteOff stockwriteoff = new StockWriteOff();
@@ -23,15 +29,12 @@ namespace Do_IT
         public static Employees employees = new Employees();
         public static ViewEmployeeActions viewemployeeactions = new ViewEmployeeActions();
         public static ResetPassword resetpassword = new ResetPassword();
+        public static ViewEmployeeDetails viewemployeedetails = new ViewEmployeeDetails();
+        public static AddEmployee addemployee = new AddEmployee();
         public static AddProduct addproduct = new AddProduct();
-        public static AddLocation addlocation = new AddLocation();
-        public static CreateAccount createaccount = new CreateAccount();
-        public static DisplayedItem displayeditem = new DisplayedItem();
-        public static ItemsWithoutLocations itemswithoutlocations = new ItemsWithoutLocations();
-        public static AddItemToLocation additemtolocation = new AddItemToLocation();
         public static RemoveProduct removeproduct = new RemoveProduct();
-        public static AddMultipleItemsToLocation addmultipleitemstolocation = new AddMultipleItemsToLocation();
-        public static ItemsInABay itemsinabay = new ItemsInABay();
+        public static AddLocation addlocation = new AddLocation();
+        public static RemoveLocation removelocation = new RemoveLocation();
 
         public static void CloseAll()
         {

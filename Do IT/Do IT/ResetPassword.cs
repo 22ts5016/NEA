@@ -28,43 +28,32 @@ namespace Do_IT
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Role FROM Employees WHERE Username = '{UsernameTextBox.Text}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Role FROM Employees WHERE Username = '{InputTextBox.Text}' OR EmployeeID = '{InputTextBox.Text}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
             if (reader.Read())
             {
-                SQLiteCommand sql2 = new SQLiteCommand($"SELECT RoleID FROM Roles WHERE Role = '{CurrentUser.role}'", Forms.conn);
-                SQLiteDataReader reader2 = sql2.ExecuteReader();
-                reader2.Read();
-                if (Convert.ToInt32(reader["Role"]) < Convert.ToInt32(reader2["RoleID"]) || Convert.ToInt32(reader2["RoleID"]) == 4)
+                if (CheckUserClearance(Convert.ToInt32(reader["Role"])))
                 {
-                    if (CheckPasswordsMatch())
+                    if (PasswordTextBox.Text.Length >= 6)
                     {
-                        if(PasswordTextBox.Text.Length >= 6)
-                        {
-                            SQLiteCommand sql3 = new SQLiteCommand($"UPDATE Employees SET Password = '{PasswordTextBox.Text}' WHERE Username = '{UsernameTextBox.Text}'", Forms.conn);
-                            sql3.ExecuteNonQuery();
-                            MessageBox.Show("Password reset");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Please enter a password longer than 6 characters");
-                        }
+                        SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Employees SET Password = '{PasswordTextBox.Text}' WHERE Username = '{InputTextBox.Text}' OR EmployeeID = '{InputTextBox.Text}'", Forms.conn);
+                        sql2.ExecuteNonQuery();
+                        MessageBox.Show("Password reset");
                     }
                     else
                     {
-                        MessageBox.Show("Passwords do not match");
+                        MessageBox.Show("Please enter a password longer than 6 characters");
                     }
                 }
                 else
                 {
                     MessageBox.Show("You do not have permission to change this persons pasword");
                 }
-                reader2.Close();
             }
             else
             {
-                MessageBox.Show("Invalid username");
+                MessageBox.Show("Invalid employee ID or username");
             }
             reader.Close();
             Forms.conn.Close();
@@ -106,6 +95,18 @@ namespace Do_IT
             else
             {
                 ConfirmPasswordTextBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        public bool CheckUserClearance(int inputclearance)
+        {
+            if (inputclearance < CurrentUser.clearance || CurrentUser.clearance == 4)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

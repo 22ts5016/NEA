@@ -11,9 +11,9 @@ using System.Data.SQLite;
 
 namespace Do_IT
 {
-    public partial class CreateAccount : Form
+    public partial class AddEmployee : Form
     {
-        public CreateAccount()
+        public AddEmployee()
         {
             InitializeComponent();
         }

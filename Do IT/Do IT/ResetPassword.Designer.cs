@@ -30,7 +30,7 @@
         {
             this.MainMenuButton = new System.Windows.Forms.Button();
             this.ConfirmLabel = new System.Windows.Forms.Label();
-            this.UsernameTextBox = new System.Windows.Forms.TextBox();
+            this.InputTextBox = new System.Windows.Forms.TextBox();
             this.NewPasswordLabel = new System.Windows.Forms.Label();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,17 +56,17 @@
             this.ConfirmLabel.AutoSize = true;
             this.ConfirmLabel.Location = new System.Drawing.Point(66, 53);
             this.ConfirmLabel.Name = "ConfirmLabel";
-            this.ConfirmLabel.Size = new System.Drawing.Size(416, 13);
+            this.ConfirmLabel.Size = new System.Drawing.Size(532, 13);
             this.ConfirmLabel.TabIndex = 3;
-            this.ConfirmLabel.Text = "Please enter the username of the employee that you would like to reset the paswor" +
-    "d of:";
+            this.ConfirmLabel.Text = "Please enter the employee number or the username of the employee that you would l" +
+    "ike to reset the pasword of:";
             // 
-            // UsernameTextBox
+            // InputTextBox
             // 
-            this.UsernameTextBox.Location = new System.Drawing.Point(69, 81);
-            this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(222, 20);
-            this.UsernameTextBox.TabIndex = 4;
+            this.InputTextBox.Location = new System.Drawing.Point(69, 81);
+            this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.Size = new System.Drawing.Size(222, 20);
+            this.InputTextBox.TabIndex = 4;
             // 
             // NewPasswordLabel
             // 
@@ -144,7 +144,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.NewPasswordLabel);
-            this.Controls.Add(this.UsernameTextBox);
+            this.Controls.Add(this.InputTextBox);
             this.Controls.Add(this.ConfirmLabel);
             this.Controls.Add(this.MainMenuButton);
             this.Name = "ResetPassword";
@@ -160,7 +160,7 @@
 
         private System.Windows.Forms.Button MainMenuButton;
         private System.Windows.Forms.Label ConfirmLabel;
-        private System.Windows.Forms.TextBox UsernameTextBox;
+        private System.Windows.Forms.TextBox InputTextBox;
         private System.Windows.Forms.Label NewPasswordLabel;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label label1;

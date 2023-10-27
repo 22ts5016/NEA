@@ -38,6 +38,7 @@
             this.AddLocationButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.RemoveProductButton = new System.Windows.Forms.Button();
+            this.RemoveLocationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProductQueryButton
@@ -144,11 +145,22 @@
             this.RemoveProductButton.Visible = false;
             this.RemoveProductButton.Click += new System.EventHandler(this.RemoveProductButton_Click);
             // 
+            // RemoveLocationButton
+            // 
+            this.RemoveLocationButton.Location = new System.Drawing.Point(1053, 472);
+            this.RemoveLocationButton.Name = "RemoveLocationButton";
+            this.RemoveLocationButton.Size = new System.Drawing.Size(181, 107);
+            this.RemoveLocationButton.TabIndex = 11;
+            this.RemoveLocationButton.Text = "Remove Location";
+            this.RemoveLocationButton.UseVisualStyleBackColor = true;
+            this.RemoveLocationButton.Visible = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.RemoveLocationButton);
             this.Controls.Add(this.RemoveProductButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.AddLocationButton);
@@ -179,5 +191,6 @@
         private System.Windows.Forms.Button AddLocationButton;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button RemoveProductButton;
+        private System.Windows.Forms.Button RemoveLocationButton;
     }
 }

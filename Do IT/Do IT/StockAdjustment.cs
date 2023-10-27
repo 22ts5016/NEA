@@ -53,6 +53,10 @@ namespace Do_IT
             SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET StockCount = '{StockCountTextBox.Text}' WHERE Barcode = '{BarcodeTextBox.Text}'", Forms.conn);
             sql.ExecuteNonQuery();
             Forms.conn.Close();
+            MessageBox.Show("Stock adjusted");
+            Forms.stockmanagement.Show();
+            Forms.stockadjustment = new StockAdjustment();
+            this.Dispose();
         }
     }
 }

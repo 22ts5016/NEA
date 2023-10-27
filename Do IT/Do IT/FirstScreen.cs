@@ -23,7 +23,7 @@ namespace Do_IT
         private void SignInButton_Click(object sender, EventArgs e)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT EmployeeID, Forename, Roles.Role, DepartmentTypes.Department, Password FROM Employees, Roles, DepartmentTypes WHERE Username = '{UsernameTextBox.Text.ToLower()}' AND Password = '{PasswordTextBox.Text}' AND Employees.Role = RoleID AND Employees.Department = DepartmentID", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT EmployeeID, Forename, RoleID, Roles.Role, DepartmentTypes.Department, Password FROM Employees, Roles, DepartmentTypes WHERE Username = '{UsernameTextBox.Text.ToLower()}' AND Password = '{PasswordTextBox.Text}' AND Employees.Role = RoleID AND Employees.Department = DepartmentID", Forms.conn);
             SQLiteDataReader reader; 
             bool invaid = true;
             reader = sql.ExecuteReader();
@@ -33,8 +33,9 @@ namespace Do_IT
                 {
                     CurrentUser.name = (string)reader["Forename"];
                     CurrentUser.role = (string)reader["Role"];
+                    CurrentUser.clearance = Convert.ToInt32(reader["RoleID"]);
                     CurrentUser.department = (string)reader["Department"];
-                    CurrentUser.ID = Convert.ToInt32(reader["EmployeeID"]);
+                    CurrentUser.employeeID = Convert.ToInt32(reader["EmployeeID"]);
                     reader.Close();
                     Forms.conn.Close();
                     Forms.mainmenu.Show();

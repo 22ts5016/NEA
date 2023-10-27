@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace Do_IT
 {
-    public partial class Orders : Form
+    public partial class CreateOrder : Form
     {
-        public Orders()
+        public List<string> barcodesinorder = new List<string>();
+
+        public CreateOrder()
         {
             InitializeComponent();
         }
@@ -23,15 +25,13 @@ namespace Do_IT
             this.Hide();
         }
 
-        private void ViewOrderButton_Click(object sender, EventArgs e)
+        private void ProductQueryButton_Click(object sender, EventArgs e)
         {
-            Forms.vieworder.Show();
-            this.Hide();
-        }
-
-        private void CreateOrderButton_Click(object sender, EventArgs e)
-        {
-            Forms.createorder.Show();
+            if(Forms.productquery == null)
+            {
+                Forms.productquery = new ProductQuery();
+            }
+            Forms.productquery.Show();
             this.Hide();
         }
     }
