@@ -29,8 +29,11 @@ namespace Do_IT
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            DetailsTableLayoutPanel.Controls.Clear();
+            MainLayoutPanel.Controls.Clear();
+            TotalCostLabel.Text = "Total Cost: £";
+            totalcost = 0;
             Forms.conn.Open();
-            //SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, Image FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND EntryID = OrderInfo.OrderID", Forms.conn);
             SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderInfo.OrderID = '1' AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
@@ -48,6 +51,56 @@ namespace Do_IT
         private void AddInfoToOrderDisplay(SQLiteDataReader reader)
         {
             Label temp;
+
+            temp = CreateLabel("top");
+            temp.Text = "Customer Number";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 0, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Title";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 1, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Forename";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 2, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Surname";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 3, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Address";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 4, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Postcode";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 5, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Phone Number";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 6, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Email Address";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 7, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Order Type";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 8, 0);
+
+            temp = CreateLabel("top");
+            temp.Text = "Status";
+
+            DetailsTableLayoutPanel.Controls.Add(temp, 9, 0);
 
             temp = CreateLabel("top");
             temp.Text = Convert.ToInt32(reader["CustomerID"]).ToString();

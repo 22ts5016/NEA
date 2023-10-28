@@ -100,5 +100,12 @@ namespace Do_IT
             Forms.mainmenu.ProductQueryButton.Select();
             this.Hide();
         }
+
+        private void RemoveLocationButton_Click(object sender, EventArgs e)
+        {
+            Forms.removelocation.Show();
+            Forms.mainmenu.ProductQueryButton.Select();
+            this.Hide();
+        }
     }
 }

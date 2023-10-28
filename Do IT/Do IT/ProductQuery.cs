@@ -146,6 +146,7 @@ namespace Do_IT
 
         private void ProductQuery_Load(object sender, EventArgs e)
         {
+            ProductNameCheckBox.Checked = true;
             SortByComboBox.SelectedIndex = 0;
         }
 

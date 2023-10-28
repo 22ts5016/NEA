@@ -154,6 +154,7 @@
             this.RemoveLocationButton.Text = "Remove Location";
             this.RemoveLocationButton.UseVisualStyleBackColor = true;
             this.RemoveLocationButton.Visible = false;
+            this.RemoveLocationButton.Click += new System.EventHandler(this.RemoveLocationButton_Click);
             // 
             // MainMenu
             // 

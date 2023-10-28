@@ -169,10 +169,10 @@
             "Price: High - Low",
             "Price: Low - High",
             "Alphabetical",
-            "Stock Available"});
+            "If Stock Is Available"});
             this.SortByComboBox.Location = new System.Drawing.Point(1165, 59);
             this.SortByComboBox.Name = "SortByComboBox";
-            this.SortByComboBox.Size = new System.Drawing.Size(113, 21);
+            this.SortByComboBox.Size = new System.Drawing.Size(122, 21);
             this.SortByComboBox.TabIndex = 15;
             this.SortByComboBox.SelectedIndexChanged += new System.EventHandler(this.SortByComboBox_SelectedIndexChanged);
             // 

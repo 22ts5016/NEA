@@ -33,14 +33,6 @@
             this.ConfirmLabel = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
             this.MainTable = new System.Windows.Forms.TableLayoutPanel();
-            this.EmployeeIDHeaderLabel = new System.Windows.Forms.Label();
-            this.ForenameHeaderLabel = new System.Windows.Forms.Label();
-            this.SurnameHeaderLabel = new System.Windows.Forms.Label();
-            this.RoleHeaderLabel = new System.Windows.Forms.Label();
-            this.DepartmentHeaderLabel = new System.Windows.Forms.Label();
-            this.UsernameHeaderLabel = new System.Windows.Forms.Label();
-            this.PasswordHeaderLabel = new System.Windows.Forms.Label();
-            this.MainTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -91,13 +83,6 @@
             this.MainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.MainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.MainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.MainTable.Controls.Add(this.PasswordHeaderLabel, 6, 0);
-            this.MainTable.Controls.Add(this.UsernameHeaderLabel, 5, 0);
-            this.MainTable.Controls.Add(this.DepartmentHeaderLabel, 4, 0);
-            this.MainTable.Controls.Add(this.RoleHeaderLabel, 3, 0);
-            this.MainTable.Controls.Add(this.SurnameHeaderLabel, 2, 0);
-            this.MainTable.Controls.Add(this.ForenameHeaderLabel, 1, 0);
-            this.MainTable.Controls.Add(this.EmployeeIDHeaderLabel, 0, 0);
             this.MainTable.Location = new System.Drawing.Point(71, 198);
             this.MainTable.Name = "MainTable";
             this.MainTable.RowCount = 2;
@@ -105,76 +90,6 @@
             this.MainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.MainTable.Size = new System.Drawing.Size(1299, 80);
             this.MainTable.TabIndex = 17;
-            // 
-            // EmployeeIDHeaderLabel
-            // 
-            this.EmployeeIDHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.EmployeeIDHeaderLabel.AutoSize = true;
-            this.EmployeeIDHeaderLabel.Location = new System.Drawing.Point(55, 0);
-            this.EmployeeIDHeaderLabel.Name = "EmployeeIDHeaderLabel";
-            this.EmployeeIDHeaderLabel.Size = new System.Drawing.Size(64, 13);
-            this.EmployeeIDHeaderLabel.TabIndex = 0;
-            this.EmployeeIDHeaderLabel.Text = "EmployeeID";
-            // 
-            // ForenameHeaderLabel
-            // 
-            this.ForenameHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ForenameHeaderLabel.AutoSize = true;
-            this.ForenameHeaderLabel.Location = new System.Drawing.Point(248, 0);
-            this.ForenameHeaderLabel.Name = "ForenameHeaderLabel";
-            this.ForenameHeaderLabel.Size = new System.Drawing.Size(54, 13);
-            this.ForenameHeaderLabel.TabIndex = 1;
-            this.ForenameHeaderLabel.Text = "Forename";
-            // 
-            // SurnameHeaderLabel
-            // 
-            this.SurnameHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.SurnameHeaderLabel.AutoSize = true;
-            this.SurnameHeaderLabel.Location = new System.Drawing.Point(450, 0);
-            this.SurnameHeaderLabel.Name = "SurnameHeaderLabel";
-            this.SurnameHeaderLabel.Size = new System.Drawing.Size(49, 13);
-            this.SurnameHeaderLabel.TabIndex = 2;
-            this.SurnameHeaderLabel.Text = "Surname";
-            // 
-            // RoleHeaderLabel
-            // 
-            this.RoleHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RoleHeaderLabel.AutoSize = true;
-            this.RoleHeaderLabel.Location = new System.Drawing.Point(648, 0);
-            this.RoleHeaderLabel.Name = "RoleHeaderLabel";
-            this.RoleHeaderLabel.Size = new System.Drawing.Size(29, 13);
-            this.RoleHeaderLabel.TabIndex = 3;
-            this.RoleHeaderLabel.Text = "Role";
-            // 
-            // DepartmentHeaderLabel
-            // 
-            this.DepartmentHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DepartmentHeaderLabel.AutoSize = true;
-            this.DepartmentHeaderLabel.Location = new System.Drawing.Point(794, 0);
-            this.DepartmentHeaderLabel.Name = "DepartmentHeaderLabel";
-            this.DepartmentHeaderLabel.Size = new System.Drawing.Size(62, 13);
-            this.DepartmentHeaderLabel.TabIndex = 4;
-            this.DepartmentHeaderLabel.Text = "Department";
-            // 
-            // UsernameHeaderLabel
-            // 
-            this.UsernameHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.UsernameHeaderLabel.AutoSize = true;
-            this.UsernameHeaderLabel.Location = new System.Drawing.Point(972, 0);
-            this.UsernameHeaderLabel.Name = "UsernameHeaderLabel";
-            this.UsernameHeaderLabel.Size = new System.Drawing.Size(55, 13);
-            this.UsernameHeaderLabel.TabIndex = 5;
-            this.UsernameHeaderLabel.Text = "Username";
-            // 
-            // PasswordHeaderLabel
-            // 
-            this.PasswordHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.PasswordHeaderLabel.AutoSize = true;
-            this.PasswordHeaderLabel.Location = new System.Drawing.Point(1173, 0);
-            this.PasswordHeaderLabel.Name = "PasswordHeaderLabel";
-            this.PasswordHeaderLabel.Size = new System.Drawing.Size(53, 13);
-            this.PasswordHeaderLabel.TabIndex = 6;
-            this.PasswordHeaderLabel.Text = "Password";
             // 
             // ViewEmployeeDetails
             // 
@@ -189,8 +104,6 @@
             this.Name = "ViewEmployeeDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewEmployeeDetails";
-            this.MainTable.ResumeLayout(false);
-            this.MainTable.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,12 +116,5 @@
         private System.Windows.Forms.Label ConfirmLabel;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TableLayoutPanel MainTable;
-        private System.Windows.Forms.Label PasswordHeaderLabel;
-        private System.Windows.Forms.Label UsernameHeaderLabel;
-        private System.Windows.Forms.Label DepartmentHeaderLabel;
-        private System.Windows.Forms.Label RoleHeaderLabel;
-        private System.Windows.Forms.Label SurnameHeaderLabel;
-        private System.Windows.Forms.Label ForenameHeaderLabel;
-        private System.Windows.Forms.Label EmployeeIDHeaderLabel;
     }
 }
