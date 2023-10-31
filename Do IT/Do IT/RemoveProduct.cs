@@ -82,6 +82,7 @@ namespace Do_IT
                 else
                 {
                     MessageBox.Show("Invalid Barcode");
+                    Forms.conn.Close();
                     return;
                 }
                 reader.Close();

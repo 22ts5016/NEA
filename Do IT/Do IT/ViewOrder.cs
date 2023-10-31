@@ -31,10 +31,8 @@ namespace Do_IT
         {
             DetailsTableLayoutPanel.Controls.Clear();
             MainLayoutPanel.Controls.Clear();
-            TotalCostLabel.Text = "Total Cost: £";
-            totalcost = 0;
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderInfo.OrderID = '1' AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID Group By OrderEntry.Barcode", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
             if (reader.Read())
@@ -162,6 +160,9 @@ namespace Do_IT
 
             DetailsTableLayoutPanel.Controls.Add(temp, 9, 1);
 
+            totalcost = 0;
+            TotalCostLabel.Text = "Total Cost: £";
+
             string barcode, productname;
             do
             {
@@ -219,8 +220,8 @@ namespace Do_IT
                 table.ColumnStyles[4].Width = 200;
 
                 temp = CreateLabel("middle");
-                totalcost += Convert.ToInt32(reader["Quantity"]) * Convert.ToDouble(reader["Price"]);
-                temp.Text = '£' + (Convert.ToInt32(reader["Quantity"]) * Convert.ToDouble(reader["Price"])).ToString();
+                temp.Text = '£' + Convert.ToDouble(reader["TotalPrice"]).ToString();
+                totalcost += Convert.ToDouble(reader["TotalPrice"]);
                 temp.Name = barcode + "_TotalPrice_Label";
 
                 table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));

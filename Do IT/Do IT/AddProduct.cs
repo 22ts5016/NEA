@@ -51,6 +51,7 @@ namespace Do_IT
                         sql.Parameters.AddWithValue("@image", imageBytes);
                         sql.ExecuteNonQuery();
                     }
+                    Forms.conn.Close();
                     MessageBox.Show("Product Added");
                     Forms.viewemployeeactions.Action(5, $"Added product {BarcodeTextBox.Text}");
                     Reset();
