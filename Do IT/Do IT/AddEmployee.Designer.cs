@@ -100,16 +100,9 @@
             // 
             this.DepartmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartmentComboBox.FormattingEnabled = true;
-            this.DepartmentComboBox.Items.AddRange(new object[] {
-            "Front end",
-            "Seasonal",
-            "Decor",
-            "Building",
-            "Showrooms",
-            "Warehouse"});
             this.DepartmentComboBox.Location = new System.Drawing.Point(201, 341);
             this.DepartmentComboBox.Name = "DepartmentComboBox";
-            this.DepartmentComboBox.Size = new System.Drawing.Size(105, 21);
+            this.DepartmentComboBox.Size = new System.Drawing.Size(137, 21);
             this.DepartmentComboBox.TabIndex = 7;
             // 
             // UsernameLabel
@@ -176,13 +169,9 @@
             this.RoleComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.RoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoleComboBox.FormattingEnabled = true;
-            this.RoleComboBox.Items.AddRange(new object[] {
-            "CA",
-            "Team Leader",
-            "Department Manager"});
             this.RoleComboBox.Location = new System.Drawing.Point(201, 283);
             this.RoleComboBox.Name = "RoleComboBox";
-            this.RoleComboBox.Size = new System.Drawing.Size(105, 21);
+            this.RoleComboBox.Size = new System.Drawing.Size(137, 21);
             this.RoleComboBox.TabIndex = 7;
             // 
             // MainMenuButton
@@ -195,7 +184,7 @@
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // CreateAccount
+            // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,7 +205,7 @@
             this.Controls.Add(this.ForenameTextBox);
             this.Controls.Add(this.ForenameLabel);
             this.Controls.Add(this.EmployeeIDLabel);
-            this.Name = "CreateAccount";
+            this.Name = "AddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Account";
             this.Load += new System.EventHandler(this.CreateAccount_Load);
