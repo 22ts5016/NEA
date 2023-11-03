@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using System.Data.Entity.Core.Metadata.Edm;
 
 namespace Do_IT
 {
@@ -199,7 +201,7 @@ namespace Do_IT
                     table.Name = name;
                     table.Height = 284;
                     table.Width = 950;
-                    table.ColumnCount = 2;
+                    table.ColumnCount = 3;
                     table.RowCount = 3;
 
                     Label namelabel = new Label();
@@ -210,7 +212,9 @@ namespace Do_IT
                     namelabel.AutoSize = true;
                     namelabel.Margin = new Padding(0, 0, 0, 10);
 
+                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
                     table.Controls.Add(namelabel, 0, 0);
+                    table.ColumnStyles[0].Width = 700;
 
                     Label barcodelabel = new Label();
                     barcodelabel.Text = barcode;
@@ -229,26 +233,42 @@ namespace Do_IT
                     
                     table.Controls.Add(stocklabel, 0, 2);
 
-                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.ColumnStyles[0].Width = 800;
-
                     Label pricelabel = new Label();
                     pricelabel.Text = "£" + Convert.ToDecimal(reader["Price"]);
                     pricelabel.Font = new Font(pricelabel.Font.FontFamily, 10);
                     pricelabel.Name = name + "_Price";
                     pricelabel.AutoSize = true;
+                    pricelabel.Anchor = AnchorStyles.Right;
 
+                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
                     table.Controls.Add(pricelabel, 1, 0);
+                    table.ColumnStyles[1].Width = 125;
 
-                    Button button = new Button();
-                    button.Font = new Font(button.Font.FontFamily, 10);
-                    button.Name = barcode + "_AddToOrder_Button";
-                    button.Text = "Add To Order";
-                    button.Size = new Size(100, 100);
+                    Button viewbutton = new Button();
+                    viewbutton.Font = new Font(viewbutton.Font.FontFamily, 10);
+                    viewbutton.Name = barcode + "_ViewItemButton";
+                    viewbutton.Text = "View Product";
+                    viewbutton.Size = new Size(100, 100);
+                    viewbutton.Anchor = AnchorStyles.Right;
 
-                    button.Click += Button_Click;
+                    viewbutton.Click += ViewButton_Click;
 
-                    table.Controls.Add(button, 1, 1);
+                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                    table.Controls.Add(viewbutton, 1, 1);
+                    table.ColumnStyles[1].Width = 125;
+
+                    Button addbutton = new Button();
+                    addbutton.Font = new Font(addbutton.Font.FontFamily, 10);
+                    addbutton.Name = barcode + "_AddToOrder_Button";
+                    addbutton.Text = "Add To Order";
+                    addbutton.Size = new Size(100, 100);
+                    addbutton.Anchor = AnchorStyles.Left;
+
+                    addbutton.Click += AddButton_Click;
+
+                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                    table.Controls.Add(addbutton, 2, 1);
+                    table.ColumnStyles[2].Width = 125;
 
                     LayoutPanel1.Controls.Add(table);
 
@@ -260,61 +280,18 @@ namespace Do_IT
             {
                 Forms.conn.Open();
                 string name = SearchTextBox.Text;
-                SQLiteCommand sql3 = new SQLiteCommand($"SELECT Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
-                SQLiteDataReader reader3 = sql3.ExecuteReader();
-                if (reader3.Read())
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode, Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+                SQLiteDataReader reader = sql.ExecuteReader();
+                if (reader.Read())
                 {
-                    int weight = Convert.ToInt32(reader3["Weight"]) + 1;
-                    SQLiteCommand sql4 = new SQLiteCommand($"UPDATE Products SET Weight = {weight} WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
-                    sql4.ExecuteNonQuery();
-
-                    SQLiteCommand sql5 = new SQLiteCommand($"SELECT Located FROM Products WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}'", Forms.conn);
-                    SQLiteDataReader reader5 = sql5.ExecuteReader();
-                    reader5.Read();
-
-                    SQLiteCommand sql6;
-                    bool located;
-                    if (Convert.ToInt32(reader5["Located"]) == 1)
-                    {
-                        sql6 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
-                        located = true;
-                    }
-                    else
-                    {
-                        sql6 = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE ProductName COLLATE NOCASE = '{SearchTextBox.Text}'", Forms.conn);
-                        located = false;
-                    }
-
-                    SQLiteDataReader reader6 = sql6.ExecuteReader();
-                    while (reader6.Read())
-                    {
-                        FillDisplayedItemInfo(reader6, located);
-                    }
-                    
-                    reader3.Close();
-                    reader5.Close();
-                    reader6.Close();
+                    int weight = Convert.ToInt32(reader["Weight"]) + 1;
+                    string barcode = (string)reader["Barcode"];
+                    reader.Close();
                     Forms.conn.Close();
-                    Forms.displayeditem.Show();
-                    this.Hide();
-                    LabelStatus(true);
-                    SearchTextBox.Text = "";
-                    
 
-                    Forms.conn.Open();
+                    ShowItem(barcode);
 
-                    string start = "null";
-
-                    start = RootedTree.getRoot().SearchForStartOfRemoval(name.ToLower() + "*", weight);
-
-                    SQLiteCommand sql7 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE ProductName LIKE '{start.Substring(1)}%'", Forms.conn);
-                    SQLiteDataReader reader7 = sql7.ExecuteReader();
-
-                    while (reader7.Read())
-                    {
-                        RootedTree.AddWord(Convert.ToInt32(reader7["Weight"]), ((string)reader7["ProductName"]).ToLower() + '*');
-                    }
-                    reader7.Close();
+                    UpdateWeight(name, weight);                    
                 }
                 else
                 {
@@ -328,47 +305,7 @@ namespace Do_IT
                 {
                     if(CheckValidBarcode(SearchTextBox.Text))
                     {
-                        bool located = CheckLocated(SearchTextBox.Text, "barcode");
-                        Forms.conn.Open();
-                        SQLiteCommand sql;
-                        if (located)
-                        {
-                            sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
-                        }
-                        else
-                        {
-                            sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE Products.Barcode = '{SearchTextBox.Text}'", Forms.conn);
-                        }
-                        SQLiteDataReader reader;
-                        reader = sql.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-
-
-                            if (located)
-                            {
-                                FillDisplayedItemInfo(reader, true);
-                                while (reader.Read())
-                                {
-                                    FillDisplayedItemInfo(reader, true);
-                                }
-                            }
-                            else
-                            {
-                                FillDisplayedItemInfo(reader, false);
-                            }
-                            reader.Close();
-                            Forms.conn.Close();
-                            Forms.displayeditem.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            reader.Close();
-                            Forms.conn.Close();
-                            MessageBox.Show("Invalid barcode");
-                        }
+                        ShowItem(SearchTextBox.Text);
                     }
                     else
                     {
@@ -382,7 +319,82 @@ namespace Do_IT
             }
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        private void ShowItem(string barcode)
+        {
+            bool located = CheckLocated(barcode, "barcode");
+            Forms.conn.Open();
+            SQLiteCommand sql;
+            if (located)
+
+            {
+                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{barcode}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+            }
+            else
+            {
+                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE Products.Barcode = '{barcode}'", Forms.conn);
+            }
+            SQLiteDataReader reader;
+            reader = sql.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+
+                if (located)
+                {
+                    FillDisplayedItemInfo(reader, true);
+                    while (reader.Read())
+                    {
+                        FillDisplayedItemInfo(reader, true);
+                    }
+                }
+                else
+                {
+                    FillDisplayedItemInfo(reader, false);
+                }
+                reader.Close();
+                Forms.conn.Close();
+                Forms.displayeditem.Show();
+                Forms.productquery = new ProductQuery();
+                //Maybe dispose on a condition
+                this.Dispose();
+            }
+            else
+            {
+                reader.Close();
+                Forms.conn.Close();
+                MessageBox.Show("Invalid barcode");
+            }
+        }
+
+        private void ViewButton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            ShowItem(button.Name.Split('_')[0]);
+        }
+
+        private void UpdateWeight(string name, int weight)
+        {
+            Forms.conn.Open();
+
+            SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET Weight = {weight} WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+            sql.ExecuteNonQuery();
+
+            string start = "null";
+
+            start = RootedTree.getRoot().SearchForStartOfRemoval(name.ToLower() + "*", weight);
+
+            SQLiteCommand sql2 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE ProductName LIKE '{start.Substring(1)}%' ORDER BY Weight DESC", Forms.conn);
+            SQLiteDataReader reader = sql2.ExecuteReader();
+
+            while (reader.Read())
+            {
+                RootedTree.AddWord(Convert.ToInt32(reader["Weight"]), ((string)reader["ProductName"]).ToLower() + '*');
+            }
+            reader.Close();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             string barcode = button.Name.Split('_')[0];
@@ -529,13 +541,11 @@ namespace Do_IT
             return false;
         }
 
-
-        // IS THIS ALLOWED?
         private void SortByComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(SearchTextBox.Text != "" && ProductNameCheckBox.Checked)
             {
-                SearchButton_Click(sender, e);
+                SearchButton.PerformClick();
             }
         }
     }
