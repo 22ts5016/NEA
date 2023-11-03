@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -20,25 +21,32 @@ namespace Do_IT
 
         private void EnterBarcodeButton_Click(object sender, EventArgs e)
         {
-            Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT StockCount FROM Products WHERE Barcode = '{BarcodeTextBox.Text}'", Forms.conn);
-            SQLiteDataReader reader = sql.ExecuteReader();
-            if (reader.Read())
+            if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
             {
-                ActualStockCountLabel.Text = Convert.ToInt32(reader["StockCount"]).ToString();
+                Forms.conn.Open();
+                SQLiteCommand sql = new SQLiteCommand($"SELECT StockCount FROM Products WHERE Barcode = '{BarcodeTextBox.Text}'", Forms.conn);
+                SQLiteDataReader reader = sql.ExecuteReader();
+                if (reader.Read())
+                {
+                    ActualStockCountLabel.Text = Convert.ToInt32(reader["StockCount"]).ToString();
 
-                CurrentStockLabel.Visible = true;
-                EnterStockCountLabel.Visible = true;
+                    CurrentStockLabel.Visible = true;
+                    EnterStockCountLabel.Visible = true;
 
-                ActualStockCountLabel.Visible = true;
-                StockCountTextBox.Visible = true;
+                    ActualStockCountLabel.Visible = true;
+                    StockCountTextBox.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid barcode");
+                }
+                reader.Close();
+                Forms.conn.Close();
             }
             else
             {
-                MessageBox.Show("Invalid barcode");
+                MessageBox.Show("Invalid input");
             }
-            reader.Close();
-            Forms.conn.Close();
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)
@@ -49,14 +57,21 @@ namespace Do_IT
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET StockCount = '{StockCountTextBox.Text}' WHERE Barcode = '{BarcodeTextBox.Text}'", Forms.conn);
-            sql.ExecuteNonQuery();
-            Forms.conn.Close();
-            MessageBox.Show("Stock adjusted");
-            Forms.stockmanagement.Show();
-            Forms.stockadjustment = new StockAdjustment();
-            this.Dispose();
+            if (Regex.IsMatch(StockCountTextBox.Text, RegExFormats.anynumber))
+            {
+                Forms.conn.Open();
+                SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET StockCount = '{StockCountTextBox.Text}' WHERE Barcode = '{BarcodeTextBox.Text}'", Forms.conn);
+                sql.ExecuteNonQuery();
+                Forms.conn.Close();
+                MessageBox.Show("Stock adjusted");
+                Forms.stockmanagement.Show();
+                Forms.stockadjustment = new StockAdjustment();
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Invalid input");
+            }
         }
     }
 }

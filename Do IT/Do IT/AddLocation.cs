@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -26,22 +27,29 @@ namespace Do_IT
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Isle, Bay FROM ValidLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
-            SQLiteDataReader reader = sql.ExecuteReader();
-
-            if (reader.Read())
+            if (Regex.IsMatch(IsleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
             {
-                MessageBox.Show("This location already exists");
+                Forms.conn.Open();
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Isle, Bay FROM ValidLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
+                SQLiteDataReader reader = sql.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    MessageBox.Show("This location already exists");
+                }
+                else
+                {
+                    SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO ValidLocations VALUES ('{IsleTextBox.Text}', '{BayTextBox.Text}')", Forms.conn);
+                    sql2.ExecuteNonQuery();
+                    MessageBox.Show("Location Added");
+                }
+                reader.Close();
+                Forms.conn.Close();
             }
             else
             {
-                SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO ValidLocations VALUES ('{IsleTextBox.Text}', '{BayTextBox.Text}')", Forms.conn);
-                sql2.ExecuteNonQuery();
-                MessageBox.Show("Location Added");
+                MessageBox.Show("Invalid inputs");
             }
-            reader.Close();
-            Forms.conn.Close();   
         }
     }
 }

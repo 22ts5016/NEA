@@ -167,6 +167,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CurrentUser.cs" />
+    <Compile Include="RegExFormats.cs" />
     <Compile Include="RemoveLocation.cs">
       <SubType>Form</SubType>
     </Compile>

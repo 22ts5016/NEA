@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -65,27 +66,39 @@ namespace Do_IT
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Product");
+                    MessageBox.Show("Invalid product name");
+                    reader.Close();
+                    Forms.conn.Close();
                     return;
                 }
                 reader.Close();
             }
             else if (BarcodeCheckBox.Checked)
             {
-                SQLiteCommand sql2 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE Barcode = {name}", Forms.conn);
-                SQLiteDataReader reader = sql2.ExecuteReader();
-                if (reader.Read())
+                if (Regex.IsMatch(RemoveTextBox.Text, RegExFormats.anynumber))
                 {
-                    name = ((string)reader["ProductName"]).ToLower();
-                    start = RootedTree.getRoot().SearchForStartOfRemoval(name + "*", Convert.ToInt32(reader["Weight"]));
+                    SQLiteCommand sql2 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE Barcode = {name}", Forms.conn);
+                    SQLiteDataReader reader = sql2.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        name = ((string)reader["ProductName"]).ToLower();
+                        start = RootedTree.getRoot().SearchForStartOfRemoval(name + "*", Convert.ToInt32(reader["Weight"]));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid barcode");
+                        reader.Close();
+                        Forms.conn.Close();
+                        return;
+                    }
+                    reader.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Barcode");
+                    MessageBox.Show("Invalid input");
                     Forms.conn.Close();
                     return;
                 }
-                reader.Close();
             }
 
             SQLiteCommand sql3 = new SQLiteCommand($"DELETE FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);

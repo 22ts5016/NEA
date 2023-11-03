@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -323,46 +324,60 @@ namespace Do_IT
             }
             else if(BarcodeCheckBox.Checked)
             {
-                bool located = CheckLocated(SearchTextBox.Text, "barcode");
-                Forms.conn.Open();
-                SQLiteCommand sql;
-                if (located)
+                if (Regex.IsMatch(SearchTextBox.Text, RegExFormats.anynumber))
                 {
-                    sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
-                }
-                else
-                {
-                    sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE Products.Barcode = '{SearchTextBox.Text}'", Forms.conn);
-                }
-                SQLiteDataReader reader;
-                reader = sql.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    
-
-                    if (located)
+                    if(CheckValidBarcode(SearchTextBox.Text))
                     {
-                        FillDisplayedItemInfo(reader, true);
-                        while (reader.Read())
+                        bool located = CheckLocated(SearchTextBox.Text, "barcode");
+                        Forms.conn.Open();
+                        SQLiteCommand sql;
+                        if (located)
                         {
-                            FillDisplayedItemInfo(reader, true);
+                            sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{SearchTextBox.Text}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                        }
+                        else
+                        {
+                            sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE Products.Barcode = '{SearchTextBox.Text}'", Forms.conn);
+                        }
+                        SQLiteDataReader reader;
+                        reader = sql.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+
+
+                            if (located)
+                            {
+                                FillDisplayedItemInfo(reader, true);
+                                while (reader.Read())
+                                {
+                                    FillDisplayedItemInfo(reader, true);
+                                }
+                            }
+                            else
+                            {
+                                FillDisplayedItemInfo(reader, false);
+                            }
+                            reader.Close();
+                            Forms.conn.Close();
+                            Forms.displayeditem.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            reader.Close();
+                            Forms.conn.Close();
+                            MessageBox.Show("Invalid barcode");
                         }
                     }
                     else
                     {
-                        FillDisplayedItemInfo(reader, false);
+                        MessageBox.Show("Invalid barcode");
                     }
-                    reader.Close();
-                    Forms.conn.Close();
-                    Forms.displayeditem.Show();
-                    this.Hide();
                 }
                 else
                 {
-                    reader.Close();
-                    Forms.conn.Close();
-                    MessageBox.Show("Invalid barcode");
+                    MessageBox.Show("Invalid input");
                 }
             }
         }

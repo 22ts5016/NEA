@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -26,49 +27,56 @@ namespace Do_IT
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            if (CheckValidLocation(IsleTextBox.Text, BayTextBox.Text))
+            if (Regex.IsMatch(IsleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
             {
-                int selling = 0, multi = 0, over = 0;
-                string type;
-                Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT LocationType FROM ProductLocations, LocationTypes WHERE Isle = '{IsleTextBox.Text}' and Bay = '{BayTextBox.Text}' AND LocationTypeID = Type", Forms.conn);
-                SQLiteDataReader reader = sql.ExecuteReader();
-
-                while (reader.Read())
+                if (CheckValidLocation(IsleTextBox.Text, BayTextBox.Text))
                 {
-                    type = (string)reader["LocationType"];
+                    int selling = 0, multi = 0, over = 0;
+                    string type;
+                    Forms.conn.Open();
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT LocationType FROM ProductLocations, LocationTypes WHERE Isle = '{IsleTextBox.Text}' and Bay = '{BayTextBox.Text}' AND LocationTypeID = Type", Forms.conn);
+                    SQLiteDataReader reader = sql.ExecuteReader();
 
-                    if(type == "Selling")
+                    while (reader.Read())
                     {
-                        selling++;
+                        type = (string)reader["LocationType"];
+
+                        if (type == "Selling")
+                        {
+                            selling++;
+                        }
+                        else if (type == "MultiLocation")
+                        {
+                            multi++;
+                        }
+                        else if (type == "Overstock")
+                        {
+                            over++;
+                        }
                     }
-                    else if (type == "MultiLocation")
-                    {
-                        multi++;
-                    }
-                    else if (type == "Overstock")
-                    {
-                        over++;
-                    }
+                    Forms.conn.Close();
+                    SellingButton.Text = ("Selling - " + selling);
+                    MultiLocationButton.Text = ("MultiLocation - " + multi);
+                    OverstockButton.Text = ("Overstock - " + over);
+
+                    SellingLabel.Visible = true;
+                    SellingButton.Visible = true;
+                    MultiLocationLabel.Visible = true;
+                    MultiLocationButton.Visible = true;
+                    OverstockLabel.Visible = true;
+                    OverstockButton.Visible = true;
+
+                    Forms.itemsinabay.isle = IsleTextBox.Text;
+                    Forms.itemsinabay.bay = BayTextBox.Text;
                 }
-                Forms.conn.Close();
-                SellingButton.Text = ("Selling - " + selling);
-                MultiLocationButton.Text = ("MultiLocation - " + multi);
-                OverstockButton.Text = ("Overstock - " + over);
-
-                SellingLabel.Visible = true;
-                SellingButton.Visible = true;
-                MultiLocationLabel.Visible = true;
-                MultiLocationButton.Visible = true;
-                OverstockLabel.Visible = true;
-                OverstockButton.Visible = true;
-
-                Forms.itemsinabay.isle = IsleTextBox.Text;
-                Forms.itemsinabay.bay = BayTextBox.Text;
+                else
+                {
+                    MessageBox.Show("Invalid Location");
+                }
             }
             else
             {
-                MessageBox.Show("Invalid Location");
+                MessageBox.Show("Invalid inputs");
             }
         }
 

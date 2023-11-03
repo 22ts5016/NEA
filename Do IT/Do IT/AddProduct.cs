@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -23,40 +24,70 @@ namespace Do_IT
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            if (EANCheck(BarcodeTextBox.Text))
+            if (CheckAllRegEx())
             {
-                if (!RepeatedBarcode(BarcodeTextBox.Text))
+                if (EANCheck(BarcodeTextBox.Text))
                 {
-                    byte[] imageBytes;
-                    using (MemoryStream ms = new MemoryStream())
+                    if (!RepeatedBarcode(BarcodeTextBox.Text))
                     {
-                        ImagePictureBox.Image.Save(ms, ImagePictureBox.Image.RawFormat);
-                        imageBytes = ms.ToArray();
-                    }
-                    string description = ProductDescriptionTextBox.Text;
-                    for (int i = 100; i < description.Length; i += 100)
-                    {
-                        if (description[i] == ' ')
+                        byte[] imageBytes;
+                        using (MemoryStream ms = new MemoryStream())
                         {
-                            description = description.Substring(0, i) + "\n" + description.Substring(i + 1);
+                            ImagePictureBox.Image.Save(ms, ImagePictureBox.Image.RawFormat);
+                            imageBytes = ms.ToArray();
                         }
-                        else
+                        string description = ProductDescriptionTextBox.Text;
+                        for (int i = 100; i < description.Length; i += 100)
                         {
-                            i -= 99;
+                            if (description[i] == ' ')
+                            {
+                                description = description.Substring(0, i) + "\n" + description.Substring(i + 1);
+                            }
+                            else
+                            {
+                                i -= 99;
+                            }
                         }
+                        Forms.conn.Open();
+                        using (SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Products VALUES ('{BarcodeTextBox.Text}', \"{ProductNameTextBox.Text}\", \"{description}\", '{double.Parse(PriceTextBox.Text)}', '{int.Parse(StockCountTextBox.Text)}', '0',@image, 'f')", Forms.conn))
+                        {
+                            sql.Parameters.AddWithValue("@image", imageBytes);
+                            sql.ExecuteNonQuery();
+                        }
+                        Forms.conn.Close();
+                        MessageBox.Show("Product Added");
+                        Forms.viewemployeeactions.Action(5, $"Added product {BarcodeTextBox.Text}");
+                        Reset();
                     }
-                    Forms.conn.Open();
-                    using (SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Products VALUES ('{BarcodeTextBox.Text}', \"{ProductNameTextBox.Text}\", \"{description}\", '{double.Parse(PriceTextBox.Text)}', '{int.Parse(StockCountTextBox.Text)}', '0',@image, 'f')", Forms.conn))
+                    else
                     {
-                        sql.Parameters.AddWithValue("@image", imageBytes);
-                        sql.ExecuteNonQuery();
+                        MessageBox.Show("This barcode is already in the databse");
                     }
-                    Forms.conn.Close();
-                    MessageBox.Show("Product Added");
-                    Forms.viewemployeeactions.Action(5, $"Added product {BarcodeTextBox.Text}");
-                    Reset();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid barcode");
                 }
             }
+            else
+            {
+                MessageBox.Show("Invalid inputs");
+            }
+        }
+
+        private bool CheckAllRegEx()
+        {
+            if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
+            {
+                if (Regex.IsMatch(PriceTextBox.Text, RegExFormats.anyprice))
+                {
+                    if (Regex.IsMatch(StockCountTextBox.Text, RegExFormats.anynumber))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private bool EANCheck(string barcode)

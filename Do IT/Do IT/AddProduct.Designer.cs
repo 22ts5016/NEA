@@ -44,6 +44,7 @@
             this.ImageLabel = new System.Windows.Forms.Label();
             this.SelectImageButton = new System.Windows.Forms.Button();
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.PoundSymbolLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,11 +178,21 @@
             this.ImagePictureBox.TabIndex = 14;
             this.ImagePictureBox.TabStop = false;
             // 
+            // PoundSymbolLabel
+            // 
+            this.PoundSymbolLabel.AutoSize = true;
+            this.PoundSymbolLabel.Location = new System.Drawing.Point(194, 236);
+            this.PoundSymbolLabel.Name = "PoundSymbolLabel";
+            this.PoundSymbolLabel.Size = new System.Drawing.Size(13, 13);
+            this.PoundSymbolLabel.TabIndex = 15;
+            this.PoundSymbolLabel.Text = "£";
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.PoundSymbolLabel);
             this.Controls.Add(this.ImagePictureBox);
             this.Controls.Add(this.SelectImageButton);
             this.Controls.Add(this.ImageLabel);
@@ -224,5 +235,6 @@
         private System.Windows.Forms.Label ImageLabel;
         private System.Windows.Forms.Button SelectImageButton;
         private System.Windows.Forms.PictureBox ImagePictureBox;
+        private System.Windows.Forms.Label PoundSymbolLabel;
     }
 }

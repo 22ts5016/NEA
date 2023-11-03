@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -31,19 +32,26 @@ namespace Do_IT
         {
             DetailsTableLayoutPanel.Controls.Clear();
             MainLayoutPanel.Controls.Clear();
-            Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID Group By OrderEntry.Barcode", Forms.conn);
-            SQLiteDataReader reader = sql.ExecuteReader();
-
-            if (reader.Read())
+            if (Regex.IsMatch(OrderNumberTextBox.Text, RegExFormats.anynumber))
             {
-                AddInfoToOrderDisplay(reader);
+                Forms.conn.Open();
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID Group By OrderEntry.Barcode", Forms.conn);
+                SQLiteDataReader reader = sql.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    AddInfoToOrderDisplay(reader);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Order Number");
+                }
+                Forms.conn.Close();
             }
             else
             {
-                MessageBox.Show("Invalid Order Number");
+                MessageBox.Show("Invalid input");
             }
-            Forms.conn.Close();
         }
 
         private void AddInfoToOrderDisplay(SQLiteDataReader reader)

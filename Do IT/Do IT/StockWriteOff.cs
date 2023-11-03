@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -43,103 +44,122 @@ namespace Do_IT
             string barcode = BarcodeTextBox.Text;
             if (WriteOffReasonComboBox.SelectedIndex != -1)
             {
-                if (ProductQuery.CheckValidBarcode(barcode))
+                if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
                 {
-                    string barcodeandindex = barcode + "_" + WriteOffReasonComboBox.SelectedIndex + "_";
-                    if (!CheckDuplicatesInList(barcodeandindex))
+                    if (ProductQuery.CheckValidBarcode(barcode))
                     {
-                        TableLayoutPanel table = new TableLayoutPanel();
+                        string barcodeandindex = barcode + "_" + WriteOffReasonComboBox.SelectedIndex + "_";
+                        if (!CheckDuplicatesInList(barcodeandindex))
+                        {
+                            TableLayoutPanel table = new TableLayoutPanel();
 
-                        table.Name = barcodeandindex + "Table";
-                        table.AutoSize = true;
-                        table.ColumnCount = 6;
+                            table.Name = barcodeandindex + "Table";
+                            table.AutoSize = true;
+                            table.ColumnCount = 6;
 
-                        Label label = new Label();
-                        label.Text = barcode;
-                        label.Name = barcodeandindex + "Label";
-                        label.Margin = new Padding(3, 6, 3, 3);
+                            Label label = new Label();
+                            label.Text = barcode;
+                            label.Name = barcodeandindex + "Label";
+                            label.Margin = new Padding(3, 6, 3, 3);
 
-                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                        table.Controls.Add(label, 0, 0);
-                        table.ColumnStyles[0].Width = 100;
+                            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                            table.Controls.Add(label, 0, 0);
+                            table.ColumnStyles[0].Width = 100;
 
-                        Button reducebutton = new Button();
-                        reducebutton.Name = barcodeandindex + "ReduceButton";
-                        reducebutton.Size = new Size(20, 20);
-                        reducebutton.Text = "<";
-                        reducebutton.Click += Reducebutton_Click;
+                            Button reducebutton = new Button();
+                            reducebutton.Name = barcodeandindex + "ReduceButton";
+                            reducebutton.Size = new Size(20, 20);
+                            reducebutton.Text = "<";
+                            reducebutton.Click += Reducebutton_Click;
 
-                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                        table.Controls.Add(reducebutton, 1, 0);
-                        table.ColumnStyles[1].Width = 25;
+                            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                            table.Controls.Add(reducebutton, 1, 0);
+                            table.ColumnStyles[1].Width = 25;
 
-                        TextBox counttextbox = new TextBox();
-                        counttextbox.Name = barcodeandindex + "Count";
-                        counttextbox.Size = new Size(40, 20);
-                        counttextbox.Text = "1";
+                            TextBox counttextbox = new TextBox();
+                            counttextbox.Name = barcodeandindex + "Count";
+                            counttextbox.Size = new Size(40, 20);
+                            counttextbox.Text = "1";
+                            counttextbox.TextChanged += CountTextBox_TextChanged;
 
-                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                        table.Controls.Add(counttextbox, 2, 0);
-                        table.ColumnStyles[2].Width = 40;
+                            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                            table.Controls.Add(counttextbox, 2, 0);
+                            table.ColumnStyles[2].Width = 40;
 
-                        Button increasebutton = new Button();
-                        increasebutton.Name = barcodeandindex + "IncreaseButton";
-                        increasebutton.Size = new Size(20, 20);
-                        increasebutton.Text = ">";
-                        increasebutton.Click += Increasebutton_Click;
+                            Button increasebutton = new Button();
+                            increasebutton.Name = barcodeandindex + "IncreaseButton";
+                            increasebutton.Size = new Size(20, 20);
+                            increasebutton.Text = ">";
+                            increasebutton.Click += Increasebutton_Click;
 
-                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                        table.Controls.Add(increasebutton, 3, 0);
-                        table.ColumnStyles[3].Width = 50;
+                            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                            table.Controls.Add(increasebutton, 3, 0);
+                            table.ColumnStyles[3].Width = 50;
 
-                        Label reasonlabel = new Label();
-                        reasonlabel.Name = barcodeandindex + "ComboBox";
-                        reasonlabel.Text = WriteOffReasonComboBox.Items[WriteOffReasonComboBox.SelectedIndex].ToString();
-                        reasonlabel.Margin = new Padding(3, 6, 3, 3);
+                            Label reasonlabel = new Label();
+                            reasonlabel.Name = barcodeandindex + "ComboBox";
+                            reasonlabel.Text = WriteOffReasonComboBox.Items[WriteOffReasonComboBox.SelectedIndex].ToString();
+                            reasonlabel.Margin = new Padding(3, 6, 3, 3);
 
-                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                        table.Controls.Add(reasonlabel, 4, 0);
-                        table.ColumnStyles[4].Width = 150;
+                            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                            table.Controls.Add(reasonlabel, 4, 0);
+                            table.ColumnStyles[4].Width = 150;
 
-                        Button removebutton = new Button();
-                        removebutton.Name = barcodeandindex + "Remove";
-                        removebutton.Size = new Size(100, 20);
-                        removebutton.Text = "Remove";
-                        removebutton.Click += Removebutton_Click;
+                            Button removebutton = new Button();
+                            removebutton.Name = barcodeandindex + "Remove";
+                            removebutton.Size = new Size(100, 20);
+                            removebutton.Text = "Remove";
+                            removebutton.Click += Removebutton_Click;
 
-                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                        table.Controls.Add(removebutton, 5, 0);
-                        table.ColumnStyles[5].Width = 500;
+                            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                            table.Controls.Add(removebutton, 5, 0);
+                            table.ColumnStyles[5].Width = 500;
 
-                        LayoutPanel1.Controls.Add(table);
+                            LayoutPanel1.Controls.Add(table);
 
+
+                        }
+                        else
+                        {
+                            foreach (TableLayoutPanel table in LayoutPanel1.Controls)
+                            {
+                                if (table.Name == barcodeandindex + "Table")
+                                {
+                                    foreach (Control control in table.Controls)
+                                    {
+                                        if (control.Name == barcodeandindex + "Count")
+                                        {
+                                            control.Text = (int.Parse(control.Text) + 1).ToString();
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+
+                            }
+                        }
 
                     }
                     else
                     {
-                        foreach (TableLayoutPanel table in LayoutPanel1.Controls)
-                        {
-                            if (table.Name == barcodeandindex + "Table")
-                            {
-                                foreach (Control control in table.Controls)
-                                {
-                                    if (control.Name == barcodeandindex + "Count")
-                                    {
-                                        control.Text = (int.Parse(control.Text) + 1).ToString();
-                                        break;
-                                    }
-                                }
-                                break;
-                            }
-
-                        }
+                        MessageBox.Show("Invalid Barcode");
                     }
-
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Barcode");
+                    MessageBox.Show("Invalid input");
                 }
+            }
+        }
+
+        private void CountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox inputtextbox = sender as TextBox;
+            if(!Regex.IsMatch(inputtextbox.Text, RegExFormats.anynumber))
+            {
+                MessageBox.Show("Invalid input");
+                inputtextbox.Text = "1";
+                inputtextbox.SelectionStart = 1;
             }
         }
 
