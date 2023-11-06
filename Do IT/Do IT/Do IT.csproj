@@ -95,6 +95,12 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCustomer.Designer.cs">
+      <DependentUpon>CreateCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,12 @@
     <Compile Include="StockWriteOff.Designer.cs">
       <DependentUpon>StockWriteOff.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCustomer.Designer.cs">
+      <DependentUpon>ViewCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewEmployeeActions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCustomer.resx">
+      <DependentUpon>CreateCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateOrder.resx">
       <DependentUpon>CreateOrder.cs</DependentUpon>
@@ -297,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockWriteOff.resx">
       <DependentUpon>StockWriteOff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCustomer.resx">
+      <DependentUpon>ViewCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewEmployeeActions.resx">
       <DependentUpon>ViewEmployeeActions.cs</DependentUpon>

@@ -36,7 +36,7 @@
             this.CustomerDetailsButton = new System.Windows.Forms.Button();
             this.AddProductButton = new System.Windows.Forms.Button();
             this.AddLocationButton = new System.Windows.Forms.Button();
-            this.ExitButton = new System.Windows.Forms.Button();
+            this.SignOutButton = new System.Windows.Forms.Button();
             this.RemoveProductButton = new System.Windows.Forms.Button();
             this.RemoveLocationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -124,15 +124,15 @@
             this.AddLocationButton.Visible = false;
             this.AddLocationButton.Click += new System.EventHandler(this.AddLocationButton_Click);
             // 
-            // ExitButton
+            // SignOutButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(1412, 759);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(160, 90);
-            this.ExitButton.TabIndex = 9;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = true;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            this.SignOutButton.Location = new System.Drawing.Point(1412, 759);
+            this.SignOutButton.Name = "SignOutButton";
+            this.SignOutButton.Size = new System.Drawing.Size(160, 90);
+            this.SignOutButton.TabIndex = 9;
+            this.SignOutButton.Text = "Sign Out";
+            this.SignOutButton.UseVisualStyleBackColor = true;
+            this.SignOutButton.Click += new System.EventHandler(this.SignOutButton_Click);
             // 
             // RemoveProductButton
             // 
@@ -160,10 +160,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.RemoveLocationButton);
             this.Controls.Add(this.RemoveProductButton);
-            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.SignOutButton);
             this.Controls.Add(this.AddLocationButton);
             this.Controls.Add(this.AddProductButton);
             this.Controls.Add(this.CustomerDetailsButton);
@@ -190,7 +191,7 @@
         private System.Windows.Forms.Button CustomerDetailsButton;
         private System.Windows.Forms.Button AddProductButton;
         private System.Windows.Forms.Button AddLocationButton;
-        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button SignOutButton;
         private System.Windows.Forms.Button RemoveProductButton;
         private System.Windows.Forms.Button RemoveLocationButton;
     }

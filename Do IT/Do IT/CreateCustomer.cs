@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Do_IT
 {
-    public partial class CustomerDetails : Form
+    public partial class CreateCustomer : Form
     {
-        public CustomerDetails()
+        public CreateCustomer()
         {
             InitializeComponent();
         }
@@ -20,18 +20,6 @@ namespace Do_IT
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
             Forms.mainmenu.Show();
-            this.Hide();
-        }
-
-        private void ViewCustomerButton_Click(object sender, EventArgs e)
-        {
-            Forms.viewcustomer.Show();
-            this.Hide();
-        }
-
-        private void CreateCustomerButton_Click(object sender, EventArgs e)
-        {
-            Forms.createcustomer.Show();
             this.Hide();
         }
     }

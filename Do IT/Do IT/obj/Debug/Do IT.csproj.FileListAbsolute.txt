@@ -161,3 +161,5 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateOrder.re
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddEmployee.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateCustomer.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomer.resources

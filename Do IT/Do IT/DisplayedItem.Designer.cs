@@ -42,6 +42,7 @@
             this.BarcodeLabel = new System.Windows.Forms.Label();
             this.AddToOrderButton = new System.Windows.Forms.Button();
             this.CurrentOrderButton = new System.Windows.Forms.Button();
+            this.IsItemLocatedLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ProductImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,12 +180,24 @@
             this.CurrentOrderButton.UseVisualStyleBackColor = true;
             this.CurrentOrderButton.Click += new System.EventHandler(this.CurrentOrderButton_Click);
             // 
+            // IsItemLocatedLabel
+            // 
+            this.IsItemLocatedLabel.AutoSize = true;
+            this.IsItemLocatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsItemLocatedLabel.Location = new System.Drawing.Point(59, 474);
+            this.IsItemLocatedLabel.Name = "IsItemLocatedLabel";
+            this.IsItemLocatedLabel.Size = new System.Drawing.Size(185, 25);
+            this.IsItemLocatedLabel.TabIndex = 23;
+            this.IsItemLocatedLabel.Text = "Item has no location";
+            this.IsItemLocatedLabel.Visible = false;
+            // 
             // DisplayedItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.IsItemLocatedLabel);
             this.Controls.Add(this.CurrentOrderButton);
             this.Controls.Add(this.AddToOrderButton);
             this.Controls.Add(this.BarcodeLabel);
@@ -225,5 +238,6 @@
         private System.Windows.Forms.Label BarcodeLabel;
         private System.Windows.Forms.Button AddToOrderButton;
         private System.Windows.Forms.Button CurrentOrderButton;
+        private System.Windows.Forms.Label IsItemLocatedLabel;
     }
 }

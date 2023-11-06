@@ -23,6 +23,7 @@ namespace Do_IT
         public List<string> sequence = new List<string>();
         public List<int> type = new List<int>();
         public Bitmap image;
+        public bool located;
 
         public DisplayedItem()
         {
@@ -31,6 +32,10 @@ namespace Do_IT
 
         private void DisplayedItem_Load(object sender, EventArgs e)
         {
+            if (!located)
+            {
+                IsItemLocatedLabel.Visible = true;
+            }            
             ProductNameLabel.Text = name;
             BarcodeLabel.Text = barcode;
             ProductDescrpitionLabel.Text = description;

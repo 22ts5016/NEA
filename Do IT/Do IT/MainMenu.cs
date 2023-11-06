@@ -20,6 +20,7 @@ namespace Do_IT
         private void MainMenu_Load(object sender, EventArgs e)
         {
             Forms.firstscreen.Dispose();
+            Forms.firstscreen = new FirstScreen();
             if(1 < CurrentUser.clearance)
             {
                 EmployeesButton.Visible = true;
@@ -89,11 +90,6 @@ namespace Do_IT
             this.Hide();
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            Forms.CloseAll();
-        }
-
         private void RemoveProductButton_Click(object sender, EventArgs e)
         {
             Forms.removeproduct.Show();
@@ -106,6 +102,13 @@ namespace Do_IT
             Forms.removelocation.Show();
             Forms.mainmenu.ProductQueryButton.Select();
             this.Hide();
+        }
+
+        private void SignOutButton_Click(object sender, EventArgs e)
+        {
+            Forms.firstscreen.Show();
+            Forms.mainmenu = new MainMenu();
+            this.Dispose();
         }
     }
 }

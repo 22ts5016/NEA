@@ -471,6 +471,7 @@ namespace Do_IT
                 Forms.displayeditem.sequence.Add((string)reader["Sequence"]);
             }
             Forms.displayeditem.image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
+            Forms.displayeditem.located = located;
         }
 
         private string GetParameters(string text)

@@ -62,7 +62,7 @@ namespace Do_IT
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            Forms.CloseAll();
+            System.Environment.Exit(0);
         }
 
         private void RevealPasswordButton_Click(object sender, EventArgs e)

@@ -195,10 +195,11 @@
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // CreateAccount
+            // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.RoleComboBox);
@@ -216,7 +217,7 @@
             this.Controls.Add(this.ForenameTextBox);
             this.Controls.Add(this.ForenameLabel);
             this.Controls.Add(this.EmployeeIDLabel);
-            this.Name = "CreateAccount";
+            this.Name = "AddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Account";
             this.Load += new System.EventHandler(this.CreateAccount_Load);

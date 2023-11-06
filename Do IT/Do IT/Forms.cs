@@ -26,6 +26,8 @@ namespace Do_IT
         public static StockAdjustment stockadjustment = new StockAdjustment();
         public static StockWriteOff stockwriteoff = new StockWriteOff();
         public static CustomerDetails customerdetails = new CustomerDetails();
+        public static CreateCustomer createcustomer = new CreateCustomer();
+        public static ViewCustomer viewcustomer = new ViewCustomer();
         public static Employees employees = new Employees();
         public static ViewEmployeeActions viewemployeeactions = new ViewEmployeeActions();
         public static ResetPassword resetpassword = new ResetPassword();
