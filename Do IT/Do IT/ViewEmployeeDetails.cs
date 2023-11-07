@@ -105,6 +105,8 @@ namespace Do_IT
 
                 MainTable.Controls.Add(temp, 6, 1);
                 reader.Close();
+
+                Forms.viewemployeeactions.Action(4, $"Viewed {InputTextBox.Text} details");
             }
             else
             {

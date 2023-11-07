@@ -42,6 +42,7 @@ namespace Do_IT
                     SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO ValidLocations VALUES ('{IsleTextBox.Text}', '{BayTextBox.Text}')", Forms.conn);
                     sql2.ExecuteNonQuery();
                     MessageBox.Show("Location Added");
+                    Forms.viewemployeeactions.Action(2, $"Created Location Isle {IsleTextBox.Text} Bay {BayTextBox.Text}");
                 }
                 reader.Close();
                 Forms.conn.Close();

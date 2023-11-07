@@ -95,6 +95,12 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="CollectOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CollectOrder.Designer.cs">
+      <DependentUpon>CollectOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CollectOrder.resx">
+      <DependentUpon>CollectOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateCustomer.resx">
       <DependentUpon>CreateCustomer.cs</DependentUpon>

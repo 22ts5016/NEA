@@ -31,6 +31,7 @@
             this.MainMenuButton = new System.Windows.Forms.Button();
             this.CreateOrderButton = new System.Windows.Forms.Button();
             this.ViewOrderButton = new System.Windows.Forms.Button();
+            this.CollectOrderButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -63,12 +64,23 @@
             this.ViewOrderButton.UseVisualStyleBackColor = true;
             this.ViewOrderButton.Click += new System.EventHandler(this.ViewOrderButton_Click);
             // 
+            // CollectOrderButton
+            // 
+            this.CollectOrderButton.Location = new System.Drawing.Point(663, 55);
+            this.CollectOrderButton.Name = "CollectOrderButton";
+            this.CollectOrderButton.Size = new System.Drawing.Size(181, 107);
+            this.CollectOrderButton.TabIndex = 4;
+            this.CollectOrderButton.Text = "Collect Order";
+            this.CollectOrderButton.UseVisualStyleBackColor = true;
+            this.CollectOrderButton.Click += new System.EventHandler(this.CollectOrderButton_Click);
+            // 
             // Orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.CollectOrderButton);
             this.Controls.Add(this.ViewOrderButton);
             this.Controls.Add(this.CreateOrderButton);
             this.Controls.Add(this.MainMenuButton);
@@ -84,5 +96,6 @@
         private System.Windows.Forms.Button MainMenuButton;
         private System.Windows.Forms.Button CreateOrderButton;
         private System.Windows.Forms.Button ViewOrderButton;
+        private System.Windows.Forms.Button CollectOrderButton;
     }
 }

@@ -83,6 +83,7 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
+\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateAccount.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
@@ -160,7 +161,52 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateOrder.re
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddEmployee.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
-\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddEmployee.resources
-\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateOrder.resources
-\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
-\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateCustomer.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomer.resources
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\Do IT.exe.config
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\Do IT.exe
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\Do IT.pdb
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\EntityFramework.dll
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\EntityFramework.SqlServer.dll
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\System.Data.SQLite.dll
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\EntityFramework.xml
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\EntityFramework.SqlServer.xml
+D:\Toby\Homework\Do IT\Do IT\bin\Debug\System.Data.SQLite.xml
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.csproj.AssemblyReference.cache
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.csproj.SuggestedBindingRedirects.cache
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.AddItemToLocation.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.AddEmployee.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.CreateCustomer.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.CreateOrder.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.FirstScreen.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ItemsInABay.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ItemsWithoutLocations.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.LocationManagement.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.MainMenu.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.Orders.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ProductQuery.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.Properties.Resources.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.RemoveProduct.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ResetPassword.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.StockAdjustment.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.StockManagement.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomer.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeActions.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do_IT.ViewOrder.resources
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.csproj.GenerateResource.cache
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.csproj.CoreCompileInputs.cache
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.exe
+D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.pdb
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CollectOrder.resources

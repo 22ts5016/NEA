@@ -22,6 +22,7 @@ namespace Do_IT
         public static Orders orders = new Orders();
         public static ViewOrder vieworder = new ViewOrder();
         public static CreateOrder createorder = new CreateOrder();
+        public static CollectOrder collectorder = new CollectOrder();
         public static StockManagement stockmanagement = new StockManagement();
         public static StockAdjustment stockadjustment = new StockAdjustment();
         public static StockWriteOff stockwriteoff = new StockWriteOff();

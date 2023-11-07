@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -100,17 +101,70 @@ namespace Do_IT
         {
             if(SearchByComboBox.SelectedIndex != -1)
             {
-                FillTableHeaders();
-                Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT * FROM Customers WHERE {SearchByComboBox.Items[SearchByComboBox.SelectedIndex]} = '{SearchTextBox.Text}'", Forms.conn);
-                SQLiteDataReader reader = sql.ExecuteReader();
+                bool valid = true;
 
-                while (reader.Read())
+                switch (SearchByComboBox.SelectedIndex)
                 {
-                    MainLayoutPanel.Controls.Add(NewCustomerTable(reader));
+                    case 0:
+                        if (!Regex.IsMatch(SearchTextBox.Text, RegExFormats.anynumber))
+                        {
+                            valid = false;
+                        }
+                        break;
+                    case 1:
+                    case 2:
+                    case 3:
+                        if (!Regex.IsMatch(SearchTextBox.Text, RegExFormats.anyletters))
+                        {
+                            valid = false;
+                        }
+                        break;
+                    case 4:
+                        if (!Regex.IsMatch(SearchTextBox.Text, RegExFormats.anyaddress))
+                        {
+                            valid = false;
+                        }
+                        break;
+                    case 5:
+                        if (!Regex.IsMatch(SearchTextBox.Text, RegExFormats.anypostcode))
+                        {
+                            valid = false;
+                        }
+                        break;
+                    case 6:
+                        if (!Regex.IsMatch(SearchTextBox.Text, RegExFormats.anyphonenumber))
+                        {
+                            valid = false;
+                        }
+                        break;
+                    case 7:
+                        if (!Regex.IsMatch(SearchTextBox.Text, RegExFormats.anyemail))
+                        {
+                            valid = false;
+                        }
+                        break;
                 }
-                reader.Close();
-                Forms.conn.Close();
+
+                if (valid)
+                {
+                    CustomerDetailsTable.Controls.Clear();
+                    MainLayoutPanel.Controls.Clear();
+                    FillTableHeaders();
+                    Forms.conn.Open();
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT * FROM Customers WHERE {SearchByComboBox.Items[SearchByComboBox.SelectedIndex]} COLLATE NOCASE = '{SearchTextBox.Text}'", Forms.conn);
+                    SQLiteDataReader reader = sql.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        MainLayoutPanel.Controls.Add(NewCustomerTable(reader));
+                    }
+                    reader.Close();
+                    Forms.conn.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid input");
+                }
             }
         }
 
@@ -146,14 +200,14 @@ namespace Do_IT
 
             table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             table.Controls.Add(temp);
-            table.ColumnStyles[2].Width = 200;
+            table.ColumnStyles[2].Width = 175;
 
             temp = Forms.vieworder.CreateLabel("middle");
             temp.Text = (string)reader["Surname"];
 
             table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             table.Controls.Add(temp);
-            table.ColumnStyles[3].Width = 200;
+            table.ColumnStyles[3].Width = 175;
 
             temp = Forms.vieworder.CreateLabel("middle");
             temp.Text = (string)reader["Address"];
@@ -181,17 +235,38 @@ namespace Do_IT
 
             table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
             table.Controls.Add(temp);
-            table.ColumnStyles[7].Width = 200;
+            table.ColumnStyles[7].Width = 250;
 
-            Button addcustomertoorderbutton = new Button();
-            addcustomertoorderbutton.Size = new Size(90, 40);
-            addcustomertoorderbutton.Text = "Tag Customer To Order";
+            if (!Forms.createorder.customertagged)
+            {
+                Button addcustomertoorderbutton = new Button();
+                addcustomertoorderbutton.Size = new Size(90, 40);
+                addcustomertoorderbutton.Name = customerID + "_Button";
+                addcustomertoorderbutton.Text = "Tag Customer To Order";
+                addcustomertoorderbutton.Click += AddCustomerToOrderButton_Click;
 
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-            table.Controls.Add(addcustomertoorderbutton);
-            table.ColumnStyles[8].Width = 100;
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                table.Controls.Add(addcustomertoorderbutton);
+                table.ColumnStyles[8].Width = 100;
+            }
 
             return table;
+        }
+
+        private void AddCustomerToOrderButton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            Forms.createorder.DetailsTableLayoutPanel.Controls.Clear();
+            Forms.createorder.AddCustomerToOrder(int.Parse(button.Name.Split('_')[0]));
+            Forms.createorder.DisplayItemsInOrder();
+            Forms.createorder.Show();
+            this.Hide();
+        }
+
+        private void CreateCustomerAccountButton_Click(object sender, EventArgs e)
+        {
+            Forms.createcustomer.Show();
+            this.Hide();
         }
     }
 }

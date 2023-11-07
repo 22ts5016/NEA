@@ -97,7 +97,7 @@ namespace Do_IT
             return false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ItemsWithoutLocationButton_Click(object sender, EventArgs e)
         {
             Forms.itemswithoutlocations.Show();
             this.Hide();

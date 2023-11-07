@@ -31,7 +31,7 @@ namespace Do_IT
             }
             else
             {
-                if(!ExactProductNameCheckBox.Checked && !BarcodeCheckBox.Checked)
+                if (!ExactProductNameCheckBox.Checked && !BarcodeCheckBox.Checked)
                 {
                     ProductNameCheckBox.Checked = true;
                 }
@@ -91,7 +91,7 @@ namespace Do_IT
             if (ProductNameCheckBox.Checked || ExactProductNameCheckBox.Checked)
             {
                 string word = SearchTextBox.Text.ToLower();
-                if(word.Length == 0)
+                if (word.Length == 0)
                 {
                     LabelStatus(false);
                 }
@@ -223,14 +223,14 @@ namespace Do_IT
                     barcodelabel.AutoSize = true;
                     barcodelabel.Margin = new Padding(0, 0, 0, 150);
 
-                    table.Controls.Add(barcodelabel, 0 , 1);
+                    table.Controls.Add(barcodelabel, 0, 1);
 
                     Label stocklabel = new Label();
                     stocklabel.Text = "Stock: " + Convert.ToInt32(reader["StockCount"]);
                     stocklabel.Font = new Font(stocklabel.Font.FontFamily, 10);
                     stocklabel.Name = name + "_Stock";
                     stocklabel.AutoSize = true;
-                    
+
                     table.Controls.Add(stocklabel, 0, 2);
 
                     Label pricelabel = new Label();
@@ -257,17 +257,17 @@ namespace Do_IT
                     table.Controls.Add(viewbutton, 1, 1);
                     table.ColumnStyles[1].Width = 125;
 
-                    Button addbutton = new Button();
-                    addbutton.Font = new Font(addbutton.Font.FontFamily, 10);
-                    addbutton.Name = barcode + "_AddToOrder_Button";
-                    addbutton.Text = "Add To Order";
-                    addbutton.Size = new Size(100, 100);
-                    addbutton.Anchor = AnchorStyles.Left;
+                    Button addtoorderbutton = new Button();
+                    addtoorderbutton.Font = new Font(addtoorderbutton.Font.FontFamily, 10);
+                    addtoorderbutton.Name = barcode + "_AddToOrder_Button";
+                    addtoorderbutton.Text = "Add To Order";
+                    addtoorderbutton.Size = new Size(100, 100);
+                    addtoorderbutton.Anchor = AnchorStyles.Left;
 
-                    addbutton.Click += AddButton_Click;
+                    addtoorderbutton.Click += AddToOrderButton_Click;
 
                     table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.Controls.Add(addbutton, 2, 1);
+                    table.Controls.Add(addtoorderbutton, 2, 1);
                     table.ColumnStyles[2].Width = 125;
 
                     LayoutPanel1.Controls.Add(table);
@@ -291,7 +291,7 @@ namespace Do_IT
 
                     ShowItem(barcode);
 
-                    UpdateWeight(name, weight);                    
+                    UpdateWeight(name, weight);
                 }
                 else
                 {
@@ -299,11 +299,11 @@ namespace Do_IT
                 }
                 Forms.conn.Close();
             }
-            else if(BarcodeCheckBox.Checked)
+            else if (BarcodeCheckBox.Checked)
             {
                 if (Regex.IsMatch(SearchTextBox.Text, RegExFormats.anynumber))
                 {
-                    if(CheckValidBarcode(SearchTextBox.Text))
+                    if (CheckValidBarcode(SearchTextBox.Text))
                     {
                         ShowItem(SearchTextBox.Text);
                     }
@@ -394,7 +394,7 @@ namespace Do_IT
             reader.Close();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void AddToOrderButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             string barcode = button.Name.Split('_')[0];
@@ -402,9 +402,16 @@ namespace Do_IT
             if (!Forms.createorder.barcodesinorder.Contains(barcode))
             {
                 Forms.createorder.barcodesinorder.Add(barcode);
+                Forms.createorder.quantityofproducts.Add(1);
+            }
+            else
+            {
+                Forms.createorder.quantityofproducts[Forms.createorder.barcodesinorder.IndexOf(barcode)] += 1;
             }
 
             MessageBox.Show(barcode + " Added to order");
+
+            ViewOrderButton.Visible = true;
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)
@@ -450,7 +457,7 @@ namespace Do_IT
 
         private void LabelStatus(bool status)
         {
-            if(status)
+            if (status)
             {
                 Option1Label.Visible = true;
                 Option2Label.Visible = true;
@@ -475,7 +482,7 @@ namespace Do_IT
             Forms.displayeditem.description = (string)reader["ProductDescription"];
             Forms.displayeditem.price = Convert.ToDouble(reader["Price"]);
             Forms.displayeditem.stock = Convert.ToInt32(reader["StockCount"]);
-            if(located)
+            if (located)
             {
                 Forms.displayeditem.type.Add(Convert.ToInt32(reader["Type"]));
                 Forms.displayeditem.isle.Add(Convert.ToInt32(reader["Isle"]));
@@ -489,7 +496,7 @@ namespace Do_IT
         private string GetParameters(string text)
         {
             string query = "";
-            foreach(string word in text.Split(' '))
+            foreach (string word in text.Split(' '))
             {
                 query += "OR ProductName LIKE '%" + word + "%' ";
             }
@@ -544,10 +551,25 @@ namespace Do_IT
 
         private void SortByComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(SearchTextBox.Text != "" && ProductNameCheckBox.Checked)
+            if (SearchTextBox.Text != "" && ProductNameCheckBox.Checked)
             {
                 SearchButton.PerformClick();
             }
+        }
+
+        private void ViewOrderButton_Click(object sender, EventArgs e)
+        {
+            Forms.createorder.DisplayItemsInOrder();
+            Forms.createorder.Show();
+            ViewOrderButton.Visible = false;
+            this.Hide();
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            Forms.productquery = new ProductQuery();
+            Forms.productquery.Show();
+            this.Dispose();
         }
     }
 }

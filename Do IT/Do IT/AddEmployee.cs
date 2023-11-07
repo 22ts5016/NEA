@@ -21,7 +21,7 @@ namespace Do_IT
 
         private void CreateAccountButton_Click(object sender, EventArgs e)
         {
-            if(Regex.IsMatch(ForenameTextBox.Text, RegExFormats.anyletter) && Regex.IsMatch(SurnameTextBox.Text, RegExFormats.anyletter) && RoleComboBox.SelectedIndex != -1 && DepartmentComboBox.SelectedIndex != -1)
+            if (Regex.IsMatch(ForenameTextBox.Text, RegExFormats.anyletters) && Regex.IsMatch(SurnameTextBox.Text, RegExFormats.anyletters) && RoleComboBox.SelectedIndex != -1 && DepartmentComboBox.SelectedIndex != -1)
             {
                 if (!CheckuserNameDupe())
                 {
@@ -69,11 +69,11 @@ namespace Do_IT
         {
             FillComboBoxes();
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand("SELECT EmployeeID FROM Employees ORDER BY EmployeeID DESC", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand("SELECT MAX(EmployeeID) FROM Employees", Forms.conn);
             SQLiteDataReader reader;
             reader = sql.ExecuteReader();
             reader.Read();
-            EmployeeIDNumberLabel.Text = (int.Parse((reader["EmployeeID"].ToString())) + 1).ToString();
+            EmployeeIDNumberLabel.Text = (Convert.ToInt32(reader["MAX(EmployeeID)"].ToString()) + 1).ToString();
             reader.Close();
             Forms.conn.Close();
         }
@@ -89,14 +89,14 @@ namespace Do_IT
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand("SELECT Role FROM Roles", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 RoleComboBox.Items.Add((string)reader["Role"]);
             }
             reader.Close();
             SQLiteCommand sql2 = new SQLiteCommand($"SELECT Department FROM DepartmentTypes", Forms.conn);
             SQLiteDataReader reader2 = sql2.ExecuteReader();
-            while(reader2.Read())
+            while (reader2.Read())
             {
                 DepartmentComboBox.Items.Add((string)reader2["Department"]);
             }

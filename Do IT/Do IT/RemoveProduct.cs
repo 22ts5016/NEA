@@ -116,6 +116,7 @@ namespace Do_IT
             }
             MessageBox.Show("Product Removed");
             Forms.conn.Close();
+            Forms.viewemployeeactions.Action(5, $"{barcode} removed");
         }
     }
 }

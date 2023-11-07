@@ -102,7 +102,7 @@
             this.DepartmentComboBox.FormattingEnabled = true;
             this.DepartmentComboBox.Location = new System.Drawing.Point(201, 341);
             this.DepartmentComboBox.Name = "DepartmentComboBox";
-            this.DepartmentComboBox.Size = new System.Drawing.Size(137, 21);
+            this.DepartmentComboBox.Size = new System.Drawing.Size(105, 21);
             this.DepartmentComboBox.TabIndex = 7;
             // 
             // UsernameLabel
@@ -152,8 +152,9 @@
             this.EmployeeIDNumberLabel.AutoSize = true;
             this.EmployeeIDNumberLabel.Location = new System.Drawing.Point(198, 91);
             this.EmployeeIDNumberLabel.Name = "EmployeeIDNumberLabel";
-            this.EmployeeIDNumberLabel.Size = new System.Drawing.Size(0, 13);
+            this.EmployeeIDNumberLabel.Size = new System.Drawing.Size(23, 13);
             this.EmployeeIDNumberLabel.TabIndex = 13;
+            this.EmployeeIDNumberLabel.Text = "null";
             // 
             // DepartmentLabel
             // 
@@ -171,7 +172,7 @@
             this.RoleComboBox.FormattingEnabled = true;
             this.RoleComboBox.Location = new System.Drawing.Point(201, 283);
             this.RoleComboBox.Name = "RoleComboBox";
-            this.RoleComboBox.Size = new System.Drawing.Size(137, 21);
+            this.RoleComboBox.Size = new System.Drawing.Size(105, 21);
             this.RoleComboBox.TabIndex = 7;
             // 
             // MainMenuButton

@@ -271,11 +271,12 @@ namespace Do_IT
                 Forms.conn.Open();
                 foreach (TableLayoutPanel table in LayoutPanel1.Controls)
                 {
+                    Label reasonlabel = table.Controls[4] as Label;
                     int count = int.Parse(table.Controls[2].Text);
                     string barcode = table.Name.Split('_')[0];
                     SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET StockCount = (StockCount - {count}) WHERE Barcode = {barcode}", Forms.conn);
                     sql.ExecuteNonQuery();
-                    actionsneeded.Add($"{count} of {barcode} written off");
+                    actionsneeded.Add($"{count} of {barcode} written off because of: {reasonlabel.Text}");
                 }
                 Forms.conn.Close();
                 foreach(string action in actionsneeded)

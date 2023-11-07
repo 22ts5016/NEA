@@ -40,7 +40,7 @@
             this.OverstockButton = new System.Windows.Forms.Button();
             this.MultiLocationButton = new System.Windows.Forms.Button();
             this.MultiLocationLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ItemsWithoutLocationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // IsleLabel
@@ -163,15 +163,15 @@
             this.MultiLocationLabel.Text = "MultiLocation";
             this.MultiLocationLabel.Visible = false;
             // 
-            // button1
+            // ItemsWithoutLocationButton
             // 
-            this.button1.Location = new System.Drawing.Point(693, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(231, 30);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "View Products Without Locations";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ItemsWithoutLocationButton.Location = new System.Drawing.Point(693, 41);
+            this.ItemsWithoutLocationButton.Name = "ItemsWithoutLocationButton";
+            this.ItemsWithoutLocationButton.Size = new System.Drawing.Size(231, 30);
+            this.ItemsWithoutLocationButton.TabIndex = 12;
+            this.ItemsWithoutLocationButton.Text = "View Products Without Locations";
+            this.ItemsWithoutLocationButton.UseVisualStyleBackColor = true;
+            this.ItemsWithoutLocationButton.Click += new System.EventHandler(this.ItemsWithoutLocationButton_Click);
             // 
             // LocationManagement
             // 
@@ -179,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ItemsWithoutLocationButton);
             this.Controls.Add(this.MultiLocationLabel);
             this.Controls.Add(this.MultiLocationButton);
             this.Controls.Add(this.OverstockButton);
@@ -211,7 +211,7 @@
         private System.Windows.Forms.Button OverstockButton;
         private System.Windows.Forms.Button MultiLocationButton;
         private System.Windows.Forms.Label MultiLocationLabel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ItemsWithoutLocationButton;
         public System.Windows.Forms.TextBox IsleTextBox;
         public System.Windows.Forms.TextBox BayTextBox;
         public System.Windows.Forms.Button SearchButton;

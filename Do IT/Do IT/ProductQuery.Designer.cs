@@ -43,12 +43,14 @@
             this.SortByComboBox = new System.Windows.Forms.ComboBox();
             this.SortByLabel = new System.Windows.Forms.Label();
             this.ItemCountLabel = new System.Windows.Forms.Label();
+            this.ViewOrderButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProductNameCheckBox
             // 
             this.ProductNameCheckBox.AutoSize = true;
-            this.ProductNameCheckBox.Location = new System.Drawing.Point(96, 60);
+            this.ProductNameCheckBox.Location = new System.Drawing.Point(83, 63);
             this.ProductNameCheckBox.Name = "ProductNameCheckBox";
             this.ProductNameCheckBox.Size = new System.Drawing.Size(94, 17);
             this.ProductNameCheckBox.TabIndex = 0;
@@ -59,7 +61,7 @@
             // BarcodeCheckBox
             // 
             this.BarcodeCheckBox.AutoSize = true;
-            this.BarcodeCheckBox.Location = new System.Drawing.Point(326, 60);
+            this.BarcodeCheckBox.Location = new System.Drawing.Point(313, 63);
             this.BarcodeCheckBox.Name = "BarcodeCheckBox";
             this.BarcodeCheckBox.Size = new System.Drawing.Size(66, 17);
             this.BarcodeCheckBox.TabIndex = 1;
@@ -69,7 +71,7 @@
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(422, 60);
+            this.SearchTextBox.Location = new System.Drawing.Point(409, 63);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(371, 20);
             this.SearchTextBox.TabIndex = 2;
@@ -95,7 +97,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(818, 55);
+            this.SearchButton.Location = new System.Drawing.Point(805, 58);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(93, 29);
             this.SearchButton.TabIndex = 8;
@@ -116,7 +118,7 @@
             // ExactProductNameCheckBox
             // 
             this.ExactProductNameCheckBox.AutoSize = true;
-            this.ExactProductNameCheckBox.Location = new System.Drawing.Point(196, 60);
+            this.ExactProductNameCheckBox.Location = new System.Drawing.Point(183, 63);
             this.ExactProductNameCheckBox.Name = "ExactProductNameCheckBox";
             this.ExactProductNameCheckBox.Size = new System.Drawing.Size(124, 17);
             this.ExactProductNameCheckBox.TabIndex = 10;
@@ -127,9 +129,9 @@
             // LayoutPanel1
             // 
             this.LayoutPanel1.AutoScroll = true;
-            this.LayoutPanel1.Location = new System.Drawing.Point(96, 96);
+            this.LayoutPanel1.Location = new System.Drawing.Point(84, 96);
             this.LayoutPanel1.Name = "LayoutPanel1";
-            this.LayoutPanel1.Size = new System.Drawing.Size(1313, 753);
+            this.LayoutPanel1.Size = new System.Drawing.Size(1325, 753);
             this.LayoutPanel1.TabIndex = 11;
             this.LayoutPanel1.Visible = false;
             // 
@@ -170,7 +172,7 @@
             "Price: Low - High",
             "Alphabetical",
             "If Stock Is Available"});
-            this.SortByComboBox.Location = new System.Drawing.Point(1165, 59);
+            this.SortByComboBox.Location = new System.Drawing.Point(1152, 62);
             this.SortByComboBox.Name = "SortByComboBox";
             this.SortByComboBox.Size = new System.Drawing.Size(122, 21);
             this.SortByComboBox.TabIndex = 15;
@@ -179,7 +181,7 @@
             // SortByLabel
             // 
             this.SortByLabel.AutoSize = true;
-            this.SortByLabel.Location = new System.Drawing.Point(1115, 63);
+            this.SortByLabel.Location = new System.Drawing.Point(1102, 66);
             this.SortByLabel.Name = "SortByLabel";
             this.SortByLabel.Size = new System.Drawing.Size(44, 13);
             this.SortByLabel.TabIndex = 16;
@@ -188,10 +190,31 @@
             // ItemCountLabel
             // 
             this.ItemCountLabel.AutoSize = true;
-            this.ItemCountLabel.Location = new System.Drawing.Point(935, 63);
+            this.ItemCountLabel.Location = new System.Drawing.Point(922, 66);
             this.ItemCountLabel.Name = "ItemCountLabel";
             this.ItemCountLabel.Size = new System.Drawing.Size(0, 13);
             this.ItemCountLabel.TabIndex = 0;
+            // 
+            // ViewOrderButton
+            // 
+            this.ViewOrderButton.Location = new System.Drawing.Point(1415, 663);
+            this.ViewOrderButton.Name = "ViewOrderButton";
+            this.ViewOrderButton.Size = new System.Drawing.Size(160, 90);
+            this.ViewOrderButton.TabIndex = 17;
+            this.ViewOrderButton.Text = "View Order";
+            this.ViewOrderButton.UseVisualStyleBackColor = true;
+            this.ViewOrderButton.Visible = false;
+            this.ViewOrderButton.Click += new System.EventHandler(this.ViewOrderButton_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(1338, 58);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(71, 29);
+            this.ClearButton.TabIndex = 18;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // ProductQuery
             // 
@@ -199,6 +222,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.ViewOrderButton);
             this.Controls.Add(this.ItemCountLabel);
             this.Controls.Add(this.SortByLabel);
             this.Controls.Add(this.SortByComboBox);
@@ -240,5 +265,7 @@
         private System.Windows.Forms.ComboBox SortByComboBox;
         private System.Windows.Forms.Label SortByLabel;
         private System.Windows.Forms.Label ItemCountLabel;
+        public System.Windows.Forms.Button ViewOrderButton;
+        private System.Windows.Forms.Button ClearButton;
     }
 }

@@ -42,6 +42,7 @@ namespace Do_IT
                     SQLiteCommand sql4 = new SQLiteCommand($"UPDATE Products SET Located = 2 WHERE Located = 1 AND Barcode NOT IN (SELECT DISTINCT Barcode FROM ProductLocations)", Forms.conn);
                     sql4.ExecuteNonQuery();
                     MessageBox.Show("Location Removed");
+                    Forms.viewemployeeactions.Action(2, $"isle {IsleTextBox.Text} bay {BayTextBox.Text} removed");
                 }
                 else
                 {

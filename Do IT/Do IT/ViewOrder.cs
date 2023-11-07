@@ -40,7 +40,8 @@ namespace Do_IT
 
                 if (reader.Read())
                 {
-                    AddInfoToOrderDisplay(reader);
+                    AddInfoToOrderDisplay(ref DetailsTableLayoutPanel, reader, true);
+                    AddItemsToLayoutPanel(reader);
                 }
                 else
                 {
@@ -54,123 +55,137 @@ namespace Do_IT
             }
         }
 
-        private void AddInfoToOrderDisplay(SQLiteDataReader reader)
+        public void AddInfoToOrderDisplay(ref TableLayoutPanel table, SQLiteDataReader reader, bool existingorder)
         {
             Label temp;
 
             temp = CreateLabel("top");
             temp.Text = "Customer Number";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 0, 0);
+            table.Controls.Add(temp, 0, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Title";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 1, 0);
+            table.Controls.Add(temp, 1, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Forename";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 2, 0);
+            table.Controls.Add(temp, 2, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Surname";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 3, 0);
+            table.Controls.Add(temp, 3, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Address";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 4, 0);
+            table.Controls.Add(temp, 4, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Postcode";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 5, 0);
+            table.Controls.Add(temp, 5, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Phone Number";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 6, 0);
+            table.Controls.Add(temp, 6, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Email Address";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 7, 0);
+            table.Controls.Add(temp, 7, 0);
 
             temp = CreateLabel("top");
             temp.Text = "Order Type";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 8, 0);
+            table.Controls.Add(temp, 8, 0);
 
-            temp = CreateLabel("top");
-            temp.Text = "Status";
+            if (existingorder)
+            {
+                temp = CreateLabel("top");
+                temp.Text = "Status";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 9, 0);
+                table.Controls.Add(temp, 9, 0);
+            }
 
             temp = CreateLabel("top");
             temp.Text = Convert.ToInt32(reader["CustomerID"]).ToString();
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 0, 1);
+            table.Controls.Add(temp, 0, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["Title"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 1, 1);
+            table.Controls.Add(temp, 1, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["Forename"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 2, 1);
+            table.Controls.Add(temp, 2, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["Surname"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 3, 1);
+            table.Controls.Add(temp, 3, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["Address"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 4, 1);
+            table.Controls.Add(temp, 4, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["Postcode"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 5, 1);
+            table.Controls.Add(temp, 5, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["PhoneNumber"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 6, 1);
+            table.Controls.Add(temp, 6, 1);
 
             temp = CreateLabel("top");
             temp.Text = (string)reader["Email"];
             temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 7, 1);
+            table.Controls.Add(temp, 7, 1);
 
-            temp = CreateLabel("top");
-            temp.Text = (string)reader["OrderType"];
-            temp.Name = "" + "_Label";
+            if (existingorder)
+            {
+                temp = CreateLabel("top");
+                temp.Text = (string)reader["OrderType"];
+                temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 8, 1);
+                table.Controls.Add(temp, 8, 1);
 
-            temp = CreateLabel("top");
-            temp.Text = (string)reader["Status"];
-            temp.Name = "" + "_Label";
+                temp = CreateLabel("top");
+                temp.Text = (string)reader["Status"];
+                temp.Name = "" + "_Label";
 
-            DetailsTableLayoutPanel.Controls.Add(temp, 9, 1);
+                table.Controls.Add(temp, 9, 1);
 
-            totalcost = 0;
-            TotalCostLabel.Text = "Total Cost: £";
+                totalcost = 0;
+                TotalCostLabel.Text = "Total Cost: £";
+            }
+            else
+            {
 
+            }
+        }
+
+        private void AddItemsToLayoutPanel(SQLiteDataReader reader)
+        {
+            Label temp = new Label();
             string barcode, productname;
             do
             {
@@ -245,6 +260,7 @@ namespace Do_IT
             while (reader.Read());
             TotalCostLabel.Text += totalcost.ToString();
         }
+
         public Label CreateLabel(string type)
         {
             Label label = new Label();

@@ -36,6 +36,7 @@
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.MainLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.CreateCustomerAccountButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -53,12 +54,12 @@
             this.CustomerDetailsTable.ColumnCount = 8;
             this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.CustomerDetailsTable.Location = new System.Drawing.Point(69, 175);
             this.CustomerDetailsTable.Name = "CustomerDetailsTable";
             this.CustomerDetailsTable.RowCount = 1;
@@ -113,10 +114,21 @@
             // 
             // MainLayoutPanel
             // 
+            this.MainLayoutPanel.AutoScroll = true;
             this.MainLayoutPanel.Location = new System.Drawing.Point(69, 249);
             this.MainLayoutPanel.Name = "MainLayoutPanel";
-            this.MainLayoutPanel.Size = new System.Drawing.Size(1300, 600);
+            this.MainLayoutPanel.Size = new System.Drawing.Size(1325, 600);
             this.MainLayoutPanel.TabIndex = 10;
+            // 
+            // CreateCustomerAccountButton
+            // 
+            this.CreateCustomerAccountButton.Location = new System.Drawing.Point(1412, 663);
+            this.CreateCustomerAccountButton.Name = "CreateCustomerAccountButton";
+            this.CreateCustomerAccountButton.Size = new System.Drawing.Size(160, 90);
+            this.CreateCustomerAccountButton.TabIndex = 11;
+            this.CreateCustomerAccountButton.Text = "Create A New Customer Account";
+            this.CreateCustomerAccountButton.UseVisualStyleBackColor = true;
+            this.CreateCustomerAccountButton.Click += new System.EventHandler(this.CreateCustomerAccountButton_Click);
             // 
             // ViewCustomer
             // 
@@ -124,6 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.CreateCustomerAccountButton);
             this.Controls.Add(this.MainLayoutPanel);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.SearchTextBox);
@@ -151,5 +164,6 @@
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.FlowLayoutPanel MainLayoutPanel;
+        private System.Windows.Forms.Button CreateCustomerAccountButton;
     }
 }

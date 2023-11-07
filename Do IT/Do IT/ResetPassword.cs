@@ -40,6 +40,7 @@ namespace Do_IT
                         SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Employees SET Password = '{PasswordTextBox.Text}' WHERE Username = '{InputTextBox.Text}' OR EmployeeID = '{InputTextBox.Text}'", Forms.conn);
                         sql2.ExecuteNonQuery();
                         MessageBox.Show("Password reset");
+                        Forms.viewemployeeactions.Action(4, $"{InputTextBox.Text} password was reset");
                     }
                     else
                     {

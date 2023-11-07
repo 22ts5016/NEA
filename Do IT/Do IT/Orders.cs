@@ -31,7 +31,14 @@ namespace Do_IT
 
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
+            Forms.createorder.DisplayItemsInOrder();
             Forms.createorder.Show();
+            this.Hide();
+        }
+
+        private void CollectOrderButton_Click(object sender, EventArgs e)
+        {
+            Forms.collectorder.Show();
             this.Hide();
         }
     }

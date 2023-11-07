@@ -125,6 +125,11 @@ namespace Do_IT
             if (!Forms.createorder.barcodesinorder.Contains(barcode))
             {
                 Forms.createorder.barcodesinorder.Add(barcode);
+                Forms.createorder.quantityofproducts.Add(1);
+            }
+            else
+            {
+                Forms.createorder.quantityofproducts[Forms.createorder.barcodesinorder.IndexOf(barcode)] += 1;
             }
 
             MessageBox.Show(barcode + " Added to order");
@@ -132,6 +137,7 @@ namespace Do_IT
 
         private void CurrentOrderButton_Click(object sender, EventArgs e)
         {
+            Forms.createorder.DisplayItemsInOrder();
             Forms.createorder.Show();
             Forms.displayeditem = new DisplayedItem();
             this.Dispose();
