@@ -291,13 +291,13 @@ namespace Do_IT
 
                     ShowItem(barcode);
 
-                    UpdateWeight(name, weight);
+                    Forms.conn.Close();
                 }
                 else
                 {
                     MessageBox.Show("That is not the name of an item");
+                    Forms.conn.Close();
                 }
-                Forms.conn.Close();
             }
             else if (BarcodeCheckBox.Checked)
             {
@@ -327,18 +327,19 @@ namespace Do_IT
             if (located)
 
             {
-                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = '{barcode}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type, Weight FROM Products, ProductLocations WHERE Products.Barcode = '{barcode}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
             }
             else
             {
-                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image FROM Products WHERE Products.Barcode = '{barcode}'", Forms.conn);
+                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Weight FROM Products WHERE Products.Barcode = '{barcode}'", Forms.conn);
             }
             SQLiteDataReader reader;
             reader = sql.ExecuteReader();
 
             if (reader.Read())
             {
-
+                string productname = (string)reader["ProductName"];
+                int weight = Convert.ToInt32(reader["Weight"]) + 1;
 
                 if (located)
                 {
@@ -352,11 +353,12 @@ namespace Do_IT
                 {
                     FillDisplayedItemInfo(reader, false);
                 }
+                
                 reader.Close();
                 Forms.conn.Close();
                 Forms.displayeditem.Show();
                 Forms.productquery = new ProductQuery();
-                //Maybe dispose on a condition
+                UpdateWeight(productname, weight);
                 this.Dispose();
             }
             else
@@ -373,16 +375,16 @@ namespace Do_IT
             ShowItem(button.Name.Split('_')[0]);
         }
 
-        private void UpdateWeight(string name, int weight)
+        private void UpdateWeight(string name, int newweight)
         {
             Forms.conn.Open();
 
-            SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET Weight = {weight} WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET Weight = {newweight} WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
             sql.ExecuteNonQuery();
 
             string start = "null";
 
-            start = RootedTree.getRoot().SearchForStartOfRemoval(name.ToLower() + "*", weight);
+            start = RootedTree.getRoot().SearchForStartOfRemoval(name.ToLower() + "*", newweight);
 
             SQLiteCommand sql2 = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE ProductName LIKE '{start.Substring(1)}%' ORDER BY Weight DESC", Forms.conn);
             SQLiteDataReader reader = sql2.ExecuteReader();
@@ -392,6 +394,7 @@ namespace Do_IT
                 RootedTree.AddWord(Convert.ToInt32(reader["Weight"]), ((string)reader["ProductName"]).ToLower() + '*');
             }
             reader.Close();
+            Forms.conn.Close();
         }
 
         private void AddToOrderButton_Click(object sender, EventArgs e)
@@ -412,6 +415,16 @@ namespace Do_IT
             MessageBox.Show(barcode + " Added to order");
 
             ViewOrderButton.Visible = true;
+
+            Forms.conn.Open();
+            SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Weight FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
+            SQLiteDataReader reader = sql.ExecuteReader();
+            reader.Read();
+            string productname = (string)reader["ProductName"];
+            int weight = Convert.ToInt32(reader["Weight"]) + 1;
+            reader.Close();
+            Forms.conn.Close();
+            UpdateWeight(productname, weight);
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)

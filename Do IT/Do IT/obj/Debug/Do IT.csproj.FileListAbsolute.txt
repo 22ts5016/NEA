@@ -83,7 +83,6 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.StockWriteOff.
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddMultipleItemsToLocation.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
-\\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateAccount.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
@@ -210,3 +209,10 @@ D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.csproj.CopyComplete
 D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.exe
 D:\Toby\Homework\Do IT\Do IT\obj\Debug\Do IT.pdb
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CollectOrder.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddEmployee.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CollectOrder.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateCustomer.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateOrder.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomer.resources
+\\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
