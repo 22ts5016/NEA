@@ -16,6 +16,7 @@ namespace Do_IT
     public partial class ViewOrder : Form
     {
         private double totalcost;
+        private int itemcount = 0;
 
         public ViewOrder()
         {
@@ -177,20 +178,18 @@ namespace Do_IT
                 totalcost = 0;
                 TotalCostLabel.Text = "Total Cost: £";
             }
-            else
-            {
-
-            }
         }
 
         private void AddItemsToLayoutPanel(SQLiteDataReader reader)
         {
             Label temp = new Label();
             string barcode, productname;
+            int quantity;
             do
             {
                 barcode = (string)reader["Barcode"];
                 productname = (string)reader["ProductName"];
+                quantity = Convert.ToInt32(reader["Quantity"]);
 
                 TableLayoutPanel table = new TableLayoutPanel();
 
@@ -227,7 +226,7 @@ namespace Do_IT
                 table.ColumnStyles[2].Width = 500;
 
                 temp = CreateLabel("middle");
-                temp.Text = Convert.ToInt32(reader["Quantity"]).ToString();
+                temp.Text = quantity.ToString();
                 temp.Name = barcode + "_Quantity_Label";
 
                 table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));

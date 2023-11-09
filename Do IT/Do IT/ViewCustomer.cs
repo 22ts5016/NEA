@@ -260,13 +260,15 @@ namespace Do_IT
             Forms.createorder.AddCustomerToOrder(int.Parse(button.Name.Split('_')[0]));
             Forms.createorder.DisplayItemsInOrder();
             Forms.createorder.Show();
-            this.Hide();
+            Forms.viewcustomer = new ViewCustomer();
+            this.Dispose();
         }
 
         private void CreateCustomerAccountButton_Click(object sender, EventArgs e)
         {
             Forms.createcustomer.Show();
-            this.Hide();
+            Forms.viewcustomer = new ViewCustomer();
+            this.Dispose();
         }
     }
 }

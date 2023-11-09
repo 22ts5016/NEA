@@ -43,10 +43,10 @@
             this.OrderTypeLabel = new System.Windows.Forms.Label();
             this.SelectCustomerButton = new System.Windows.Forms.Button();
             this.TotalCostLabel = new System.Windows.Forms.Label();
-            this.TotalProductCountLabel = new System.Windows.Forms.Label();
             this.SubmitOrderButton = new System.Windows.Forms.Button();
             this.ClearOrderButton = new System.Windows.Forms.Button();
             this.OrderIDLabel = new System.Windows.Forms.Label();
+            this.TotalProductCountLabel = new System.Windows.Forms.Label();
             this.DetailsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,15 +218,6 @@
             this.TotalCostLabel.TabIndex = 14;
             this.TotalCostLabel.Text = "Total Cost: £";
             // 
-            // TotalProductCountLabel
-            // 
-            this.TotalProductCountLabel.AutoSize = true;
-            this.TotalProductCountLabel.Location = new System.Drawing.Point(1409, 637);
-            this.TotalProductCountLabel.Name = "TotalProductCountLabel";
-            this.TotalProductCountLabel.Size = new System.Drawing.Size(108, 13);
-            this.TotalProductCountLabel.TabIndex = 15;
-            this.TotalProductCountLabel.Text = "Total Product Count: \r\n";
-            // 
             // SubmitOrderButton
             // 
             this.SubmitOrderButton.Location = new System.Drawing.Point(1412, 225);
@@ -256,16 +247,25 @@
             this.OrderIDLabel.TabIndex = 18;
             this.OrderIDLabel.Text = "OrderID: ";
             // 
+            // TotalProductCountLabel
+            // 
+            this.TotalProductCountLabel.AutoSize = true;
+            this.TotalProductCountLabel.Location = new System.Drawing.Point(1409, 638);
+            this.TotalProductCountLabel.Name = "TotalProductCountLabel";
+            this.TotalProductCountLabel.Size = new System.Drawing.Size(105, 13);
+            this.TotalProductCountLabel.TabIndex = 19;
+            this.TotalProductCountLabel.Text = "Total Product Count:";
+            // 
             // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.TotalProductCountLabel);
             this.Controls.Add(this.OrderIDLabel);
             this.Controls.Add(this.ClearOrderButton);
             this.Controls.Add(this.SubmitOrderButton);
-            this.Controls.Add(this.TotalProductCountLabel);
             this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.SelectCustomerButton);
             this.Controls.Add(this.DetailsTableLayoutPanel);
@@ -300,9 +300,9 @@
         public System.Windows.Forms.Button SelectCustomerButton;
         public System.Windows.Forms.TableLayoutPanel DetailsTableLayoutPanel;
         private System.Windows.Forms.Label TotalCostLabel;
-        private System.Windows.Forms.Label TotalProductCountLabel;
         public System.Windows.Forms.Button SubmitOrderButton;
         public System.Windows.Forms.Button ClearOrderButton;
         private System.Windows.Forms.Label OrderIDLabel;
+        private System.Windows.Forms.Label TotalProductCountLabel;
     }
 }

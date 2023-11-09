@@ -52,6 +52,7 @@
             this.ProductnameHeaderLabel = new System.Windows.Forms.Label();
             this.TotalPriceHeaderLabel = new System.Windows.Forms.Label();
             this.TotalCostLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.DetailsTableLayoutPanel.SuspendLayout();
             this.OrderHeadersTable.SuspendLayout();
             this.SuspendLayout();
@@ -318,11 +319,20 @@
             // TotalCostLabel
             // 
             this.TotalCostLabel.AutoSize = true;
-            this.TotalCostLabel.Location = new System.Drawing.Point(1409, 730);
+            this.TotalCostLabel.Location = new System.Drawing.Point(1409, 711);
             this.TotalCostLabel.Name = "TotalCostLabel";
-            this.TotalCostLabel.Size = new System.Drawing.Size(67, 13);
+            this.TotalCostLabel.Size = new System.Drawing.Size(73, 13);
             this.TotalCostLabel.TabIndex = 13;
-            this.TotalCostLabel.Text = "Total Cost: £";
+            this.TotalCostLabel.Text = "Total Cost: £0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1409, 733);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Total Product Count: 0";
             // 
             // ViewOrder
             // 
@@ -330,6 +340,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.OrderHeadersTable);
             this.Controls.Add(this.MainLayoutPanel);
@@ -376,5 +387,6 @@
         private System.Windows.Forms.Label ProductnameHeaderLabel;
         private System.Windows.Forms.Label TotalPriceHeaderLabel;
         private System.Windows.Forms.Label TotalCostLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
