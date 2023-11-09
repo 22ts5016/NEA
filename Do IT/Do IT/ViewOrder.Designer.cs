@@ -52,7 +52,8 @@
             this.ProductnameHeaderLabel = new System.Windows.Forms.Label();
             this.TotalPriceHeaderLabel = new System.Windows.Forms.Label();
             this.TotalCostLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TotalProductCountLabel = new System.Windows.Forms.Label();
+            this.CollectOrderButton = new System.Windows.Forms.Button();
             this.DetailsTableLayoutPanel.SuspendLayout();
             this.OrderHeadersTable.SuspendLayout();
             this.SuspendLayout();
@@ -325,14 +326,25 @@
             this.TotalCostLabel.TabIndex = 13;
             this.TotalCostLabel.Text = "Total Cost: £0";
             // 
-            // label1
+            // TotalProductCountLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1409, 733);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Total Product Count: 0";
+            this.TotalProductCountLabel.AutoSize = true;
+            this.TotalProductCountLabel.Location = new System.Drawing.Point(1409, 733);
+            this.TotalProductCountLabel.Name = "TotalProductCountLabel";
+            this.TotalProductCountLabel.Size = new System.Drawing.Size(114, 13);
+            this.TotalProductCountLabel.TabIndex = 14;
+            this.TotalProductCountLabel.Text = "Total Product Count: 0";
+            // 
+            // CollectOrderButton
+            // 
+            this.CollectOrderButton.Location = new System.Drawing.Point(1412, 255);
+            this.CollectOrderButton.Name = "CollectOrderButton";
+            this.CollectOrderButton.Size = new System.Drawing.Size(126, 29);
+            this.CollectOrderButton.TabIndex = 17;
+            this.CollectOrderButton.Text = "Collect Order";
+            this.CollectOrderButton.UseVisualStyleBackColor = true;
+            this.CollectOrderButton.Visible = false;
+            this.CollectOrderButton.Click += new System.EventHandler(this.CollectOrderButton_Click);
             // 
             // ViewOrder
             // 
@@ -340,7 +352,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.CollectOrderButton);
+            this.Controls.Add(this.TotalProductCountLabel);
             this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.OrderHeadersTable);
             this.Controls.Add(this.MainLayoutPanel);
@@ -365,8 +378,6 @@
 
         private System.Windows.Forms.Button MainMenuButton;
         private System.Windows.Forms.Label OrderNumberLabel;
-        private System.Windows.Forms.TextBox OrderNumberTextBox;
-        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TableLayoutPanel DetailsTableLayoutPanel;
         private System.Windows.Forms.Label TtitleTitleLabel;
         private System.Windows.Forms.Label CustomerNumberTitleLabel;
@@ -387,6 +398,9 @@
         private System.Windows.Forms.Label ProductnameHeaderLabel;
         private System.Windows.Forms.Label TotalPriceHeaderLabel;
         private System.Windows.Forms.Label TotalCostLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TotalProductCountLabel;
+        public System.Windows.Forms.TextBox OrderNumberTextBox;
+        public System.Windows.Forms.Button SearchButton;
+        public System.Windows.Forms.Button CollectOrderButton;
     }
 }

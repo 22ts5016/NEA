@@ -17,6 +17,9 @@ namespace Do_IT
     {
         private double totalcost;
         private int itemcount = 0;
+        private string ordertype;
+        private string status;
+        public bool orderinprocessofcollection = false;
 
         public ViewOrder()
         {
@@ -41,18 +44,36 @@ namespace Do_IT
 
                 if (reader.Read())
                 {
+                    if (IsCollectableOrder())
+                    {
+                        CollectOrderButton.Visible = true;
+                    }
                     AddInfoToOrderDisplay(ref DetailsTableLayoutPanel, reader, true);
                     AddItemsToLayoutPanel(reader);
                 }
                 else
                 {
+                    CollectOrderButton.Visible = false;
                     MessageBox.Show("Invalid Order Number");
                 }
                 Forms.conn.Close();
             }
             else
             {
+                CollectOrderButton.Visible = false;
                 MessageBox.Show("Invalid input");
+            }
+        }
+
+        private bool IsCollectableOrder()
+        {
+            if(ordertype == "Click and Collect" && status == "Open")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -163,14 +184,16 @@ namespace Do_IT
 
             if (existingorder)
             {
+                ordertype = (string)reader["OrderType"];
                 temp = CreateLabel("top");
-                temp.Text = (string)reader["OrderType"];
+                temp.Text = ordertype;
                 temp.Name = "" + "_Label";
 
                 table.Controls.Add(temp, 8, 1);
 
+                status = (string)reader["Status"];
                 temp = CreateLabel("top");
-                temp.Text = (string)reader["Status"];
+                temp.Text = status;
                 temp.Name = "" + "_Label";
 
                 table.Controls.Add(temp, 9, 1);
@@ -228,6 +251,7 @@ namespace Do_IT
                 temp = CreateLabel("middle");
                 temp.Text = quantity.ToString();
                 temp.Name = barcode + "_Quantity_Label";
+                itemcount += quantity;
 
                 table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
                 table.Controls.Add(temp, 3, 0);
@@ -258,6 +282,7 @@ namespace Do_IT
             }
             while (reader.Read());
             TotalCostLabel.Text += totalcost.ToString();
+            TotalProductCountLabel.Text = "Total Product Count: " + itemcount.ToString();
         }
 
         public Label CreateLabel(string type)
@@ -274,6 +299,17 @@ namespace Do_IT
             }
             label.AutoSize = true;
             return label;
+        }
+
+        private void CollectOrderButton_Click(object sender, EventArgs e)
+        {
+            if (!orderinprocessofcollection)
+            {
+                Forms.collectorder.OrderNumberTextBox.Text = OrderNumberTextBox.Text;
+            }
+            Forms.collectorder.Show();
+            Forms.vieworder = new ViewOrder();
+            this.Dispose();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Text.RegularExpressions;
+using System.Runtime.CompilerServices;
 
 namespace Do_IT
 {
@@ -42,6 +43,7 @@ namespace Do_IT
                             CollectorderForLabel.Text += (string)reader["Forename"] + " " + (string)reader["Surname"];
                             CollectorderForLabel.Visible = true;
                             CollectButton.Visible = true;
+                            ViewOrderButton.Visible = true;
                         }
                         else
                         {
@@ -85,6 +87,15 @@ namespace Do_IT
             Forms.mainmenu.Show();
             Forms.viewemployeeactions.Action(3, $"{OrderNumberTextBox.Text} Collected");
             this.Dispose();
+        }
+
+        private void ViewOrderButton_Click(object sender, EventArgs e)
+        {
+            Forms.vieworder.OrderNumberTextBox.Text = OrderNumberTextBox.Text;
+            Forms.vieworder.orderinprocessofcollection = true;
+            Forms.vieworder.Show();
+            Forms.vieworder.SearchButton.PerformClick();
+            this.Hide();
         }
     }
 }

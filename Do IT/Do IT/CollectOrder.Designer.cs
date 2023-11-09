@@ -35,6 +35,7 @@
             this.ResetButton = new System.Windows.Forms.Button();
             this.CollectorderForLabel = new System.Windows.Forms.Label();
             this.CollectButton = new System.Windows.Forms.Button();
+            this.ViewOrderButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -95,7 +96,7 @@
             // 
             // CollectButton
             // 
-            this.CollectButton.Location = new System.Drawing.Point(81, 159);
+            this.CollectButton.Location = new System.Drawing.Point(201, 159);
             this.CollectButton.Name = "CollectButton";
             this.CollectButton.Size = new System.Drawing.Size(93, 29);
             this.CollectButton.TabIndex = 12;
@@ -104,12 +105,24 @@
             this.CollectButton.Visible = false;
             this.CollectButton.Click += new System.EventHandler(this.CollectButton_Click);
             // 
+            // ViewOrderButton
+            // 
+            this.ViewOrderButton.Location = new System.Drawing.Point(81, 159);
+            this.ViewOrderButton.Name = "ViewOrderButton";
+            this.ViewOrderButton.Size = new System.Drawing.Size(93, 29);
+            this.ViewOrderButton.TabIndex = 13;
+            this.ViewOrderButton.Text = "View Order";
+            this.ViewOrderButton.UseVisualStyleBackColor = true;
+            this.ViewOrderButton.Visible = false;
+            this.ViewOrderButton.Click += new System.EventHandler(this.ViewOrderButton_Click);
+            // 
             // CollectOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.ViewOrderButton);
             this.Controls.Add(this.CollectButton);
             this.Controls.Add(this.CollectorderForLabel);
             this.Controls.Add(this.ResetButton);
@@ -129,10 +142,11 @@
 
         private System.Windows.Forms.Button MainMenuButton;
         private System.Windows.Forms.Label OrderNumberLabel;
-        private System.Windows.Forms.TextBox OrderNumberTextBox;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Label CollectorderForLabel;
         private System.Windows.Forms.Button CollectButton;
+        private System.Windows.Forms.Button ViewOrderButton;
+        public System.Windows.Forms.TextBox OrderNumberTextBox;
     }
 }
