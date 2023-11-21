@@ -16,7 +16,7 @@ namespace Do_IT
         public string isle;
         public string bay;
         public string type;
-        private int i;
+        private int i = 0;
 
         public ItemsInABay()
         {
@@ -103,7 +103,6 @@ namespace Do_IT
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Barcode = '{barcode}' AND Isle = '{isle}' AND Bay = '{bay}' AND Type = '{type}'", Forms.conn);
             sql.ExecuteNonQuery();
-            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from isle {isle} bay {bay}");
             SQLiteCommand sql1 = new SQLiteCommand($"SELECT ProductName FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
             SQLiteDataReader reader = sql1.ExecuteReader();
             reader.Read();
@@ -112,6 +111,7 @@ namespace Do_IT
             reader.Close();
             Forms.conn.Close();
             Forms.additemtolocation.Show();
+            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from isle {isle} bay {bay}");
             Forms.itemsinabay = new ItemsInABay();
             this.Dispose();
         }

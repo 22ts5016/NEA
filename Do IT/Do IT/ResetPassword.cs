@@ -40,25 +40,30 @@ namespace Do_IT
                         SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Employees SET Password = '{PasswordTextBox.Text}' WHERE Username = '{InputTextBox.Text}' OR EmployeeID = '{InputTextBox.Text}'", Forms.conn);
                         sql2.ExecuteNonQuery();
                         MessageBox.Show("Password reset");
+                        reader.Close();
+                        Forms.conn.Close();
                         Forms.viewemployeeactions.Action(4, $"{InputTextBox.Text} password was reset");
                     }
                     else
                     {
                         MessageBox.Show("Please enter a password longer than 6 characters");
+                        reader.Close();
+                        Forms.conn.Close();
                     }
                 }
                 else
                 {
                     MessageBox.Show("You do not have permission to change this persons pasword");
+                    reader.Close();
+                    Forms.conn.Close();
                 }
             }
             else
             {
                 MessageBox.Show("Invalid employee ID or username");
+                reader.Close();
+                Forms.conn.Close();
             }
-            reader.Close();
-            Forms.conn.Close();
-
         }
         private bool CheckPasswordsMatch()
         {
