@@ -21,7 +21,8 @@ namespace Do_IT
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
             Forms.mainmenu.Show();
-            this.Hide();
+            Forms.viewemployeedetails = new ViewEmployeeDetails();
+            this.Dispose();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

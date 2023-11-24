@@ -44,11 +44,11 @@ namespace Do_IT
 
                 if (reader.Read())
                 {
+                    AddInfoToOrderDisplay(ref DetailsTableLayoutPanel, reader, true);
                     if (IsCollectableOrder())
                     {
                         CollectOrderButton.Visible = true;
                     }
-                    AddInfoToOrderDisplay(ref DetailsTableLayoutPanel, reader, true);
                     AddItemsToLayoutPanel(reader);
                 }
                 else

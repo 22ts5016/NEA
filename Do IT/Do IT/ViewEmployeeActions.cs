@@ -81,7 +81,7 @@ namespace Do_IT
             switch (SearchByComboBox.SelectedIndex)
             {
                 case 0:
-                    sql = new SQLiteCommand("SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID", Forms.conn);
+                    sql = new SQLiteCommand("SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID ORDER BY ActionID DESC", Forms.conn);
                     break;
                 case 1:
                     if(SpecificComboBox.SelectedIndex == -1)
@@ -89,7 +89,7 @@ namespace Do_IT
                         valid = false;
                         break;
                     }
-                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND Employees.Username = '{SpecificComboBox.Items[SpecificComboBox.SelectedIndex]}'", Forms.conn);
+                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND Employees.Username = '{SpecificComboBox.Items[SpecificComboBox.SelectedIndex]}' ORDER BY ActionID DESC", Forms.conn);
                     break;
                 case 2:
                     if (SpecificComboBox.SelectedIndex == -1)
@@ -97,7 +97,7 @@ namespace Do_IT
                         valid = false;
                         break;
                     }
-                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND ActionType.ActionType = '{SpecificComboBox.Items[SpecificComboBox.SelectedIndex]}'", Forms.conn);
+                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND ActionType.ActionType = '{SpecificComboBox.Items[SpecificComboBox.SelectedIndex]}' ORDER BY ActionID DESC", Forms.conn);
                     break;
                 default:
                     valid = false;

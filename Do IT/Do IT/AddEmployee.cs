@@ -21,9 +21,9 @@ namespace Do_IT
 
         private void CreateAccountButton_Click(object sender, EventArgs e)
         {
-            if (Regex.IsMatch(ForenameTextBox.Text, RegExFormats.anyletters) && Regex.IsMatch(SurnameTextBox.Text, RegExFormats.anyletters) && RoleComboBox.SelectedIndex != -1 && DepartmentComboBox.SelectedIndex != -1)
+            if (Regex.IsMatch(ForenameTextBox.Text, RegExFormats.anyletters) && Regex.IsMatch(SurnameTextBox.Text, RegExFormats.anyletters) && Regex.IsMatch(UsernameTextBox.Text, RegExFormats.anyletters) && RoleComboBox.SelectedIndex != -1 && DepartmentComboBox.SelectedIndex != -1)
             {
-                if (!CheckuserNameDupe())
+                if (!CheckUserNameDupe())
                 {
                     Forms.conn.Open();
                     SQLiteCommand sql = new SQLiteCommand($"SELECT RoleID, DepartmentID FROM Roles, DepartmentTypes WHERE Role = '{RoleComboBox.Text}' AND Department = '{DepartmentComboBox.Text}'", Forms.conn);
@@ -46,7 +46,7 @@ namespace Do_IT
             }
         }
 
-        private bool CheckuserNameDupe()
+        private bool CheckUserNameDupe()
         {
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"SELECT Username FROM Employees WHERE Username = '{UsernameTextBox.Text}'", Forms.conn);
