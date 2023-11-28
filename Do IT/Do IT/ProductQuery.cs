@@ -114,20 +114,10 @@ namespace Do_IT
                         Option3Label.Text = options[2];
                         Option4Label.Text = options[3];
                         Option5Label.Text = options[4];
-
-
                     }
                     catch (LetterNotFoundException)
                     {
                         LabelStatus(false);
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("That is not a valid start letter, please try again");
                     }
                 }
             }
@@ -166,19 +156,19 @@ namespace Do_IT
                 switch (SortByComboBox.SelectedIndex)
                 {
                     case 0:
-                        sortby = "ORDER BY Weight DESC";
+                        sortby = "ORDER BY Weight DESC, ProductName ASC";
                         break;
                     case 1:
-                        sortby = "ORDER BY Price DESC";
+                        sortby = "ORDER BY Price DESC, ProductName ASC";
                         break;
                     case 2:
-                        sortby = "ORDER BY Price ASC";
+                        sortby = "ORDER BY Price ASC, ProductName ASC";
                         break;
                     case 3:
-                        sortby = "ORDER BY ProductName ASC";
+                        sortby = "ORDER BY ProductName ASC, ProductName ASC";
                         break;
                     case 4:
-                        sortby = "AND StockCount > 0";
+                        sortby = "AND StockCount > 0 ORDER BY StockCount DESC, ProductName ASC";
                         break;
                 }
                 SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} {sortby}", Forms.conn);
@@ -402,14 +392,13 @@ namespace Do_IT
             Button button = sender as Button;
             string barcode = button.Name.Split('_')[0];
 
-            if (!Forms.createorder.barcodesinorder.Contains(barcode))
+            if (!Forms.createorder.barcodesandquantitydictionary.ContainsKey(barcode))
             {
-                Forms.createorder.barcodesinorder.Add(barcode);
-                Forms.createorder.quantityofproducts.Add(1);
+                Forms.createorder.barcodesandquantitydictionary[barcode] = 1;
             }
             else
             {
-                Forms.createorder.quantityofproducts[Forms.createorder.barcodesinorder.IndexOf(barcode)] += 1;
+                Forms.createorder.barcodesandquantitydictionary[barcode] += 1;
             }
 
             MessageBox.Show(barcode + " Added to order");

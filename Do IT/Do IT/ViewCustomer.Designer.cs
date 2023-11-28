@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.MainMenuButton = new System.Windows.Forms.Button();
-            this.CustomerDetailsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.CustomerDetailsHeaderTable = new System.Windows.Forms.TableLayoutPanel();
             this.SearchByLabel = new System.Windows.Forms.Label();
             this.SearchByComboBox = new System.Windows.Forms.ComboBox();
             this.SearchByTextBoxHeaderLabel = new System.Windows.Forms.Label();
@@ -37,6 +37,7 @@
             this.SearchButton = new System.Windows.Forms.Button();
             this.MainLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.CreateCustomerAccountButton = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -49,23 +50,23 @@
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // CustomerDetailsTable
+            // CustomerDetailsHeaderTable
             // 
-            this.CustomerDetailsTable.ColumnCount = 8;
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.CustomerDetailsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.CustomerDetailsTable.Location = new System.Drawing.Point(69, 175);
-            this.CustomerDetailsTable.Name = "CustomerDetailsTable";
-            this.CustomerDetailsTable.RowCount = 1;
-            this.CustomerDetailsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.CustomerDetailsTable.Size = new System.Drawing.Size(1200, 50);
-            this.CustomerDetailsTable.TabIndex = 3;
+            this.CustomerDetailsHeaderTable.ColumnCount = 8;
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.CustomerDetailsHeaderTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.CustomerDetailsHeaderTable.Location = new System.Drawing.Point(69, 175);
+            this.CustomerDetailsHeaderTable.Name = "CustomerDetailsHeaderTable";
+            this.CustomerDetailsHeaderTable.RowCount = 1;
+            this.CustomerDetailsHeaderTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.CustomerDetailsHeaderTable.Size = new System.Drawing.Size(1100, 50);
+            this.CustomerDetailsHeaderTable.TabIndex = 3;
             // 
             // SearchByLabel
             // 
@@ -130,12 +131,23 @@
             this.CreateCustomerAccountButton.UseVisualStyleBackColor = true;
             this.CreateCustomerAccountButton.Click += new System.EventHandler(this.CreateCustomerAccountButton_Click);
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(416, 122);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(93, 29);
+            this.ResetButton.TabIndex = 12;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // ViewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.CreateCustomerAccountButton);
             this.Controls.Add(this.MainLayoutPanel);
             this.Controls.Add(this.SearchButton);
@@ -143,7 +155,7 @@
             this.Controls.Add(this.SearchByTextBoxHeaderLabel);
             this.Controls.Add(this.SearchByComboBox);
             this.Controls.Add(this.SearchByLabel);
-            this.Controls.Add(this.CustomerDetailsTable);
+            this.Controls.Add(this.CustomerDetailsHeaderTable);
             this.Controls.Add(this.MainMenuButton);
             this.Name = "ViewCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -157,7 +169,7 @@
         #endregion
 
         private System.Windows.Forms.Button MainMenuButton;
-        private System.Windows.Forms.TableLayoutPanel CustomerDetailsTable;
+        private System.Windows.Forms.TableLayoutPanel CustomerDetailsHeaderTable;
         private System.Windows.Forms.Label SearchByLabel;
         private System.Windows.Forms.ComboBox SearchByComboBox;
         private System.Windows.Forms.Label SearchByTextBoxHeaderLabel;
@@ -165,5 +177,6 @@
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.FlowLayoutPanel MainLayoutPanel;
         private System.Windows.Forms.Button CreateCustomerAccountButton;
+        private System.Windows.Forms.Button ResetButton;
     }
 }

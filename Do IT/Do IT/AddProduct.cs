@@ -79,11 +79,19 @@ namespace Do_IT
         {
             if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
             {
-                if (Regex.IsMatch(PriceTextBox.Text, RegExFormats.anyprice))
+                if(Regex.IsMatch(ProductNameTextBox.Text, RegExFormats.anyproductname))
                 {
-                    if (Regex.IsMatch(StockCountTextBox.Text, RegExFormats.anynumber))
+                    if (Regex.IsMatch(PriceTextBox.Text, RegExFormats.anyprice))
                     {
-                        return true;
+                        if (Regex.IsMatch(StockCountTextBox.Text, RegExFormats.anynumber))
+                        {
+                            return true;
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid price");
                     }
                 }
             }

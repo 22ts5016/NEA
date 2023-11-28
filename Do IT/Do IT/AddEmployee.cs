@@ -81,7 +81,8 @@ namespace Do_IT
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
             Forms.mainmenu.Show();
-            this.Hide();
+            Forms.addemployee = new AddEmployee();
+            this.Dispose();
         }
 
         private void FillComboBoxes()
@@ -89,8 +90,17 @@ namespace Do_IT
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand("SELECT Role FROM Roles", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
+            string role;
             while (reader.Read())
             {
+                role = (string)reader["Role"];
+                if (role == CurrentUser.role)
+                {
+                    if(role != "Store Manager")
+                    {
+                        break;
+                    }
+                }
                 RoleComboBox.Items.Add((string)reader["Role"]);
             }
             reader.Close();

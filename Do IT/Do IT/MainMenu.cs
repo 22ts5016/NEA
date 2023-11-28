@@ -107,6 +107,7 @@ namespace Do_IT
         private void SignOutButton_Click(object sender, EventArgs e)
         {
             Forms.firstscreen.Show();
+            Forms.CreateNewForms();
             Forms.mainmenu = new MainMenu();
             this.Dispose();
         }

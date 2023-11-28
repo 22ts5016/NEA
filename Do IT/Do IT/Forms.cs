@@ -29,6 +29,7 @@ namespace Do_IT
         public static CustomerDetails customerdetails = new CustomerDetails();
         public static CreateCustomer createcustomer = new CreateCustomer();
         public static ViewCustomer viewcustomer = new ViewCustomer();
+        public static ViewCustomersOrders viewcustomersorders = new ViewCustomersOrders();
         public static Employees employees = new Employees();
         public static ViewEmployeeActions viewemployeeactions = new ViewEmployeeActions();
         public static ResetPassword resetpassword = new ResetPassword();
@@ -39,37 +40,63 @@ namespace Do_IT
         public static AddLocation addlocation = new AddLocation();
         public static RemoveLocation removelocation = new RemoveLocation();
 
-        public static void CloseAll()
+        public static void CreateNewForms()
         {
-            //firstscreen.Close();
-            //mainmenu.Close();
-            //productquery.Close();
-            //locationmanagement.Close();
-            //orders.Close();
-            //stockmanagement.Close();
-            //customerdetails.Close();
-            //employees.Close();
-            //addproduct.Close();
-            //addlocation.Close();
-            //createaccount.Close();
-            //displayitem.Close();
-            //itemswithoutlocations.Close();
-            //additemtolocation.Close();
+            productquery.Dispose();
+            locationmanagement.Dispose();
+            itemswithoutlocations.Dispose();
+            itemsinabay.Dispose();
+            additemtolocation.Dispose();
+            addmultipleitemstolocation.Dispose();
+            displayeditem.Dispose();
+            orders.Dispose();
+            vieworder.Dispose();
+            createorder.Dispose();
+            collectorder.Dispose();
+            stockmanagement.Dispose();
+            stockadjustment.Dispose();
+            stockwriteoff.Dispose();
+            customerdetails.Dispose();
+            createcustomer.Dispose();
+            viewcustomer.Dispose();
+            viewcustomersorders.Dispose();
+            employees.Dispose();
+            viewemployeeactions.Dispose();
+            resetpassword.Dispose();
+            viewemployeedetails.Dispose();
+            addemployee.Dispose();
+            addproduct.Dispose();
+            removeproduct.Dispose();
+            addlocation.Dispose();
+            removelocation.Dispose();
 
-            //firstscreen.Dispose();
-            //mainmenu.Dispose();
-            //productquery.Dispose();
-            //locationmanagement.Dispose();
-            //orders.Dispose();
-            //stockmanagement.Dispose();
-            //customerdetails.Dispose();
-            //employees.Dispose();
-            //addproduct.Dispose();
-            //addlocation.Dispose();
-            //createaccount.Dispose();
-            //displayitem.Dispose();
-            //itemswithoutlocations.Dispose();
-            //additemtolocation.Dispose();
+            productquery = new ProductQuery();
+            locationmanagement = new LocationManagement();
+            itemswithoutlocations = new ItemsWithoutLocations();
+            itemsinabay = new ItemsInABay();
+            additemtolocation = new AddItemToLocation();
+            addmultipleitemstolocation = new AddMultipleItemsToLocation();
+            displayeditem = new DisplayedItem();
+            orders = new Orders();
+            vieworder = new ViewOrder();
+            createorder = new CreateOrder();
+            collectorder = new CollectOrder();
+            stockmanagement = new StockManagement();
+            stockadjustment = new StockAdjustment();
+            stockwriteoff = new StockWriteOff();
+            customerdetails = new CustomerDetails();
+            createcustomer = new CreateCustomer();
+            viewcustomer = new ViewCustomer();
+            viewcustomersorders = new ViewCustomersOrders();
+            employees = new Employees();
+            viewemployeeactions = new ViewEmployeeActions();
+            resetpassword = new ResetPassword();
+            viewemployeedetails = new ViewEmployeeDetails();
+            addemployee = new AddEmployee();
+            addproduct = new AddProduct();
+            removeproduct = new RemoveProduct();
+            addlocation = new AddLocation();
+            removelocation = new RemoveLocation();
         }
     }
 }

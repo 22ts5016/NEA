@@ -21,19 +21,22 @@ namespace Do_IT
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
             Forms.mainmenu.Show();
-            this.Hide();
+            Forms.employees = new Employees();
+            this.Dispose();
         }
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
         {
             Forms.addemployee.Show();
-            this.Hide();
+            Forms.employees = new Employees();
+            this.Dispose();
         }
 
         private void ViewEmployeeActionsButton_Click(object sender, EventArgs e)
         {
             Forms.viewemployeeactions.Show();
-            this.Hide();
+            Forms.employees = new Employees();
+            this.Dispose();
         }
 
         private void Employees_Load(object sender, EventArgs e)
@@ -49,13 +52,15 @@ namespace Do_IT
         private void ResetPasswordButton_Click(object sender, EventArgs e)
         {
             Forms.resetpassword.Show();
-            this.Hide();
+            Forms.employees = new Employees();
+            this.Dispose();
         }
 
         private void ViewEmployeeDetailsButton_Click(object sender, EventArgs e)
         {
             Forms.viewemployeedetails.Show();
-            this.Hide();
+            Forms.employees = new Employees();
+            this.Dispose();
         }
     }
 }

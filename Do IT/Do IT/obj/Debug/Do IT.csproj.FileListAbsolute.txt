@@ -216,3 +216,4 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CollectOrder.r
 \\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
 \\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomer.resources
 \\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
+D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomersOrders.resources

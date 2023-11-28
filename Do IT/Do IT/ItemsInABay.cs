@@ -108,7 +108,15 @@ namespace Do_IT
             reader.Read();
             Forms.additemtolocation.name = (string)reader["ProductName"];
             Forms.additemtolocation.barcode = barcode;
+            SQLiteCommand sql2 = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE Barcode = '{barcode}'", Forms.conn);
+            SQLiteDataReader reader2 = sql2.ExecuteReader();
+            if (!reader2.Read())
+            {
+                SQLiteCommand sql3 = new SQLiteCommand($"UPDATE Products SET Located = 2 WHERE Barcode = '{barcode}'", Forms.conn);
+                sql3.ExecuteNonQuery();
+            }
             reader.Close();
+            reader2.Close();
             Forms.conn.Close();
             Forms.additemtolocation.Show();
             Forms.viewemployeeactions.Action(2, $"{barcode} delocated from isle {isle} bay {bay}");

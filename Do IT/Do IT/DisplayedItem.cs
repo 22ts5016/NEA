@@ -122,14 +122,13 @@ namespace Do_IT
 
         private void AddToOrderButton_Click(object sender, EventArgs e)
         {
-            if (!Forms.createorder.barcodesinorder.Contains(barcode))
+            if (!Forms.createorder.barcodesandquantitydictionary.ContainsKey(barcode))
             {
-                Forms.createorder.barcodesinorder.Add(barcode);
-                Forms.createorder.quantityofproducts.Add(1);
+                Forms.createorder.barcodesandquantitydictionary[barcode] = 1;
             }
             else
             {
-                Forms.createorder.quantityofproducts[Forms.createorder.barcodesinorder.IndexOf(barcode)] += 1;
+                Forms.createorder.barcodesandquantitydictionary[barcode] += 1;
             }
 
             MessageBox.Show(barcode + " Added to order");

@@ -39,7 +39,8 @@ namespace Do_IT
             if (Regex.IsMatch(OrderNumberTextBox.Text, RegExFormats.anynumber))
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID Group By OrderEntry.Barcode", Forms.conn);
+                //SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID Group By OrderEntry.Barcode", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status FROM Customers, OrderInfo, OrderTypes, OrderStatusTypes WHERE OrderInfo.OrderID = {OrderNumberTextBox.Text} AND OrderInfo.CustomerID = Customers.CustomerID AND OrderInfo.OrderType = OrderTypes.OrderTypeID AND OrderInfo.Status = OrderStatusTypes.StatusID", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
                 if (reader.Read())
@@ -49,7 +50,15 @@ namespace Do_IT
                     {
                         CollectOrderButton.Visible = true;
                     }
-                    AddItemsToLayoutPanel(reader);
+
+                    SQLiteCommand sql2 = new SQLiteCommand($"SELECT OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderEntry, Products WHERE OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.OrderID = {OrderNumberTextBox.Text} Group By OrderEntry.Barcode", Forms.conn);
+                    SQLiteDataReader reader2 = sql2.ExecuteReader();
+                    if (reader2.Read())
+                    {
+                        AddItemsToLayoutPanel(reader2);
+                    }
+                    reader.Close();
+                    reader2.Close();
                 }
                 else
                 {

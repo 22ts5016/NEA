@@ -15,9 +15,8 @@ namespace Do_IT
 {
     public partial class CreateOrder : Form
     {
-        public List<string> barcodesinorder = new List<string>();
-        public List<int> quantityofproducts = new List<int>();
-        private List<bool> confirmedquantities = new List<bool>();
+        public Dictionary<string, int> barcodesandquantitydictionary = new Dictionary<string, int>();
+        private int numofunconfirmedquantities = 0; 
         public bool customertagged = false;
         private double totalcost = 0;
         private int customerID = 0;
@@ -83,10 +82,10 @@ namespace Do_IT
         {
             MainLayoutPanel.Controls.Clear();
             totalcost = 0;
-            if(barcodesinorder.Count != 0)
+            if(barcodesandquantitydictionary.Count != 0)
             {
                 string soflistofbarcodes = "(";
-                foreach (string barcode in barcodesinorder)
+                foreach (string barcode in barcodesandquantitydictionary.Keys)
                 {
                     soflistofbarcodes += barcode + ", ";
                 }
@@ -95,12 +94,12 @@ namespace Do_IT
                 Forms.conn.Open();
                 SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode, ProductName, Price, Image FROM Products WHERE Barcode IN {soflistofbarcodes}", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
-
+                //!!!
                 while (reader.Read())
                 {
                     string barcode = (string)reader["Barcode"];
                     string productname = (string)reader["ProductName"];
-                    double totalprice = Convert.ToDouble(reader["Price"]) * quantityofproducts[barcodesinorder.IndexOf(barcode)];
+                    double totalprice = Convert.ToDouble(reader["Price"]) * barcodesandquantitydictionary[barcode];
 
                     TableLayoutPanel table = new TableLayoutPanel();
 
@@ -138,7 +137,7 @@ namespace Do_IT
                     table.ColumnStyles[2].Width = 450;
 
                     TextBox quantity = new TextBox();
-                    quantity.Text = quantityofproducts[barcodesinorder.IndexOf(barcode)].ToString();
+                    quantity.Text = barcodesandquantitydictionary[barcode].ToString();
                     quantity.Name = barcode + "_Quantity_TextBox";
                     quantity.Anchor = AnchorStyles.None;
                     quantity.ReadOnly = true;
@@ -187,8 +186,6 @@ namespace Do_IT
                     table.Controls.Add(removebutton, 7, 0);
                     table.ColumnStyles[7].Width = 100;
 
-                    confirmedquantities.Add(true);
-
                     MainLayoutPanel.Controls.Add(table);
                 }
                 TotalCostLabel.Text = "Total Cost: £" + totalcost.ToString();
@@ -220,7 +217,7 @@ namespace Do_IT
                 button.Text = "Confirm";
                 totalcost -= price * int.Parse(textbox.Text);
                 textbox.ReadOnly = false;
-                confirmedquantities[barcodesinorder.IndexOf(barcode)] = false;
+                numofunconfirmedquantities++;
             }
             else
             {
@@ -239,7 +236,7 @@ namespace Do_IT
                             control.Text = '£' + (int.Parse(textbox.Text) * price).ToString();
                         }
                     }
-                    quantityofproducts[barcodesinorder.IndexOf(barcode)] = int.Parse(textbox.Text);
+                    barcodesandquantitydictionary[barcode] = int.Parse(textbox.Text);
                     SetTotalProductCount();
                     totalcost += price * int.Parse(textbox.Text);
                     TotalCostLabel.Text = "Total Cost: £" + totalcost.ToString();
@@ -248,7 +245,7 @@ namespace Do_IT
                 {
                     MessageBox.Show("Invalid input");
                     textbox.Text = "1";
-                    quantityofproducts[barcodesinorder.IndexOf(barcode)] = 1;
+                    barcodesandquantitydictionary[barcode] = 1;
                     SetTotalProductCount();
                     foreach (Control control in textbox.Parent.Controls)
                     {
@@ -261,7 +258,7 @@ namespace Do_IT
                     TotalCostLabel.Text = "Total Cost: £" + totalcost.ToString();
                 }
                 textbox.ReadOnly = true;
-                confirmedquantities[barcodesinorder.IndexOf(barcode)] = true;
+                numofunconfirmedquantities--;
             }
             
         }
@@ -269,9 +266,9 @@ namespace Do_IT
         private void SetTotalProductCount()
         {
             int count = 0;
-            foreach(int i in quantityofproducts)
+            foreach(int value in barcodesandquantitydictionary.Values)
             {
-                count += i;
+                count += value;
             }
             TotalProductCountLabel.Text = "Total product Count: " + count;
         }
@@ -300,9 +297,8 @@ namespace Do_IT
                     totalcost -= quantity * price;
                     TotalCostLabel.Text = "Total Cost: £" + totalcost.ToString();
                     table.Dispose();
-                    quantityofproducts.RemoveAt(barcodesinorder.IndexOf(barcode));
-                    confirmedquantities.RemoveAt(barcodesinorder.IndexOf(barcode));
-                    barcodesinorder.Remove(barcode);
+                    barcodesandquantitydictionary.Remove(barcode);
+                    numofunconfirmedquantities--;
                     SetTotalProductCount();
                 }
             }
@@ -312,35 +308,41 @@ namespace Do_IT
         {
             if (customertagged)
             {
-                if(barcodesinorder.Count != 0)
+                if(barcodesandquantitydictionary.Count != 0)
                 {
-                    foreach(bool check in confirmedquantities)
+                    if (numofunconfirmedquantities != 0)
                     {
-                        if (!check)
+                        MessageBox.Show("Please confirm all item quantities");
+                        return;
+                    }
+                    if (CheckStockLevels())
+                    {
+                        foreach (Control control in DetailsTableLayoutPanel.Controls)
                         {
-                            MessageBox.Show("Please confirm all item quantities");
-                            return;
+                            if (control.Name == "OrderTypeComboBox")
+                            {
+                                ComboBox combobox = control as ComboBox;
+                                if (combobox.SelectedIndex != -1)
+                                {
+                                    ordertype = combobox.SelectedIndex + 1;
+                                    CreateNewOrder();
+                                    MessageBox.Show("Order placed");
+                                    Forms.mainmenu.Show();
+                                    Forms.productquery.Dispose();
+                                    Forms.productquery = new ProductQuery();
+                                    Forms.createorder = new CreateOrder();
+                                    this.Dispose();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Please select an order type");
+                                }
+                            }
                         }
                     }
-                    foreach (Control control in DetailsTableLayoutPanel.Controls)
+                    else
                     {
-                        if (control.Name == "OrderTypeComboBox")
-                        {
-                            ComboBox combobox = control as ComboBox;
-                            if (combobox.SelectedIndex != -1)
-                            {
-                                ordertype = combobox.SelectedIndex + 1;
-                                CreateNewOrder();
-                                MessageBox.Show("Order placed");
-                                Forms.createorder = new CreateOrder();
-                                Forms.mainmenu.Show();
-                                this.Dispose();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Please select an order type");
-                            }
-                        }
+                        MessageBox.Show("Insufficient stock levels to complete order");
                     }
                 }
                 else
@@ -352,6 +354,28 @@ namespace Do_IT
             {
                 MessageBox.Show("Please select a customer account");
             }
+        }
+
+        private bool CheckStockLevels()
+        {
+            Forms.conn.Open();
+            SQLiteCommand sql;
+            SQLiteDataReader reader;
+            foreach(string barcode in barcodesandquantitydictionary.Keys)
+            {
+                sql = new SQLiteCommand($"SELECT StockCount FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
+                reader = sql.ExecuteReader();
+                reader.Read();
+                if (Convert.ToInt32(reader["StockCount"]) < barcodesandquantitydictionary[barcode])
+                {
+                    reader.Close();
+                    Forms.conn.Close();
+                    return false;
+                }
+                reader.Close();
+            }
+            Forms.conn.Close();
+            return true;
         }
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
@@ -367,13 +391,17 @@ namespace Do_IT
             SQLiteCommand sql = new SQLiteCommand($"INSERT INTO OrderInfo VALUES ('{orderID}', '{customerID}', '{ordertype}', '1') ", Forms.conn);
             sql.ExecuteNonQuery();
             SQLiteCommand sql2;
-            for (int i = 0; i < barcodesinorder.Count; i++)
+            SQLiteCommand sql3;
+            foreach(string barcode in barcodesandquantitydictionary.Keys)
             {
-                sql2 = new SQLiteCommand($"INSERT INTO OrderEntry VALUES ((SELECT MAX(EntryID) + 1 FROM OrderEntry), '{orderID}', '{barcodesinorder[i]}', '{quantityofproducts[i]}')", Forms.conn);
+                sql2 = new SQLiteCommand($"INSERT INTO OrderEntry VALUES ((SELECT MAX(EntryID) + 1 FROM OrderEntry), '{orderID}', '{barcode}', '{barcodesandquantitydictionary[barcode]}')", Forms.conn);
                 sql2.ExecuteNonQuery();
+                sql3 = new SQLiteCommand($"UPDATE Products SET StockCount = StockCount - {barcodesandquantitydictionary[barcode]}", Forms.conn);
+                sql3.ExecuteNonQuery();
             }
             Forms.conn.Close();
             Forms.viewemployeeactions.Action(3, $"Order Num: {orderID} made");
+            //!!!
         }
 
         private void CreateOrder_Load(object sender, EventArgs e)
