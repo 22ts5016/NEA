@@ -71,55 +71,92 @@ namespace Do_IT
             string seq;
             int type;
             bool repeatedsequence = false;
-            if(LocationManagement.CheckValidLocation(IsleTextBox.Text, BayTextBox.Text) && CheckValidItem(BarcodeTextBox.Text, ItemNameTextBox.Text))
+            if(LocationManagement.CheckValidLocation(IsleTextBox.Text, BayTextBox.Text) && CheckValidItem())
             {
-                if (SellingCheck.Checked)
+                if (!CheckIfAlreadyLocated())
                 {
-                    seq = SequenceTextBox.Text;
-                    type = 1;
-                    repeatedsequence = CheckSequence(IsleTextBox.Text, BayTextBox.Text, seq);
-                }
-                else
-                {
-                    if (MultiLocationCheck.Checked)
+                    if (SellingCheck.Checked)
                     {
-                        type = 2;
+                        seq = SequenceTextBox.Text;
+                        type = 1;
+                        repeatedsequence = CheckSequence(IsleTextBox.Text, BayTextBox.Text, seq);
                     }
                     else
                     {
-                        type = 3;
+                        if (MultiLocationCheck.Checked)
+                        {
+                            type = 2;
+                        }
+                        else
+                        {
+                            type = 3;
+                        }
+                        seq = "null";
                     }
-                    seq = "null";
-                }
-                if (!repeatedsequence)
-                {
-                    Forms.conn.Open();
-                    string barcode = BarcodeTextBox.Text, isle = IsleTextBox.Text, bay = BayTextBox.Text;
-                    SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{barcode}', '{isle}', '{bay}', '{seq}', '{type}')", Forms.conn);
-                    sql.ExecuteNonQuery();
-                    SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = '1' WHERE Barcode = {barcode}", Forms.conn);
-                    sql2.ExecuteNonQuery();
-                    MessageBox.Show("Item Added Successfully");
-                    Forms.locationmanagement.Show();
-                    Forms.additemtolocation = new AddItemToLocation();
-                    SQLiteCommand sql3 = new SQLiteCommand($"SELECT LocationType FROM LocationTypes WHERE LocationtypeID = '{type}'", Forms.conn);
-                    SQLiteDataReader reader = sql3.ExecuteReader();
-                    reader.Read();
-                    string stringtype = (string)reader["LocationType"];
-                    reader.Close();
-                    Forms.conn.Close();
-                    Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{stringtype}");
-                    this.Dispose();
+                    if (!repeatedsequence)
+                    {
+                        Forms.conn.Open();
+                        string barcode = BarcodeTextBox.Text, isle = IsleTextBox.Text, bay = BayTextBox.Text;
+                        SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{barcode}', '{isle}', '{bay}', '{seq}', '{type}')", Forms.conn);
+                        sql.ExecuteNonQuery();
+                        SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = '1' WHERE Barcode = {barcode}", Forms.conn);
+                        sql2.ExecuteNonQuery();
+                        MessageBox.Show("Item Added Successfully");
+                        Forms.locationmanagement.Show();
+                        Forms.additemtolocation = new AddItemToLocation();
+                        SQLiteCommand sql3 = new SQLiteCommand($"SELECT LocationType FROM LocationTypes WHERE LocationtypeID = '{type}'", Forms.conn);
+                        SQLiteDataReader reader = sql3.ExecuteReader();
+                        reader.Read();
+                        string stringtype = (string)reader["LocationType"];
+                        reader.Close();
+                        Forms.conn.Close();
+                        Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{stringtype}");
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Sequence");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Sequence");
+                    MessageBox.Show("This product is already located to this bay with this selling type");
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Location");
             }
+        }
+
+        private bool CheckIfAlreadyLocated()
+        {
+            int type = 0;
+
+            if (SellingCheck.Checked)
+            {
+                type = 1;
+            }
+            else if (MultiLocationCheck.Checked)
+            {
+                type = 2;
+            }
+            else if (OverstockCheck.Checked)
+            {
+                type = 3;
+            }
+            Forms.conn.Open();
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}' AND Type = {type}", Forms.conn);
+            SQLiteDataReader reader = sql.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                Forms.conn.Close();
+                return true;
+            }
+            reader.Close();
+            Forms.conn.Close();
+            return false;
         }
 
         private void SellingCheck_CheckedChanged(object sender, EventArgs e)
@@ -193,10 +230,10 @@ namespace Do_IT
             return false;
         }
 
-        private bool CheckValidItem(string barcode, string name)
+        private bool CheckValidItem()
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM Products WHERE Barcode = '{BarcodeTextBox.Text}' AND ProductName = '{ItemNameTextBox.Text}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM Products WHERE Barcode = '{BarcodeTextBox.Text}' AND ProductName COLLATE NOCASE = '{ItemNameTextBox.Text}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             if (reader.Read())
             {
@@ -229,7 +266,7 @@ namespace Do_IT
             }
             else if(BarcodeTextBox.Text == "")
             {
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode, Image FROM Products WHERE ProductName = '{ItemNameTextBox.Text}'", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode, Image FROM Products WHERE ProductName COLLATE NOCASE = '{ItemNameTextBox.Text}'", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
                 if (reader.Read())
                 {

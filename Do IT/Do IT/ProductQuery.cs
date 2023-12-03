@@ -293,7 +293,7 @@ namespace Do_IT
             {
                 if (Regex.IsMatch(SearchTextBox.Text, RegExFormats.anynumber))
                 {
-                    if (CheckValidBarcode(SearchTextBox.Text))
+                    if (CheckBarcodeInDataBase(SearchTextBox.Text))
                     {
                         ShowItem(SearchTextBox.Text);
                     }
@@ -535,7 +535,7 @@ namespace Do_IT
             return false;
         }
 
-        public static bool CheckValidBarcode(string barcode)
+        public static bool CheckBarcodeInDataBase(string barcode)
         {
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM Products WHERE Barcode = {barcode}", Forms.conn);

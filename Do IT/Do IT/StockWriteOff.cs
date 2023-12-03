@@ -46,7 +46,7 @@ namespace Do_IT
             {
                 if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
                 {
-                    if (ProductQuery.CheckValidBarcode(barcode))
+                    if (ProductQuery.CheckBarcodeInDataBase(barcode))
                     {
                         string barcodeandindex = barcode + "_" + WriteOffReasonComboBox.SelectedIndex + "_";
                         if (!CheckDuplicatesInList(barcodeandindex))
