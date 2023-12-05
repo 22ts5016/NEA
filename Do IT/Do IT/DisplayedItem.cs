@@ -18,7 +18,7 @@ namespace Do_IT
         public string description;
         public double price;
         public int stock;
-        public List<int> isle = new List<int>();
+        public List<int> aisle = new List<int>();
         public List<int> bay = new List<int>();
         public List<string> sequence = new List<string>();
         public List<int> type = new List<int>();
@@ -45,17 +45,17 @@ namespace Do_IT
             Forms.conn.Open();
             SQLiteCommand sql;
             SQLiteDataReader reader;
-            for (int i = 0; i < isle.Count; i++)
+            for (int i = 0; i < aisle.Count; i++)
             {
                 Button btn1 = new Button();
-                btn1.Name = i + "_" + isle[i] + "_Button";
-                btn1.Text = isle[i].ToString();
+                btn1.Name = i + "_" + aisle[i] + "_Button";
+                btn1.Text = aisle[i].ToString();
                 btn1.Width = 100;
                 btn1.Click += Btn1_Click;
                 LayoutPanel1.Controls.Add(btn1);
 
                 Button btn2 = new Button();
-                btn2.Name = i + "_" + isle[i] + "_" + bay[i] + "_Button";
+                btn2.Name = i + "_" + aisle[i] + "_" + bay[i] + "_Button";
                 btn2.Text = bay[i].ToString();
                 btn2.Width = 100;
                 btn2.Click += Btn2_Click;
@@ -68,7 +68,7 @@ namespace Do_IT
                 LayoutPanel1.Controls.Add(btn3);
 
                 Button btn4 = new Button();
-                btn4.Name = i + "_" + isle[i] + "_" + bay[i] + "_Type_Button";
+                btn4.Name = i + "_" + aisle[i] + "_" + bay[i] + "_Type_Button";
                 sql = new SQLiteCommand($"SELECT LocationType FROM LocationTypes WHERE LocationTypeID = '{type[i]}'", Forms.conn);
                 reader = sql.ExecuteReader();
                 reader.Read();
@@ -84,7 +84,7 @@ namespace Do_IT
         private void Btn1_Click(object sender, EventArgs e)
         {
             Button clickedbutton = sender as Button;
-            Forms.locationmanagement.IsleTextBox.Text = clickedbutton.Text;
+            Forms.locationmanagement.AisleTextBox.Text = clickedbutton.Text;
             Forms.locationmanagement.BayTextBox.Select();
             Forms.locationmanagement.Show();
             Forms.displayeditem = new DisplayedItem();
@@ -94,7 +94,7 @@ namespace Do_IT
         private void Btn2_Click(object sender, EventArgs e)
         {
             Button clickedbutton = sender as Button;
-            Forms.locationmanagement.IsleTextBox.Text = clickedbutton.Name.Split('_')[1];
+            Forms.locationmanagement.AisleTextBox.Text = clickedbutton.Name.Split('_')[1];
             Forms.locationmanagement.BayTextBox.Text = clickedbutton.Text;
             Forms.locationmanagement.SearchButton.Select();
             Forms.locationmanagement.Show();
@@ -105,7 +105,7 @@ namespace Do_IT
         private void Btn4_Click(object sender, EventArgs e)
         {
             Button clickedbutton = sender as Button;
-            Forms.itemsinabay.isle = clickedbutton.Name.Split('_')[1];
+            Forms.itemsinabay.aisle = clickedbutton.Name.Split('_')[1];
             Forms.itemsinabay.bay = clickedbutton.Name.Split('_')[2];
             Forms.itemsinabay.type = clickedbutton.Text;
             Forms.itemsinabay.Show();

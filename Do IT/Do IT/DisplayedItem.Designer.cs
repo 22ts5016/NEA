@@ -33,7 +33,7 @@
             this.PriceLabel = new System.Windows.Forms.Label();
             this.ProductDescrpitionLabel = new System.Windows.Forms.Label();
             this.MainMenuButton = new System.Windows.Forms.Button();
-            this.IsleLabel = new System.Windows.Forms.Label();
+            this.AisleLabel = new System.Windows.Forms.Label();
             this.BayLabel = new System.Windows.Forms.Label();
             this.SequenceLabel = new System.Windows.Forms.Label();
             this.TypeLabel = new System.Windows.Forms.Label();
@@ -94,14 +94,14 @@
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // IsleLabel
+            // AisleLabel
             // 
-            this.IsleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsleLabel.Location = new System.Drawing.Point(295, 474);
-            this.IsleLabel.Name = "IsleLabel";
-            this.IsleLabel.Size = new System.Drawing.Size(103, 25);
-            this.IsleLabel.TabIndex = 11;
-            this.IsleLabel.Text = "Isle";
+            this.AisleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AisleLabel.Location = new System.Drawing.Point(295, 474);
+            this.AisleLabel.Name = "AisleLabel";
+            this.AisleLabel.Size = new System.Drawing.Size(103, 25);
+            this.AisleLabel.TabIndex = 11;
+            this.AisleLabel.Text = "Aisle";
             // 
             // BayLabel
             // 
@@ -206,7 +206,7 @@
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.SequenceLabel);
             this.Controls.Add(this.BayLabel);
-            this.Controls.Add(this.IsleLabel);
+            this.Controls.Add(this.AisleLabel);
             this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.ProductDescrpitionLabel);
             this.Controls.Add(this.PriceLabel);
@@ -229,7 +229,7 @@
         private System.Windows.Forms.Label PriceLabel;
         private System.Windows.Forms.Label ProductDescrpitionLabel;
         private System.Windows.Forms.Button MainMenuButton;
-        private System.Windows.Forms.Label IsleLabel;
+        private System.Windows.Forms.Label AisleLabel;
         private System.Windows.Forms.Label BayLabel;
         private System.Windows.Forms.Label SequenceLabel;
         private System.Windows.Forms.Label TypeLabel;

@@ -71,7 +71,7 @@ namespace Do_IT
             string seq;
             int type;
             bool repeatedsequence = false;
-            if(LocationManagement.CheckValidLocation(IsleTextBox.Text, BayTextBox.Text) && CheckValidItem())
+            if(LocationManagement.CheckValidLocation(AisleTextBox.Text, BayTextBox.Text) && CheckValidItem())
             {
                 if (!CheckIfAlreadyLocated())
                 {
@@ -79,7 +79,7 @@ namespace Do_IT
                     {
                         seq = SequenceTextBox.Text;
                         type = 1;
-                        repeatedsequence = CheckSequence(IsleTextBox.Text, BayTextBox.Text, seq);
+                        repeatedsequence = CheckSequence(AisleTextBox.Text, BayTextBox.Text, seq);
                     }
                     else
                     {
@@ -96,8 +96,8 @@ namespace Do_IT
                     if (!repeatedsequence)
                     {
                         Forms.conn.Open();
-                        string barcode = BarcodeTextBox.Text, isle = IsleTextBox.Text, bay = BayTextBox.Text;
-                        SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{barcode}', '{isle}', '{bay}', '{seq}', '{type}')", Forms.conn);
+                        string barcode = BarcodeTextBox.Text, aisle = AisleTextBox.Text, bay = BayTextBox.Text;
+                        SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES('{barcode}', '{aisle}', '{bay}', '{seq}', '{type}')", Forms.conn);
                         sql.ExecuteNonQuery();
                         SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = '1' WHERE Barcode = {barcode}", Forms.conn);
                         sql2.ExecuteNonQuery();
@@ -110,7 +110,7 @@ namespace Do_IT
                         string stringtype = (string)reader["LocationType"];
                         reader.Close();
                         Forms.conn.Close();
-                        Forms.viewemployeeactions.Action(2, $"{barcode} added to {isle},{bay} type:{stringtype}");
+                        Forms.viewemployeeactions.Action(2, $"{barcode} added to {aisle},{bay} type:{stringtype}");
                         this.Dispose();
                     }
                     else
@@ -146,7 +146,7 @@ namespace Do_IT
                 type = 3;
             }
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}' AND Type = {type}", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}' AND Type = {type}", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             if (reader.Read())
             {
@@ -214,10 +214,10 @@ namespace Do_IT
             }
         }
 
-        private bool CheckSequence(string isle, string bay, string seq)
+        private bool CheckSequence(string aisle, string bay, string seq)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE Isle = '{isle}' AND Bay = {bay} AND Sequence = {seq}", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE aisle = '{aisle}' AND Bay = {bay} AND Sequence = {seq}", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             if (reader.Read())
             {

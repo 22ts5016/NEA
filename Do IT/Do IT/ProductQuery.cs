@@ -317,7 +317,7 @@ namespace Do_IT
             if (located)
 
             {
-                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type, Weight FROM Products, ProductLocations WHERE Products.Barcode = '{barcode}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
+                sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Aisle, Bay, Sequence, Type, Weight FROM Products, ProductLocations WHERE Products.Barcode = '{barcode}' AND Products.Barcode = ProductLocations.Barcode", Forms.conn);
             }
             else
             {
@@ -487,7 +487,7 @@ namespace Do_IT
             if (located)
             {
                 Forms.displayeditem.type.Add(Convert.ToInt32(reader["Type"]));
-                Forms.displayeditem.isle.Add(Convert.ToInt32(reader["Isle"]));
+                Forms.displayeditem.aisle.Add(Convert.ToInt32(reader["Aisle"]));
                 Forms.displayeditem.bay.Add(Convert.ToInt32(reader["Bay"]));
                 Forms.displayeditem.sequence.Add((string)reader["Sequence"]);
             }

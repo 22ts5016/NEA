@@ -27,14 +27,14 @@ namespace Do_IT
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            if (Regex.IsMatch(IsleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
+            if (Regex.IsMatch(AisleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
             {
-                if (CheckValidLocation(IsleTextBox.Text, BayTextBox.Text))
+                if (CheckValidLocation(AisleTextBox.Text, BayTextBox.Text))
                 {
                     int selling = 0, multi = 0, over = 0;
                     string type;
                     Forms.conn.Open();
-                    SQLiteCommand sql = new SQLiteCommand($"SELECT LocationType FROM ProductLocations, LocationTypes WHERE Isle = '{IsleTextBox.Text}' and Bay = '{BayTextBox.Text}' AND LocationTypeID = Type", Forms.conn);
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT LocationType FROM ProductLocations, LocationTypes WHERE Aisle = '{AisleTextBox.Text}' and Bay = '{BayTextBox.Text}' AND LocationTypeID = Type", Forms.conn);
                     SQLiteDataReader reader = sql.ExecuteReader();
 
                     while (reader.Read())
@@ -66,7 +66,7 @@ namespace Do_IT
                     OverstockLabel.Visible = true;
                     OverstockButton.Visible = true;
 
-                    Forms.itemsinabay.isle = IsleTextBox.Text;
+                    Forms.itemsinabay.aisle = AisleTextBox.Text;
                     Forms.itemsinabay.bay = BayTextBox.Text;
                 }
                 else
@@ -80,10 +80,10 @@ namespace Do_IT
             }
         }
 
-        public static bool CheckValidLocation(string isle, string bay)
+        public static bool CheckValidLocation(string aisle, string bay)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Bay FROM ValidLocations WHERE Isle = '{isle}' AND Bay = '{bay}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Bay FROM ValidLocations WHERE Aisle = '{aisle}' AND Bay = '{bay}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
             if (reader.Read())
@@ -129,7 +129,7 @@ namespace Do_IT
 
         private void Reset()
         {
-            IsleTextBox.Text = "";
+            AisleTextBox.Text = "";
             BayTextBox.Text = "";
 
             SellingLabel.Visible = false;
@@ -139,7 +139,7 @@ namespace Do_IT
             OverstockLabel.Visible = false;
             OverstockButton.Visible = false;
 
-            Forms.locationmanagement.IsleTextBox.Select();
+            Forms.locationmanagement.AisleTextBox.Select();
         }
     }
 }

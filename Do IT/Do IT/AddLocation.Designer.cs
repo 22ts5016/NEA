@@ -32,8 +32,8 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.BayTextBox = new System.Windows.Forms.TextBox();
             this.BayLabel = new System.Windows.Forms.Label();
-            this.IsleTextBox = new System.Windows.Forms.TextBox();
-            this.IsleLabel = new System.Windows.Forms.Label();
+            this.AisleTextBox = new System.Windows.Forms.TextBox();
+            this.AisleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -73,22 +73,22 @@
             this.BayLabel.TabIndex = 19;
             this.BayLabel.Text = "Bay";
             // 
-            // IsleTextBox
+            // AisleTextBox
             // 
-            this.IsleTextBox.Location = new System.Drawing.Point(122, 84);
-            this.IsleTextBox.Name = "IsleTextBox";
-            this.IsleTextBox.Size = new System.Drawing.Size(97, 20);
-            this.IsleTextBox.TabIndex = 18;
+            this.AisleTextBox.Location = new System.Drawing.Point(122, 84);
+            this.AisleTextBox.Name = "AisleTextBox";
+            this.AisleTextBox.Size = new System.Drawing.Size(97, 20);
+            this.AisleTextBox.TabIndex = 18;
             // 
-            // IsleLabel
+            // AisleLabel
             // 
-            this.IsleLabel.AutoSize = true;
-            this.IsleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsleLabel.Location = new System.Drawing.Point(82, 82);
-            this.IsleLabel.Name = "IsleLabel";
-            this.IsleLabel.Size = new System.Drawing.Size(34, 20);
-            this.IsleLabel.TabIndex = 17;
-            this.IsleLabel.Text = "Isle";
+            this.AisleLabel.AutoSize = true;
+            this.AisleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AisleLabel.Location = new System.Drawing.Point(77, 82);
+            this.AisleLabel.Name = "AisleLabel";
+            this.AisleLabel.Size = new System.Drawing.Size(43, 20);
+            this.AisleLabel.TabIndex = 17;
+            this.AisleLabel.Text = "Aisle";
             // 
             // AddLocation
             // 
@@ -99,8 +99,8 @@
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.BayTextBox);
             this.Controls.Add(this.BayLabel);
-            this.Controls.Add(this.IsleTextBox);
-            this.Controls.Add(this.IsleLabel);
+            this.Controls.Add(this.AisleTextBox);
+            this.Controls.Add(this.AisleLabel);
             this.Controls.Add(this.MainMenuButton);
             this.Name = "AddLocation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -116,7 +116,7 @@
         public System.Windows.Forms.Button AddButton;
         public System.Windows.Forms.TextBox BayTextBox;
         private System.Windows.Forms.Label BayLabel;
-        public System.Windows.Forms.TextBox IsleTextBox;
-        private System.Windows.Forms.Label IsleLabel;
+        public System.Windows.Forms.TextBox AisleTextBox;
+        private System.Windows.Forms.Label AisleLabel;
     }
 }

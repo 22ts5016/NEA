@@ -33,9 +33,9 @@
             this.BarcodeLabel = new System.Windows.Forms.Label();
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.BayTextBox = new System.Windows.Forms.TextBox();
-            this.IsleLabel = new System.Windows.Forms.Label();
+            this.AisleLabel = new System.Windows.Forms.Label();
             this.BayLabel = new System.Windows.Forms.Label();
-            this.IsleTextBox = new System.Windows.Forms.TextBox();
+            this.AisleTextBox = new System.Windows.Forms.TextBox();
             this.MainMenuButton = new System.Windows.Forms.Button();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.LocationManagementButton = new System.Windows.Forms.Button();
@@ -90,14 +90,14 @@
             this.BayTextBox.Size = new System.Drawing.Size(97, 20);
             this.BayTextBox.TabIndex = 17;
             // 
-            // IsleLabel
+            // AisleLabel
             // 
-            this.IsleLabel.AutoSize = true;
-            this.IsleLabel.Location = new System.Drawing.Point(546, 108);
-            this.IsleLabel.Name = "IsleLabel";
-            this.IsleLabel.Size = new System.Drawing.Size(23, 13);
-            this.IsleLabel.TabIndex = 18;
-            this.IsleLabel.Text = "Isle";
+            this.AisleLabel.AutoSize = true;
+            this.AisleLabel.Location = new System.Drawing.Point(546, 108);
+            this.AisleLabel.Name = "AisleLabel";
+            this.AisleLabel.Size = new System.Drawing.Size(23, 13);
+            this.AisleLabel.TabIndex = 18;
+            this.AisleLabel.Text = "Aisle";
             // 
             // BayLabel
             // 
@@ -108,12 +108,12 @@
             this.BayLabel.TabIndex = 19;
             this.BayLabel.Text = "Bay";
             // 
-            // IsleTextBox
+            // AisleTextBox
             // 
-            this.IsleTextBox.Location = new System.Drawing.Point(575, 111);
-            this.IsleTextBox.Name = "IsleTextBox";
-            this.IsleTextBox.Size = new System.Drawing.Size(97, 20);
-            this.IsleTextBox.TabIndex = 16;
+            this.AisleTextBox.Location = new System.Drawing.Point(575, 111);
+            this.AisleTextBox.Name = "AisleTextBox";
+            this.AisleTextBox.Size = new System.Drawing.Size(97, 20);
+            this.AisleTextBox.TabIndex = 16;
             // 
             // MainMenuButton
             // 
@@ -287,9 +287,9 @@
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.BayLabel);
-            this.Controls.Add(this.IsleLabel);
+            this.Controls.Add(this.AisleLabel);
             this.Controls.Add(this.BayTextBox);
-            this.Controls.Add(this.IsleTextBox);
+            this.Controls.Add(this.AisleTextBox);
             this.Controls.Add(this.ImagePictureBox);
             this.Controls.Add(this.BarcodeLabel);
             this.Controls.Add(this.ItemNameLabel);
@@ -308,7 +308,7 @@
         private System.Windows.Forms.Label ItemNameLabel;
         private System.Windows.Forms.Label BarcodeLabel;
         private System.Windows.Forms.PictureBox ImagePictureBox;
-        private System.Windows.Forms.Label IsleLabel;
+        private System.Windows.Forms.Label AisleLabel;
         private System.Windows.Forms.Label BayLabel;
         private System.Windows.Forms.Button MainMenuButton;
         private System.Windows.Forms.Button SubmitButton;
@@ -319,7 +319,7 @@
         private System.Windows.Forms.Label MultiLocationLabel;
         private System.Windows.Forms.Label OverstockLabel;
         public System.Windows.Forms.TextBox BayTextBox;
-        public System.Windows.Forms.TextBox IsleTextBox;
+        public System.Windows.Forms.TextBox AisleTextBox;
         public System.Windows.Forms.TextBox SequenceTextBox;
         public System.Windows.Forms.CheckBox SellingCheck;
         public System.Windows.Forms.CheckBox MultiLocationCheck;

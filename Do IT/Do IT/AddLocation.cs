@@ -27,10 +27,10 @@ namespace Do_IT
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if (Regex.IsMatch(IsleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
+            if (Regex.IsMatch(AisleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Isle, Bay FROM ValidLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Aisle, Bay FROM ValidLocations WHERE Aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
                 if (reader.Read())
@@ -41,12 +41,12 @@ namespace Do_IT
                 }
                 else
                 {
-                    SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO ValidLocations VALUES ('{IsleTextBox.Text}', '{BayTextBox.Text}')", Forms.conn);
+                    SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO ValidLocations VALUES ('{AisleTextBox.Text}', '{BayTextBox.Text}')", Forms.conn);
                     sql2.ExecuteNonQuery();
                     MessageBox.Show("Location Added");
                     reader.Close();
                     Forms.conn.Close();
-                    Forms.viewemployeeactions.Action(2, $"Created Location Isle {IsleTextBox.Text} Bay {BayTextBox.Text}");
+                    Forms.viewemployeeactions.Action(2, $"Created Location Aisle {AisleTextBox.Text} Bay {BayTextBox.Text}");
                 }
             }
             else

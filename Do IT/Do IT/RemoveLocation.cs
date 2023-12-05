@@ -27,24 +27,24 @@ namespace Do_IT
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            if (Regex.IsMatch(IsleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
+            if (Regex.IsMatch(AisleTextBox.Text, RegExFormats.anynumber) && Regex.IsMatch(BayTextBox.Text, RegExFormats.anynumber))
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Isle, Bay FROM ValidLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Aisle, Bay FROM ValidLocations WHERE Aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    SQLiteCommand sql2 = new SQLiteCommand($"DELETE FROM ValidLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
+                    SQLiteCommand sql2 = new SQLiteCommand($"DELETE FROM ValidLocations WHERE Aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
                     sql2.ExecuteNonQuery();
-                    SQLiteCommand sql3 = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Isle = '{IsleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
+                    SQLiteCommand sql3 = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}'", Forms.conn);
                     sql3.ExecuteNonQuery();
                     SQLiteCommand sql4 = new SQLiteCommand($"UPDATE Products SET Located = 2 WHERE Located = 1 AND Barcode NOT IN (SELECT DISTINCT Barcode FROM ProductLocations)", Forms.conn);
                     sql4.ExecuteNonQuery();
                     MessageBox.Show("Location Removed");
                     reader.Close();
                     Forms.conn.Close();
-                    Forms.viewemployeeactions.Action(2, $"isle {IsleTextBox.Text} bay {BayTextBox.Text} removed");
+                    Forms.viewemployeeactions.Action(2, $"aisle {AisleTextBox.Text} bay {BayTextBox.Text} removed");
                 }
                 else
                 {

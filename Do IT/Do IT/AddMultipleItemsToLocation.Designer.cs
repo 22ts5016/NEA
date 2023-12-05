@@ -33,8 +33,8 @@
             this.LocationManagementButton = new System.Windows.Forms.Button();
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.ActualItemsLabel = new System.Windows.Forms.Label();
-            this.IsleTextBox = new System.Windows.Forms.TextBox();
-            this.IsleLabel = new System.Windows.Forms.Label();
+            this.AisleTextBox = new System.Windows.Forms.TextBox();
+            this.AisleLabel = new System.Windows.Forms.Label();
             this.BayLabel = new System.Windows.Forms.Label();
             this.BayTextBox = new System.Windows.Forms.TextBox();
             this.MultiLocationLabel = new System.Windows.Forms.Label();
@@ -91,21 +91,21 @@
             this.ActualItemsLabel.TabIndex = 27;
             this.ActualItemsLabel.Text = "null";
             // 
-            // IsleTextBox
+            // AisleTextBox
             // 
-            this.IsleTextBox.Location = new System.Drawing.Point(672, 45);
-            this.IsleTextBox.Name = "IsleTextBox";
-            this.IsleTextBox.Size = new System.Drawing.Size(97, 20);
-            this.IsleTextBox.TabIndex = 28;
+            this.AisleTextBox.Location = new System.Drawing.Point(672, 45);
+            this.AisleTextBox.Name = "AisleTextBox";
+            this.AisleTextBox.Size = new System.Drawing.Size(97, 20);
+            this.AisleTextBox.TabIndex = 28;
             // 
-            // IsleLabel
+            // AisleLabel
             // 
-            this.IsleLabel.AutoSize = true;
-            this.IsleLabel.Location = new System.Drawing.Point(643, 48);
-            this.IsleLabel.Name = "IsleLabel";
-            this.IsleLabel.Size = new System.Drawing.Size(23, 13);
-            this.IsleLabel.TabIndex = 29;
-            this.IsleLabel.Text = "Isle";
+            this.AisleLabel.AutoSize = true;
+            this.AisleLabel.Location = new System.Drawing.Point(638, 48);
+            this.AisleLabel.Name = "AisleLabel";
+            this.AisleLabel.Size = new System.Drawing.Size(29, 13);
+            this.AisleLabel.TabIndex = 29;
+            this.AisleLabel.Text = "Aisle";
             // 
             // BayLabel
             // 
@@ -184,8 +184,8 @@
             this.Controls.Add(this.MultiLocationLabel);
             this.Controls.Add(this.BayTextBox);
             this.Controls.Add(this.BayLabel);
-            this.Controls.Add(this.IsleLabel);
-            this.Controls.Add(this.IsleTextBox);
+            this.Controls.Add(this.AisleLabel);
+            this.Controls.Add(this.AisleTextBox);
             this.Controls.Add(this.ActualItemsLabel);
             this.Controls.Add(this.ItemsLabel);
             this.Controls.Add(this.LocationManagementButton);
@@ -207,8 +207,8 @@
         private System.Windows.Forms.Button LocationManagementButton;
         private System.Windows.Forms.Label ItemsLabel;
         public System.Windows.Forms.Label ActualItemsLabel;
-        private System.Windows.Forms.TextBox IsleTextBox;
-        private System.Windows.Forms.Label IsleLabel;
+        private System.Windows.Forms.TextBox AisleTextBox;
+        private System.Windows.Forms.Label AisleLabel;
         private System.Windows.Forms.Label BayLabel;
         private System.Windows.Forms.TextBox BayTextBox;
         private System.Windows.Forms.Label MultiLocationLabel;

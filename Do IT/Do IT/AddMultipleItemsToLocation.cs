@@ -49,8 +49,8 @@ namespace Do_IT
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            string isle = IsleTextBox.Text, bay = BayTextBox.Text;
-            if (LocationManagement.CheckValidLocation(isle, bay))
+            string aisle = AisleTextBox.Text, bay = BayTextBox.Text;
+            if (LocationManagement.CheckValidLocation(aisle, bay))
             {
                 string values = "";
                 string type;
@@ -75,7 +75,7 @@ namespace Do_IT
                     }
                     barcode = items[i].Substring(0, 13);
                     barcodelist.Add(barcode);
-                    values += $"('{barcode}', '{isle}', '{bay}', 'null', '{type}')";
+                    values += $"('{barcode}', '{aisle}', '{bay}', 'null', '{type}')";
                 }
 
                 Forms.conn.Open();
@@ -95,7 +95,7 @@ namespace Do_IT
                     }
                      
                 }
-                Forms.viewemployeeactions.Action(2, $"Added: {listofitems} to {isle},{bay} type:{type}");
+                Forms.viewemployeeactions.Action(2, $"Added: {listofitems} to {aisle},{bay} type:{type}");
                 this.Dispose();
             }
             else

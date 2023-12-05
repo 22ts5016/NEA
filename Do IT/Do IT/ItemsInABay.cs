@@ -13,7 +13,7 @@ namespace Do_IT
 {
     public partial class ItemsInABay : Form
     {
-        public string isle;
+        public string aisle;
         public string bay;
         public string type;
         private int i = 0;
@@ -39,7 +39,7 @@ namespace Do_IT
                 type = "3";
             }
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Products.barcode, ProductName FROM Products, ProductLocations WHERE Isle = '{isle}' AND Bay = '{bay}' AND Type = '{type}' AND Products.barcode = ProductLocations.Barcode", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Products.barcode, ProductName FROM Products, ProductLocations WHERE Aisle = '{aisle}' AND Bay = '{bay}' AND Type = '{type}' AND Products.barcode = ProductLocations.Barcode", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             string name, barcode;
             while (reader.Read())
@@ -83,7 +83,7 @@ namespace Do_IT
             Button clickedbutton = sender as Button;
             Forms.conn.Open();
             string barcode = clickedbutton.Name.Split('B')[0];
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Isle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = {barcode} AND ProductLocations.Barcode = {barcode}", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Products.Barcode, ProductName, ProductDescription, Price, StockCount, Image, Aisle, Bay, Sequence, Type FROM Products, ProductLocations WHERE Products.Barcode = {barcode} AND ProductLocations.Barcode = {barcode}", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             while (reader.Read())
             {
@@ -101,7 +101,7 @@ namespace Do_IT
             Button clickedbutton = sender as Button;
             string barcode = clickedbutton.Name.Split('B')[0];
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Barcode = '{barcode}' AND Isle = '{isle}' AND Bay = '{bay}' AND Type = '{type}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Barcode = '{barcode}' AND Aisle = '{aisle}' AND Bay = '{bay}' AND Type = '{type}'", Forms.conn);
             sql.ExecuteNonQuery();
             SQLiteCommand sql1 = new SQLiteCommand($"SELECT ProductName FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
             SQLiteDataReader reader = sql1.ExecuteReader();
@@ -119,7 +119,7 @@ namespace Do_IT
             reader2.Close();
             Forms.conn.Close();
             Forms.additemtolocation.Show();
-            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from isle {isle} bay {bay}");
+            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from aisle {aisle} bay {bay}");
             Forms.itemsinabay = new ItemsInABay();
             this.Dispose();
         }
@@ -129,7 +129,7 @@ namespace Do_IT
             Button clickedbutton = sender as Button;
             string barcode = clickedbutton.Name.Split('B')[0];
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Barcode = '{barcode}' AND Isle = '{isle}' AND Bay = '{bay}' AND Type = '{type}'", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Barcode = '{barcode}' AND Aisle = '{aisle}' AND Bay = '{bay}' AND Type = '{type}'", Forms.conn);
             sql.ExecuteNonQuery();
             SQLiteCommand sql1 = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE Barcode = '{barcode}'", Forms.conn);
             SQLiteDataReader reader= sql.ExecuteReader();
@@ -143,14 +143,14 @@ namespace Do_IT
             Forms.locationmanagement.Show();
             Forms.itemsinabay = new ItemsInABay();
             MessageBox.Show("Product Delocated");
-            Forms.viewemployeeactions.Action(2, $"{barcode} delacted from isle {isle} bay {bay}");
+            Forms.viewemployeeactions.Action(2, $"{barcode} delacted from aisle {aisle} bay {bay}");
             this.Dispose();
             
         }
 
         private void AddItemToLocationButton_Click(object sender, EventArgs e)
         {
-            Forms.additemtolocation.IsleTextBox.Text = isle;
+            Forms.additemtolocation.AisleTextBox.Text = aisle;
             Forms.additemtolocation.BayTextBox.Text = bay;
             Forms.additemtolocation.completeinfo = false;
             switch (type)
