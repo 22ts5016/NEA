@@ -148,164 +148,171 @@ namespace Do_IT
             LayoutPanel1.Controls.Clear();
             LayoutPanel1.Visible = true;
             LabelStatus(false);
-            if (ProductNameCheckBox.Checked)
+            if(SearchTextBox.Text.Length != 0)
             {
-                Forms.conn.Open();
-                string a = GetParameters(SearchTextBox.Text);
-                string sortby = "";
-                switch (SortByComboBox.SelectedIndex)
+                if (ProductNameCheckBox.Checked)
                 {
-                    case 0:
-                        sortby = "ORDER BY Weight DESC, ProductName ASC";
-                        break;
-                    case 1:
-                        sortby = "ORDER BY Price DESC, ProductName ASC";
-                        break;
-                    case 2:
-                        sortby = "ORDER BY Price ASC, ProductName ASC";
-                        break;
-                    case 3:
-                        sortby = "ORDER BY ProductName ASC, ProductName ASC";
-                        break;
-                    case 4:
-                        sortby = "AND StockCount > 0 ORDER BY StockCount DESC, ProductName ASC";
-                        break;
-                }
-                SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} {sortby}", Forms.conn);
-                SQLiteDataReader reader = sql.ExecuteReader();
-
-                string name, barcode;
-
-                while (reader.Read())
-                {
-                    name = (string)reader["ProductName"];
-                    barcode = (string)reader["Barcode"];
-
-                    PictureBox image = new PictureBox();
-                    image.Size = new Size(284, 284);
-                    image.Image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
-                    LayoutPanel1.Controls.Add(image);
-
-                    TableLayoutPanel table = new TableLayoutPanel();
-
-                    table.Name = name;
-                    table.Height = 284;
-                    table.Width = 950;
-                    table.ColumnCount = 3;
-                    table.RowCount = 3;
-
-                    Label namelabel = new Label();
-                    namelabel.Name = name + "_Label";
-                    namelabel.Text = name;
-                    namelabel.Font = new Font(namelabel.Font.FontFamily, 13);
-                    namelabel.Name = name;
-                    namelabel.AutoSize = true;
-                    namelabel.Margin = new Padding(0, 0, 0, 10);
-
-                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.Controls.Add(namelabel, 0, 0);
-                    table.ColumnStyles[0].Width = 700;
-
-                    Label barcodelabel = new Label();
-                    barcodelabel.Text = barcode;
-                    barcodelabel.Font = new Font(barcodelabel.Font.FontFamily, 10);
-                    barcodelabel.Name = barcode + "_Label";
-                    barcodelabel.AutoSize = true;
-                    barcodelabel.Margin = new Padding(0, 0, 0, 150);
-
-                    table.Controls.Add(barcodelabel, 0, 1);
-
-                    Label stocklabel = new Label();
-                    stocklabel.Text = "Stock: " + Convert.ToInt32(reader["StockCount"]);
-                    stocklabel.Font = new Font(stocklabel.Font.FontFamily, 10);
-                    stocklabel.Name = name + "_Stock";
-                    stocklabel.AutoSize = true;
-
-                    table.Controls.Add(stocklabel, 0, 2);
-
-                    Label pricelabel = new Label();
-                    pricelabel.Text = "£" + Convert.ToDecimal(reader["Price"]);
-                    pricelabel.Font = new Font(pricelabel.Font.FontFamily, 10);
-                    pricelabel.Name = name + "_Price";
-                    pricelabel.AutoSize = true;
-                    pricelabel.Anchor = AnchorStyles.Right;
-
-                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.Controls.Add(pricelabel, 1, 0);
-                    table.ColumnStyles[1].Width = 125;
-
-                    Button viewbutton = new Button();
-                    viewbutton.Font = new Font(viewbutton.Font.FontFamily, 10);
-                    viewbutton.Name = barcode + "_ViewItemButton";
-                    viewbutton.Text = "View Product";
-                    viewbutton.Size = new Size(100, 100);
-                    viewbutton.Anchor = AnchorStyles.Right;
-
-                    viewbutton.Click += ViewButton_Click;
-
-                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.Controls.Add(viewbutton, 1, 1);
-                    table.ColumnStyles[1].Width = 125;
-
-                    Button addtoorderbutton = new Button();
-                    addtoorderbutton.Font = new Font(addtoorderbutton.Font.FontFamily, 10);
-                    addtoorderbutton.Name = barcode + "_AddToOrder_Button";
-                    addtoorderbutton.Text = "Add To Order";
-                    addtoorderbutton.Size = new Size(100, 100);
-                    addtoorderbutton.Anchor = AnchorStyles.Left;
-
-                    addtoorderbutton.Click += AddToOrderButton_Click;
-
-                    table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
-                    table.Controls.Add(addtoorderbutton, 2, 1);
-                    table.ColumnStyles[2].Width = 125;
-
-                    LayoutPanel1.Controls.Add(table);
-
-                }
-                Forms.conn.Close();
-                ItemCountLabel.Text = LayoutPanel1.Controls.Count / 2 + " products displayed";
-            }
-            else if (ExactProductNameCheckBox.Checked)
-            {
-                Forms.conn.Open();
-                string name = SearchTextBox.Text;
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode, Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
-                SQLiteDataReader reader = sql.ExecuteReader();
-                if (reader.Read())
-                {
-                    int weight = Convert.ToInt32(reader["Weight"]) + 1;
-                    string barcode = (string)reader["Barcode"];
-                    reader.Close();
-                    Forms.conn.Close();
-
-                    ShowItem(barcode);
-
-                    Forms.conn.Close();
-                }
-                else
-                {
-                    MessageBox.Show("That is not the name of an item");
-                    Forms.conn.Close();
-                }
-            }
-            else if (BarcodeCheckBox.Checked)
-            {
-                if (Regex.IsMatch(SearchTextBox.Text, RegExFormats.anynumber))
-                {
-                    if (CheckBarcodeInDataBase(SearchTextBox.Text))
+                    Forms.conn.Open();
+                    string a = GetParameters(SearchTextBox.Text);
+                    string sortby = "";
+                    switch (SortByComboBox.SelectedIndex)
                     {
-                        ShowItem(SearchTextBox.Text);
+                        case 0:
+                            sortby = "ORDER BY Weight DESC, ProductName ASC";
+                            break;
+                        case 1:
+                            sortby = "ORDER BY Price DESC, ProductName ASC";
+                            break;
+                        case 2:
+                            sortby = "ORDER BY Price ASC, ProductName ASC";
+                            break;
+                        case 3:
+                            sortby = "ORDER BY ProductName ASC, ProductName ASC";
+                            break;
+                        case 4:
+                            sortby = "AND StockCount > 0 ORDER BY StockCount DESC, ProductName ASC";
+                            break;
+                    }
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} {sortby}", Forms.conn);
+                    SQLiteDataReader reader = sql.ExecuteReader();
+
+                    string name, barcode;
+
+                    while (reader.Read())
+                    {
+                        name = (string)reader["ProductName"];
+                        barcode = (string)reader["Barcode"];
+
+                        PictureBox image = new PictureBox();
+                        image.Size = new Size(284, 284);
+                        image.Image = new Bitmap(new MemoryStream((byte[])reader["Image"]));
+                        LayoutPanel1.Controls.Add(image);
+
+                        TableLayoutPanel table = new TableLayoutPanel();
+
+                        table.Name = name;
+                        table.Height = 284;
+                        table.Width = 950;
+                        table.ColumnCount = 3;
+                        table.RowCount = 3;
+
+                        Label namelabel = new Label();
+                        namelabel.Name = name + "_Label";
+                        namelabel.Text = name;
+                        namelabel.Font = new Font(namelabel.Font.FontFamily, 13);
+                        namelabel.Name = name;
+                        namelabel.AutoSize = true;
+                        namelabel.Margin = new Padding(0, 0, 0, 10);
+
+                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                        table.Controls.Add(namelabel, 0, 0);
+                        table.ColumnStyles[0].Width = 700;
+
+                        Label barcodelabel = new Label();
+                        barcodelabel.Text = barcode;
+                        barcodelabel.Font = new Font(barcodelabel.Font.FontFamily, 10);
+                        barcodelabel.Name = barcode + "_Label";
+                        barcodelabel.AutoSize = true;
+                        barcodelabel.Margin = new Padding(0, 0, 0, 150);
+
+                        table.Controls.Add(barcodelabel, 0, 1);
+
+                        Label stocklabel = new Label();
+                        stocklabel.Text = "Stock: " + Convert.ToInt32(reader["StockCount"]);
+                        stocklabel.Font = new Font(stocklabel.Font.FontFamily, 10);
+                        stocklabel.Name = name + "_Stock";
+                        stocklabel.AutoSize = true;
+
+                        table.Controls.Add(stocklabel, 0, 2);
+
+                        Label pricelabel = new Label();
+                        pricelabel.Text = "£" + Convert.ToDecimal(reader["Price"]);
+                        pricelabel.Font = new Font(pricelabel.Font.FontFamily, 10);
+                        pricelabel.Name = name + "_Price";
+                        pricelabel.AutoSize = true;
+                        pricelabel.Anchor = AnchorStyles.Right;
+
+                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                        table.Controls.Add(pricelabel, 1, 0);
+                        table.ColumnStyles[1].Width = 125;
+
+                        Button viewbutton = new Button();
+                        viewbutton.Font = new Font(viewbutton.Font.FontFamily, 10);
+                        viewbutton.Name = barcode + "_ViewItemButton";
+                        viewbutton.Text = "View Product";
+                        viewbutton.Size = new Size(100, 100);
+                        viewbutton.Anchor = AnchorStyles.Right;
+
+                        viewbutton.Click += ViewButton_Click;
+
+                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                        table.Controls.Add(viewbutton, 1, 1);
+                        table.ColumnStyles[1].Width = 125;
+
+                        Button addtoorderbutton = new Button();
+                        addtoorderbutton.Font = new Font(addtoorderbutton.Font.FontFamily, 10);
+                        addtoorderbutton.Name = barcode + "_AddToOrder_Button";
+                        addtoorderbutton.Text = "Add To Order";
+                        addtoorderbutton.Size = new Size(100, 100);
+                        addtoorderbutton.Anchor = AnchorStyles.Left;
+
+                        addtoorderbutton.Click += AddToOrderButton_Click;
+
+                        table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute));
+                        table.Controls.Add(addtoorderbutton, 2, 1);
+                        table.ColumnStyles[2].Width = 125;
+
+                        LayoutPanel1.Controls.Add(table);
+
+                    }
+                    Forms.conn.Close();
+                    ItemCountLabel.Text = LayoutPanel1.Controls.Count / 2 + " products displayed";
+                }
+                else if (ExactProductNameCheckBox.Checked)
+                {
+                    Forms.conn.Open();
+                    string name = SearchTextBox.Text;
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode, Weight FROM Products WHERE ProductName COLLATE NOCASE = '{name}'", Forms.conn);
+                    SQLiteDataReader reader = sql.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int weight = Convert.ToInt32(reader["Weight"]) + 1;
+                        string barcode = (string)reader["Barcode"];
+                        reader.Close();
+                        Forms.conn.Close();
+
+                        ShowItem(barcode);
+
+                        Forms.conn.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Invalid barcode");
+                        MessageBox.Show("That is not the name of an item");
+                        Forms.conn.Close();
                     }
                 }
-                else
+                else if (BarcodeCheckBox.Checked)
                 {
-                    MessageBox.Show("Invalid input");
+                    if (Regex.IsMatch(SearchTextBox.Text, RegExFormats.anynumber))
+                    {
+                        if (CheckBarcodeInDataBase(SearchTextBox.Text))
+                        {
+                            ShowItem(SearchTextBox.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid barcode");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid input");
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a search input");
             }
         }
 

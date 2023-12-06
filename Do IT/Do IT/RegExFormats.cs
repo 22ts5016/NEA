@@ -10,7 +10,7 @@ namespace Do_IT
     {
         public static string anyletters = "^[a-zA-Z]+$";
         public static string anynumber = @"^\d+$";
-        public static string anyproductname = @"^([a-zA-Z()]|\d| |,|-|')+$";
+        public static string anyproductname = @"^([a-zA-Z()]|\d| |,|-|'|.)+$";
         public static string anyprice = @"^\d+(\.\d\d)?$";
         public static string anyaddress = @"^\d+ ([a-zA-Z]|'| )+$";
         public static string anypostcode = @"^[a-zA-Z]{1,2}\d{1,2} \d[a-zA-Z]{2}$";

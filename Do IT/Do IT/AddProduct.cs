@@ -79,7 +79,7 @@ namespace Do_IT
         {
             if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
             {
-                if(Regex.IsMatch(ProductNameTextBox.Text, RegExFormats.anyproductname))
+                if(Regex.IsMatch(ProductNameTextBox.Text, RegExFormats.anyproductname) && Regex.IsMatch(ProductDescriptionTextBox.Text, RegExFormats.anyproductname))
                 {
                     if (Regex.IsMatch(PriceTextBox.Text, RegExFormats.anyprice))
                     {
@@ -140,9 +140,17 @@ namespace Do_IT
                 ofd.InitialDirectory = "d:\\";
                 ofd.Filter = "Files | *.jpg; *.jpeg; *.png";
 
-                if (ofd.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    ImagePictureBox.Image = new Bitmap(ofd.FileName);
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        ImagePictureBox.Image = new Bitmap(ofd.FileName);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid image");
+                    ImagePictureBox.Image = blank;
                 }
             }
         }
