@@ -32,6 +32,7 @@ namespace Do_IT
                     SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Employees VALUES ('{EmployeeIDNumberLabel.Text}', '{ForenameTextBox.Text}', '{SurnameTextBox.Text}', '{Convert.ToInt32(reader["RoleID"])}', '{Convert.ToInt32(reader["DepartmentID"])}', '{UsernameTextBox.Text}', '{PasswordTextBox.Text}')", Forms.conn);
                     sql2.ExecuteNonQuery();
                     MessageBox.Show("Account created!");
+                    reader.Close();
                     Forms.conn.Close();
                     Forms.viewemployeeactions.Action(4, $"Account made for {ForenameTextBox.Text} {SurnameTextBox.Text}");
                 }

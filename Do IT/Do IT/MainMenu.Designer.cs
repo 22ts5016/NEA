@@ -39,6 +39,7 @@
             this.SignOutButton = new System.Windows.Forms.Button();
             this.RemoveProductButton = new System.Windows.Forms.Button();
             this.RemoveLocationButton = new System.Windows.Forms.Button();
+            this.ManagersOnlyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ProductQueryButton
@@ -156,12 +157,23 @@
             this.RemoveLocationButton.Visible = false;
             this.RemoveLocationButton.Click += new System.EventHandler(this.RemoveLocationButton_Click);
             // 
+            // ManagersOnlyLabel
+            // 
+            this.ManagersOnlyLabel.AutoSize = true;
+            this.ManagersOnlyLabel.Location = new System.Drawing.Point(88, 425);
+            this.ManagersOnlyLabel.Name = "ManagersOnlyLabel";
+            this.ManagersOnlyLabel.Size = new System.Drawing.Size(79, 13);
+            this.ManagersOnlyLabel.TabIndex = 12;
+            this.ManagersOnlyLabel.Text = "Managers only:";
+            this.ManagersOnlyLabel.Visible = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.ManagersOnlyLabel);
             this.Controls.Add(this.RemoveLocationButton);
             this.Controls.Add(this.RemoveProductButton);
             this.Controls.Add(this.SignOutButton);
@@ -178,6 +190,7 @@
             this.Text = "Main Menu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -194,5 +207,6 @@
         private System.Windows.Forms.Button SignOutButton;
         private System.Windows.Forms.Button RemoveProductButton;
         private System.Windows.Forms.Button RemoveLocationButton;
+        private System.Windows.Forms.Label ManagersOnlyLabel;
     }
 }

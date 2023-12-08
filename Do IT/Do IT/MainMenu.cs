@@ -23,6 +23,7 @@ namespace Do_IT
             Forms.firstscreen = new FirstScreen();
             if(1 < CurrentUser.clearance)
             {
+                ManagersOnlyLabel.Visible = true;
                 EmployeesButton.Visible = true;
                 if(2 < CurrentUser.clearance)
                 {

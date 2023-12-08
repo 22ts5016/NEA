@@ -33,7 +33,7 @@ namespace Do_IT
             reader.Read();
             string actionid = (int.Parse(reader["ActionID"].ToString()) + 1).ToString();
             reader.Close();
-            SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionid}', '{CurrentUser.employeeID}', '{type}', '{action}')", Forms.conn);
+            SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionid}', '{CurrentUser.employeeID}', '{CurrentUser.clearance}', '{type}', '{action}')", Forms.conn);
             sql2.ExecuteNonQuery();
             Forms.conn.Close();
         }
@@ -77,11 +77,10 @@ namespace Do_IT
             bool valid = true;
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand();
-
             switch (SearchByComboBox.SelectedIndex)
             {
                 case 0:
-                    sql = new SQLiteCommand("SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID ORDER BY ActionID DESC", Forms.conn);
+                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionType.ActionType, Action FROM Employees, Actions, ActionType WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND (Actions.Role < '{CurrentUser.clearance}' OR 4 = {CurrentUser.clearance}) ORDER BY ActionID DESC", Forms.conn);
                     break;
                 case 1:
                     if(SpecificComboBox.SelectedIndex == -1)
