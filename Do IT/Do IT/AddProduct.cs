@@ -49,7 +49,7 @@ namespace Do_IT
                             }
                         }
                         Forms.conn.Open();
-                        using (SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Products VALUES ('{BarcodeTextBox.Text}', \"{ProductNameTextBox.Text}\", \"{description}\", '{double.Parse(PriceTextBox.Text)}', '{int.Parse(StockCountTextBox.Text)}', '0',@image, 'f')", Forms.conn))
+                        using (SQLiteCommand sql = new SQLiteCommand($"INSERT INTO Products VALUES ('{BarcodeTextBox.Text}', \"{ProductNameTextBox.Text}\", \"{description}\", '{double.Parse(PriceTextBox.Text)}', '{int.Parse(StockCountTextBox.Text)}', '0',@image, '2')", Forms.conn))
                         {
                             sql.Parameters.AddWithValue("@image", imageBytes);
                             sql.ExecuteNonQuery();

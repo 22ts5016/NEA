@@ -52,7 +52,7 @@ namespace Do_IT
                     }
                     else
                     {
-                        MessageBox.Show("This order number is not a collectable order");
+                        MessageBox.Show("This order number is not a collectible order");
                     }
                 }
                 else

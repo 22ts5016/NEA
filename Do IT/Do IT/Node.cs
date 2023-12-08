@@ -26,7 +26,7 @@ namespace Do_IT
         {
             for (int i = 0; i < children.Count; i++)
             {
-                if (word[0] == children[i].name)
+                if (word[0] == children[i].getName())
                 {
                     Sort(weight, word[0]);
                     children[i].AddNode(word.Substring(1), weight);
@@ -58,7 +58,7 @@ namespace Do_IT
                     {
                         foreach (Node n in children)
                         {
-                            if (n.name == popularC[j] && popularC != null)
+                            if (n.getName() == popularC[j] && popularC != null)
                             {
                                 temp[j] = n.getPopular();
                                 break;
@@ -69,7 +69,7 @@ namespace Do_IT
                     ResetBools();
                     return temp;
                 }
-                if (word[0] == children[i].name)
+                if (word[0] == children[i].getName())
                 {
                     return children[i].Search(word.Substring(1));
                 }
@@ -90,7 +90,7 @@ namespace Do_IT
                     }
                     foreach (Node n in children)
                     {
-                        if (n.name == popularC[i])
+                        if (n.getName() == popularC[i])
                         {
                             nodessearched[i] = true;
                             return name + n.getPopular();
@@ -105,7 +105,7 @@ namespace Do_IT
         {
             for (int i = 0; i < children.Count; i++)
             {
-                if (word == "" && children[i].name == '*')
+                if (word == "" && children[i].getName() == '*')
                 {
                     return true;
                 }
@@ -143,7 +143,7 @@ namespace Do_IT
                 {
                     foreach (Node n in children)
                     {
-                        if (n.name == popularC[i])
+                        if (n.getName() == popularC[i])
                         {
                             n.ResetBools();
                         }
@@ -178,7 +178,7 @@ namespace Do_IT
 
             foreach(Node n in children)
             {
-                if(n.name == word[0])
+                if(n.getName() == word[0])
                 {
                     return name + n.SearchForStartOfRemoval(word.Substring(1), weight);
                 }

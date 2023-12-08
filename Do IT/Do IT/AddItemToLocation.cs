@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using static System.Net.WebRequestMethods;
+using System.Text.RegularExpressions;
 
 namespace Do_IT
 {
@@ -70,7 +72,8 @@ namespace Do_IT
         {
             string seq;
             int type;
-            bool repeatedsequence = false;
+            bool validsequence = true;
+            barcode = BarcodeTextBox.Text;
             if(LocationManagement.CheckValidLocation(AisleTextBox.Text, BayTextBox.Text) && CheckValidItem())
             {
                 if (!CheckIfAlreadyLocated())
@@ -79,7 +82,7 @@ namespace Do_IT
                     {
                         seq = SequenceTextBox.Text;
                         type = 1;
-                        repeatedsequence = CheckSequence(AisleTextBox.Text, BayTextBox.Text, seq);
+                        validsequence = CheckValidSequence(AisleTextBox.Text, BayTextBox.Text, seq);
                     }
                     else
                     {
@@ -93,7 +96,7 @@ namespace Do_IT
                         }
                         seq = "null";
                     }
-                    if (!repeatedsequence)
+                    if (validsequence)
                     {
                         Forms.conn.Open();
                         string barcode = BarcodeTextBox.Text, aisle = AisleTextBox.Text, bay = BayTextBox.Text;
@@ -146,7 +149,7 @@ namespace Do_IT
                 type = 3;
             }
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}' AND Type = {type}", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE aisle = '{AisleTextBox.Text}' AND Bay = '{BayTextBox.Text}' AND Type = {type} AND Barcode = '{barcode}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             if (reader.Read())
             {
@@ -214,22 +217,29 @@ namespace Do_IT
             }
         }
 
-        private bool CheckSequence(string aisle, string bay, string seq)
+        private bool CheckValidSequence(string aisle, string bay, string seq)
         {
-            Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE aisle = '{aisle}' AND Bay = {bay} AND Sequence = {seq}", Forms.conn);
-            SQLiteDataReader reader = sql.ExecuteReader();
-            if (reader.Read())
+            if (Regex.IsMatch(seq, RegExFormats.anynumber))
             {
+                Forms.conn.Open();
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE aisle = '{aisle}' AND Bay = {bay} AND Sequence = {seq}", Forms.conn);
+                SQLiteDataReader reader = sql.ExecuteReader();
+                if (reader.Read())
+                {
+                    reader.Close();
+                    Forms.conn.Close();
+                    return false;
+                }
                 reader.Close();
                 Forms.conn.Close();
-                return true;
             }
-            reader.Close();
-            Forms.conn.Close();
-            return false;
+            else
+            {
+                return false;
+            }
+            return true;
         }
-
+        
         private bool CheckValidItem()
         {
             Forms.conn.Open();

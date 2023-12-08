@@ -16,7 +16,6 @@ namespace Do_IT
         public string aisle;
         public string bay;
         public string type;
-        private int i = 0;
 
         public ItemsInABay()
         {
@@ -44,7 +43,6 @@ namespace Do_IT
             string name, barcode;
             while (reader.Read())
             {
-                i++;
                 name = (string)reader["ProductName"];
                 barcode = (string)reader["Barcode"];
                 Label label = new Label();
@@ -132,10 +130,10 @@ namespace Do_IT
             SQLiteCommand sql = new SQLiteCommand($"DELETE FROM ProductLocations WHERE Barcode = '{barcode}' AND Aisle = '{aisle}' AND Bay = '{bay}' AND Type = '{type}'", Forms.conn);
             sql.ExecuteNonQuery();
             SQLiteCommand sql1 = new SQLiteCommand($"SELECT Barcode FROM ProductLocations WHERE Barcode = '{barcode}'", Forms.conn);
-            SQLiteDataReader reader= sql.ExecuteReader();
+            SQLiteDataReader reader= sql1.ExecuteReader();
             if (!reader.Read())
             {
-                SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = 'f' WHERE Barcode = {barcode}", Forms.conn);
+                SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Products SET Located = '2' WHERE Barcode = {barcode}", Forms.conn);
                 sql2.ExecuteNonQuery();
             }
             reader.Close();

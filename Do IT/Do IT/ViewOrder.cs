@@ -29,7 +29,8 @@ namespace Do_IT
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
             Forms.mainmenu.Show();
-            this.Hide();
+            Forms.vieworder = new ViewOrder();
+            this.Dispose();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -39,7 +40,6 @@ namespace Do_IT
             if (Regex.IsMatch(OrderNumberTextBox.Text, RegExFormats.anynumber))
             {
                 Forms.conn.Open();
-                //SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status, OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderTypes, OrderEntry, OrderStatusTypes, Customers, Products WHERE Customers.CustomerID = OrderInfo.CustomerID AND OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.OrderType = OrderTypes.OrderTypeID Group By OrderEntry.Barcode", Forms.conn);
                 SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status FROM Customers, OrderInfo, OrderTypes, OrderStatusTypes WHERE OrderInfo.OrderID = {OrderNumberTextBox.Text} AND OrderInfo.CustomerID = Customers.CustomerID AND OrderInfo.OrderType = OrderTypes.OrderTypeID AND OrderInfo.Status = OrderStatusTypes.StatusID", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
