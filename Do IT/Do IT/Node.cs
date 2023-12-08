@@ -155,7 +155,7 @@ namespace Do_IT
 
         public void ClearTree(Node node)
         {
-            if(node == null)
+            if(node.children.Count == 0)
             {
                 return;
             }
