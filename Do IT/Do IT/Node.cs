@@ -119,14 +119,14 @@ namespace Do_IT
 
         public void Sort(int inweight, char inchar)
         {
-            int compW = inweight;
-            char compC = inchar;
+            int tempW, compW = inweight;
+            char tempC, compC = inchar;
             for (int i = 0; i < popularW.Length; i++)
             {
                 if (popularW[i] <= compW)
                 {
-                    int tempW = popularW[i];
-                    char tempC = popularC[i];
+                    tempW = popularW[i];
+                    tempC = popularC[i];
                     popularC[i] = compC;
                     popularW[i] = compW;
                     compW = tempW;

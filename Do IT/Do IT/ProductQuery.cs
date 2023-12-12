@@ -17,6 +17,8 @@ namespace Do_IT
 {
     public partial class ProductQuery : Form
     {
+        private bool labelselected = false;
+
         public ProductQuery()
         {
             InitializeComponent();
@@ -90,37 +92,45 @@ namespace Do_IT
             LayoutPanel1.Visible = false;
             if (ProductNameCheckBox.Checked || ExactProductNameCheckBox.Checked)
             {
-                string word = SearchTextBox.Text.ToLower();
-                if (word.Length == 0)
+                if (!labelselected)
                 {
-                    LabelStatus(false);
-                }
-                else
-                {
-                    LabelStatus(true);
-                    string[] options = new string[5];
-                    try
-                    {
-                        options = RootedTree.getRoot().Search(word);
-                        for (int i = 0; i < options.Length; i++)
-                        {
-                            if (options[i] != null)
-                            {
-                                options[i] = word + options[i];
-                            }
-                        }
-                        Option1Label.Text = options[0];
-                        Option2Label.Text = options[1];
-                        Option3Label.Text = options[2];
-                        Option4Label.Text = options[3];
-                        Option5Label.Text = options[4];
-                    }
-                    catch (LetterNotFoundException)
+                    string word = SearchTextBox.Text.ToLower();
+                    if (word.Length == 0)
                     {
                         LabelStatus(false);
                     }
+                    else
+                    {
+                        LabelStatus(true);
+                        string[] options = new string[5];
+                        try
+                        {
+                            options = RootedTree.getRoot().Search(word);
+                            for (int i = 0; i < options.Length; i++)
+                            {
+                                if (options[i] != null)
+                                {
+                                    options[i] = word + options[i];
+                                }
+                            }
+                            Option1Label.Text = options[0];
+                            Option2Label.Text = options[1];
+                            Option3Label.Text = options[2];
+                            Option4Label.Text = options[3];
+                            Option5Label.Text = options[4];
+                        }
+                        catch (LetterNotFoundException)
+                        {
+                            LabelStatus(false);
+                        }
+                    }
+                }
+                else
+                {
+                    labelselected = false;
                 }
             }
+
         }
 
         public static void AddWords()
@@ -434,6 +444,7 @@ namespace Do_IT
             SearchTextBox.Text = Option1Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
+            labelselected = true;
         }
 
         private void Option2Label_Click(object sender, EventArgs e)
@@ -441,6 +452,7 @@ namespace Do_IT
             SearchTextBox.Text = Option2Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
+            labelselected = true;
         }
 
         private void Option3Label_Click_1(object sender, EventArgs e)
@@ -448,6 +460,7 @@ namespace Do_IT
             SearchTextBox.Text = Option3Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
+            labelselected = true;
         }
 
         private void Option4Label_Click_1(object sender, EventArgs e)
@@ -455,6 +468,7 @@ namespace Do_IT
             SearchTextBox.Text = Option4Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
+            labelselected = true;
         }
 
         private void Option5Label_Click_1(object sender, EventArgs e)
@@ -462,6 +476,7 @@ namespace Do_IT
             SearchTextBox.Text = Option5Label.Text;
             ExactProductNameCheckBox.Checked = true;
             LabelStatus(false);
+            labelselected = true;
         }
 
         private void LabelStatus(bool status)

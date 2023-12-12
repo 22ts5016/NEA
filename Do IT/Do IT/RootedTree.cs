@@ -12,11 +12,6 @@ namespace Do_IT
 
         public static void AddWord(int weight, string word)
         {
-            if (word == "*")
-            {
-                throw new FormatException();
-            }
-
             root.AddNode(word, weight);
         }
         public static Node getRoot()

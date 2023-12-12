@@ -137,7 +137,7 @@ namespace Do_IT
         {
             using(OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.InitialDirectory = "d:\\";
+                ofd.InitialDirectory = "This PC\\Pictures";
                 ofd.Filter = "Files | *.jpg; *.jpeg; *.png";
 
                 try
