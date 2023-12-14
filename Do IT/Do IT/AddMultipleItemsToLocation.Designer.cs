@@ -52,6 +52,7 @@
             this.MainMenuButton.TabIndex = 21;
             this.MainMenuButton.Text = "Main Menu";
             this.MainMenuButton.UseVisualStyleBackColor = true;
+            this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
             // UnlocatedProductsButton
             // 

@@ -53,20 +53,22 @@ namespace Do_IT
             if (LocationManagement.CheckValidLocation(aisle, bay))
             {
                 string values = "";
-                string type;
+                int type;
                 string barcode;
                 List<string> barcodelist = new List<string>();
                 string[] items = ActualItemsLabel.Text.Split('\n');
 
                 if (MultiLocationCheck.Checked)
                 {
-                    type = "MultiLocation";
+                    type = 2;
                 }
                 else
                 {
-                    type = "Overstock";
+                    type = 3;
                 }
 
+                Forms.conn.Open();
+                SQLiteCommand sql;
                 for(int i = 0; i < items.Length - 1; i++)
                 {
                     if(i > 0)
@@ -74,17 +76,21 @@ namespace Do_IT
                         values += ',';
                     }
                     barcode = items[i].Substring(0, 13);
+                    sql = new SQLiteCommand($"UPDATE Products SET Located = '1' WHERE Barcode = '{barcode}'", Forms.conn);
+                    sql.ExecuteNonQuery();
                     barcodelist.Add(barcode);
                     values += $"('{barcode}', '{aisle}', '{bay}', 'null', '{type}')";
                 }
 
-                Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"INSERT INTO ProductLocations VALUES {values}", Forms.conn);
-                sql.ExecuteNonQuery();
+                
+                SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO ProductLocations VALUES {values}", Forms.conn);
+                sql2.ExecuteNonQuery();
                 Forms.conn.Close();
 
+                Forms.itemswithoutlocations = new ItemsWithoutLocations();
                 Forms.itemswithoutlocations.Show();
                 Forms.addmultipleitemstolocation = new AddMultipleItemsToLocation();
+                
                 string listofitems = "";
                 for(int i = 0; i < barcodelist.Count; i++)
                 {
@@ -116,6 +122,12 @@ namespace Do_IT
             Forms.locationmanagement.Show();
             Forms.addmultipleitemstolocation = new AddMultipleItemsToLocation();
             this.Dispose();
+        }
+
+        private void MainMenuButton_Click(object sender, EventArgs e)
+        {
+            Forms.mainmenu.Show();
+            this.Hide();
         }
     }
 }

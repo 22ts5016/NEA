@@ -15,6 +15,7 @@ namespace Do_IT
     public partial class CreateCustomer : Form
     {
         private bool validdetails = false;
+        private bool taggingtoorder = false;
 
         public CreateCustomer()
         {
@@ -55,6 +56,12 @@ namespace Do_IT
                     MessageBox.Show("Account created");
                     validdetails = true;
                     Forms.viewemployeeactions.Action(6, $"AccountNum: {CustomerIDLabel.Text} created");
+                    Forms.createcustomer = new CreateCustomer();
+                    if (!taggingtoorder)
+                    {
+                        Forms.mainmenu.Show();
+                        this.Dispose();
+                    }
                 }
             }
             else
@@ -65,6 +72,7 @@ namespace Do_IT
 
         private void CreateAccountAndTagToOrderButton_Click(object sender, EventArgs e)
         {
+            taggingtoorder = true;
             CreateAccountButton.PerformClick();
             if (validdetails)
             {
@@ -72,7 +80,7 @@ namespace Do_IT
                 Forms.createorder.AddCustomerToOrder(int.Parse(CustomerIDLabel.Text));
                 Forms.createorder.DisplayItemsInOrder();
                 Forms.createorder.Show();
-                this.Hide();
+                this.Dispose();
             }
         }
 
