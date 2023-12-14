@@ -241,7 +241,7 @@ namespace Do_IT
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             Dictionary<string, int> barcodes = new Dictionary<string, int>();
-            string tempbarcode; ;
+            string tempbarcode;
             foreach(TableLayoutPanel table in LayoutPanel1.Controls)
             {
                 int count = int.Parse(table.Controls[2].Text);

@@ -14,7 +14,7 @@ namespace Do_IT
         private char[] popularC;
         private bool[] nodessearched = { false, false, false, false, false };
 
-        public Node(char inname, int inweight)
+        public Node(char inname)
         {
             children = new List<Node>();
             name = inname;
@@ -34,7 +34,7 @@ namespace Do_IT
                 }
             }
             Sort(weight, word[0]);
-            children.Add(new Node(word[0], weight));
+            children.Add(new Node(word[0]));
             if (word.Length == 1)
             {
                 return;
@@ -99,22 +99,6 @@ namespace Do_IT
                 }
             }
             return "";
-        }
-
-        public bool checkDupe(string word)
-        {
-            for (int i = 0; i < children.Count; i++)
-            {
-                if (word == "" && children[i].getName() == '*')
-                {
-                    return true;
-                }
-                else if (word.Length != 0 && word[0] == children[i].getName())
-                {
-                    return children[i].checkDupe(word.Substring(1));
-                }
-            }
-            return false;
         }
 
         public void Sort(int inweight, char inchar)

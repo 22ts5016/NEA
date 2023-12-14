@@ -8,7 +8,7 @@ namespace Do_IT
 {
     internal class RootedTree
     {
-        private static Node root = new Node(',', 0);
+        private static Node root = new Node(',');
 
         public static void AddWord(int weight, string word)
         {
