@@ -27,6 +27,7 @@ namespace Do_IT
 
         public void FillMainLayoutPanelWithOrders(string customerID)
         {
+            ///!!!
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand($"SELECT OrderInfo.OrderID, sum(Products.Price * Quantity) AS TotalPrice, OrderTypes.OrderType, OrderStatusTypes.Status FROM OrderInfo, Products, OrderEntry, OrderTypes, OrderStatusTypes WHERE OrderInfo.CustomerID = '{customerID}' AND OrderInfo.OrderID = OrderEntry.OrderID AND OrderInfo.Status = OrderStatusTypes.StatusID AND OrderEntry.Barcode = Products.Barcode AND OrderInfo.OrderType = OrderTypes.OrderTypeID GROUP BY OrderInfo.OrderID", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();

@@ -55,7 +55,7 @@ namespace Do_IT
                     Forms.conn.Close();
                     MessageBox.Show("Account created");
                     validdetails = true;
-                    Forms.viewemployeeactions.Action(6, $"AccountNum: {CustomerIDLabel.Text} created");
+                    Forms.viewemployeeactions.Action(6, $"Account Num: {CustomerIDLabel.Text} created");
                     Forms.createcustomer = new CreateCustomer();
                     if (!taggingtoorder)
                     {
