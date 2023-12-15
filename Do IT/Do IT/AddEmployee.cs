@@ -29,7 +29,7 @@ namespace Do_IT
                     SQLiteCommand sql = new SQLiteCommand($"SELECT RoleID, DepartmentID FROM Roles, DepartmentTypes WHERE Role = '{RoleComboBox.Text}' AND Department = '{DepartmentComboBox.Text}'", Forms.conn);
                     SQLiteDataReader reader = sql.ExecuteReader();
                     reader.Read();
-                    SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Employees VALUES ('{EmployeeIDNumberLabel.Text}', '{ForenameTextBox.Text}', '{SurnameTextBox.Text}', '{Convert.ToInt32(reader["RoleID"])}', '{Convert.ToInt32(reader["DepartmentID"])}', '{UsernameTextBox.Text}', '{PasswordTextBox.Text}')", Forms.conn);
+                    SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Employees VALUES ('{EmployeeIDNumberLabel.Text}', '{ForenameTextBox.Text}', '{SurnameTextBox.Text}', '{Convert.ToInt32(reader["RoleID"])}', '{Convert.ToInt32(reader["DepartmentID"])}', '{UsernameTextBox.Text.ToLower()}', '{PasswordTextBox.Text}')", Forms.conn);
                     sql2.ExecuteNonQuery();
                     MessageBox.Show("Account created!");
                     reader.Close();
