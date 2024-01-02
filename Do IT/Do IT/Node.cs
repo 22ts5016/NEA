@@ -58,7 +58,7 @@ namespace Do_IT
                     {
                         foreach (Node n in children)
                         {
-                            if (n.getName() == popularC[j] && popularC != null)
+                            if (n.getName() == popularC[j])
                             {
                                 temp[j] = n.getPopular();
                                 break;

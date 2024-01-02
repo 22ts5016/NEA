@@ -95,7 +95,7 @@
             this.AisleLabel.AutoSize = true;
             this.AisleLabel.Location = new System.Drawing.Point(546, 108);
             this.AisleLabel.Name = "AisleLabel";
-            this.AisleLabel.Size = new System.Drawing.Size(23, 13);
+            this.AisleLabel.Size = new System.Drawing.Size(29, 13);
             this.AisleLabel.TabIndex = 18;
             this.AisleLabel.Text = "Aisle";
             // 

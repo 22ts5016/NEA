@@ -89,7 +89,7 @@ namespace Do_IT
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            LayoutPanel1.Visible = false;
+           LayoutPanel1.Visible = false;
             if (ProductNameCheckBox.Checked || ExactProductNameCheckBox.Checked)
             {
                 if (!labelselected)
@@ -163,7 +163,7 @@ namespace Do_IT
                 if (ProductNameCheckBox.Checked)
                 {
                     Forms.conn.Open();
-                    string a = GetParameters(SearchTextBox.Text);
+                    string param = GetParameters(SearchTextBox.Text);
                     string sortby = "";
                     switch (SortByComboBox.SelectedIndex)
                     {
@@ -177,13 +177,13 @@ namespace Do_IT
                             sortby = "ORDER BY Price ASC, ProductName ASC";
                             break;
                         case 3:
-                            sortby = "ORDER BY ProductName ASC, ProductName ASC";
+                            sortby = "ORDER BY ProductName ASC";
                             break;
                         case 4:
                             sortby = "AND StockCount > 0 ORDER BY StockCount DESC, ProductName ASC";
                             break;
                     }
-                    SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {a} {sortby}", Forms.conn);
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT ProductName, Barcode, Price, StockCount, Weight, Image FROM Products WHERE {param} {sortby}", Forms.conn);
                     SQLiteDataReader reader = sql.ExecuteReader();
 
                     string name, barcode;
@@ -346,7 +346,7 @@ namespace Do_IT
             if (reader.Read())
             {
                 string productname = (string)reader["ProductName"];
-                int weight = Convert.ToInt32(reader["Weight"]) + 1;
+                int newweight = Convert.ToInt32(reader["Weight"]) + 1;
 
                 if (located)
                 {
@@ -365,7 +365,7 @@ namespace Do_IT
                 Forms.conn.Close();
                 Forms.displayeditem.Show();
                 Forms.productquery = new ProductQuery();
-                UpdateWeight(productname, weight);
+                UpdateWeight(productname, newweight);
                 this.Dispose();
             }
             else
