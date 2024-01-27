@@ -36,9 +36,9 @@ C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar a
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\bin\Debug\Search bar and autofill 1.pdb
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.AssemblyReference.cache
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.SuggestedBindingRedirects.cache
-C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Form1.resources
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Properties.Resources.resources
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.GenerateResource.cache
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.exe
 C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search bar and autofill 1.pdb
+C:\Users\User\Documents\Computer Science\NEA\Prototypes and testing\Search bar and autofill 1\obj\Debug\Search_bar_and_autofill_1.Prototype.resources

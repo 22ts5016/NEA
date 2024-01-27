@@ -49,26 +49,26 @@ namespace Search_bar_and_autofill_1
 
         public string[] Search(string word)
         {
+            if (word.Length == 0)
+            {
+                string[] temp = new string[5];
+                for (int j = 0; j < popularC.Length; j++)
+                {
+                    foreach (Node n in children)
+                    {
+                        if (n.name == popularC[j] && popularC != null)
+                        {
+                            temp[j] = n.getPopular();
+                            break;
+                        }
+                    }
+                    nodessearched[j] = true;
+                }
+                ResetBools();
+                return temp;
+            }
             for (int i = 0; i < children.Count; i++)
             {
-                if (word.Length == 0)
-                {
-                    string[] temp = new string[5];
-                    for (int j = 0; j < popularC.Length; j++)
-                    {
-                        foreach (Node n in children)
-                        {
-                            if (n.name == popularC[j] && popularC != null)
-                            {
-                                temp[j] = n.getPopular();
-                                break;
-                            }
-                        }
-                        nodessearched[j] = true;
-                    }
-                    ResetBools();
-                    return temp;
-                }
                 if (word[0] == children[i].name)
                 {
                     return children[i].Search(word.Substring(1));

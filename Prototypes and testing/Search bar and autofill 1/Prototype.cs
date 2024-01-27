@@ -11,10 +11,11 @@ using System.IO;
 
 namespace Search_bar_and_autofill_1
 {
-    public partial class Form1 : Form
+    public partial class Prototype : Form
     {
         private string fileName = "DemoWords.txt";
-        public Form1()
+        string[] options = new string[5];
+        public Prototype()
         {
             InitializeComponent();
         }
@@ -22,7 +23,6 @@ namespace Search_bar_and_autofill_1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string word = textBoxSearchBar.Text.ToLower();
-            string[] options = new string[5];
             try
             {
                 options = RootedTree.getRoot().Search(word);
@@ -98,12 +98,19 @@ namespace Search_bar_and_autofill_1
             string[] hold = new string[2];
             using (StreamReader sr = new StreamReader(fileName))
             {
-                string line;
+                string line = "";
                 while (sr.EndOfStream == false)
                 {
-                    line = sr.ReadLine();
-                    hold = line.Split(',');
-                    RootedTree.AddWord(hold[1].ToLower(), int.Parse(hold[0]));
+                    try
+                    {
+                        line = sr.ReadLine();
+                        hold = line.Split(',');
+                        RootedTree.AddWord(hold[1].ToLower(), int.Parse(hold[0]));
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show(line + "is not a valid string");
+                    }
                 }
             }
         }
