@@ -64,7 +64,7 @@ namespace Do_IT
                 sql.ExecuteNonQuery();
                 Forms.conn.Close();
                 MessageBox.Show("Stock adjusted");
-                Forms.stockmanagement.Show();
+                Forms.mainmenu.Show();
                 Forms.viewemployeeactions.Action(1, $"{BarcodeTextBox.Text} adjusted to {StockCountTextBox.Text}");
                 Forms.stockadjustment = new StockAdjustment();
                 this.Dispose();

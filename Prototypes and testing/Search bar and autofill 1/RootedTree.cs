@@ -9,15 +9,14 @@ namespace Search_bar_and_autofill_1
     internal static class RootedTree
     {
         private static Node root = new Node(',',0);
-        public static void AddWord(string word)
+        public static void AddWord(string word, int weight)
         {
-            string[] words = word.Split(',');
-            if (words[1] == "*")
+            if (word.Contains("*"))
             {
                 throw new FormatException();
             }
-
-            root.AddNode(words[1],int.Parse(words[0]));
+            word += "*";
+            root.AddNode(word,weight);
         }
         public static Node getRoot()
         {

@@ -72,7 +72,7 @@ namespace Search_bar_and_autofill_1
                 }
                 else
                 {
-                    RootedTree.AddWord(WeightTextBox.Text + "," + WordTextBox.Text.ToLower() + "*");
+                    RootedTree.AddWord(WordTextBox.Text.ToLower(), int.Parse(WeightTextBox.Text));
                 }
             }
             catch (FormatException)
@@ -103,7 +103,7 @@ namespace Search_bar_and_autofill_1
                 {
                     line = sr.ReadLine();
                     hold = line.Split(',');
-                    RootedTree.AddWord(hold[0] + "," + hold[1].ToLower() + "*");
+                    RootedTree.AddWord(hold[1].ToLower(), int.Parse(hold[0]));
                 }
             }
         }

@@ -37,12 +37,21 @@ namespace Do_IT
                 {
                     if (PasswordTextBox.Text.Length >= 6)
                     {
-                        SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Employees SET Password = '{PasswordTextBox.Text}' WHERE Username = '{InputTextBox.Text}' OR EmployeeID = '{InputTextBox.Text}'", Forms.conn);
-                        sql2.ExecuteNonQuery();
-                        MessageBox.Show("Password reset");
-                        reader.Close();
-                        Forms.conn.Close();
-                        Forms.viewemployeeactions.Action(4, $"{InputTextBox.Text} password was reset");
+                        if (CheckPasswordsMatch())
+                        {
+                            SQLiteCommand sql2 = new SQLiteCommand($"UPDATE Employees SET Password = '{PasswordTextBox.Text}' WHERE Username = '{InputTextBox.Text}' OR EmployeeID = '{InputTextBox.Text}'", Forms.conn);
+                            sql2.ExecuteNonQuery();
+                            MessageBox.Show("Password reset");
+                            reader.Close();
+                            Forms.conn.Close();
+                            Forms.viewemployeeactions.Action(4, $"{InputTextBox.Text} password was reset");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Passwords do not match");
+                            reader.Close();
+                            Forms.conn.Close();
+                        }
                     }
                     else
                     {
