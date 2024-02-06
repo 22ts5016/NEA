@@ -43,7 +43,6 @@ C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do IT.csproj.SuggestedBindingRedirects.cache
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddLocation.resources
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddProduct.resources
-C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateAccount.resources
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CustomerDetails.resources
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.DisplayedItem.resources
 C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.Employees.resources
@@ -218,3 +217,11 @@ D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.CollectOrder.r
 \\RHEA\HOME\2022\22ts5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
 D:\Toby\Homework\Computer Studies\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomersOrders.resources
 \\RHEA\HOME\2022\22TS5016\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomersOrders.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.AddEmployee.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CollectOrder.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateCustomer.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.CreateOrder.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.RemoveLocation.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomer.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewCustomersOrders.resources
+C:\Users\User\Documents\Computer Science\NEA\Do IT\Do IT\obj\Debug\Do_IT.ViewEmployeeDetails.resources
