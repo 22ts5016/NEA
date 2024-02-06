@@ -141,7 +141,7 @@ namespace Do_IT
             Forms.locationmanagement.Show();
             Forms.itemsinabay = new ItemsInABay();
             MessageBox.Show("Product Delocated");
-            Forms.viewemployeeactions.Action(2, $"{barcode} delacted from aisle {aisle} bay {bay}");
+            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from aisle {aisle} bay {bay}");
             this.Dispose();
             
         }
