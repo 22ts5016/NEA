@@ -24,7 +24,7 @@ namespace Do_IT
             this.Hide();
         }
 
-        public void Action(int type, string action)
+        public static void Action(int type, string action)
         {
             Forms.conn.Open();
             SQLiteCommand sql = new SQLiteCommand("SELECT ActionID FROM Actions ORDER BY ActionID DESC", Forms.conn);

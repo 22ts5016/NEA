@@ -113,7 +113,7 @@ namespace Do_IT
                         string stringtype = (string)reader["LocationType"];
                         reader.Close();
                         Forms.conn.Close();
-                        Forms.viewemployeeactions.Action(2, $"{barcode} added to {aisle},{bay} type:{stringtype}");
+                        ViewEmployeeActions.Action(2, $"{barcode} added to {aisle},{bay} type:{stringtype}");
                         this.Dispose();
                     }
                     else

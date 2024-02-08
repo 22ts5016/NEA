@@ -388,7 +388,7 @@ namespace Do_IT
         private void CreateNewOrder()
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"INSERT INTO OrderInfo VALUES ('{orderID}', '{customerID}', '{ordertype}', '1') ", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"INSERT INTO OrderInfo VALUES ('{orderID}', '{customerID}', '{ordertype}', '1')", Forms.conn);
             sql.ExecuteNonQuery();
             SQLiteCommand sql2;
             SQLiteCommand sql3;
@@ -400,7 +400,7 @@ namespace Do_IT
                 sql3.ExecuteNonQuery();
             }
             Forms.conn.Close();
-            Forms.viewemployeeactions.Action(3, $"Order Num: {orderID} made");
+            ViewEmployeeActions.Action(3, $"Order Num: {orderID} made");
             //!!!
         }
 

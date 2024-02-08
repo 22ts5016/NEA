@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Do_IT
 {
-    internal class RootedTree
+    internal static class RootedTree
     {
         private static Node root = new Node(',');
 

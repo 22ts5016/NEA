@@ -56,7 +56,7 @@ namespace Do_IT
                         }
                         Forms.conn.Close();
                         MessageBox.Show("Product Added");
-                        Forms.viewemployeeactions.Action(5, $"Added product {BarcodeTextBox.Text}");
+                        ViewEmployeeActions.Action(5, $"Added product {BarcodeTextBox.Text}");
                         Reset();
                     }
                     else

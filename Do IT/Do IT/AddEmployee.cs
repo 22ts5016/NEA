@@ -34,7 +34,7 @@ namespace Do_IT
                     MessageBox.Show("Account created!");
                     reader.Close();
                     Forms.conn.Close();
-                    Forms.viewemployeeactions.Action(4, $"Account made for {ForenameTextBox.Text} {SurnameTextBox.Text}");
+                    ViewEmployeeActions.Action(4, $"Account made for {ForenameTextBox.Text} {SurnameTextBox.Text}");
                 }
                 else
                 {

@@ -101,7 +101,7 @@ namespace Do_IT
                     }
                      
                 }
-                Forms.viewemployeeactions.Action(2, $"Added: {listofitems} to {aisle},{bay} type:{type}");
+                ViewEmployeeActions.Action(2, $"Added: {listofitems} to {aisle},{bay} type:{type}");
                 this.Dispose();
             }
             else

@@ -46,7 +46,7 @@ namespace Do_IT
                     MessageBox.Show("Location Added");
                     reader.Close();
                     Forms.conn.Close();
-                    Forms.viewemployeeactions.Action(2, $"Created Location Aisle {AisleTextBox.Text} Bay {BayTextBox.Text}");
+                    ViewEmployeeActions.Action(2, $"Created Location Aisle {AisleTextBox.Text} Bay {BayTextBox.Text}");
                 }
             }
             else

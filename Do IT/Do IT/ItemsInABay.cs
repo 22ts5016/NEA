@@ -117,7 +117,7 @@ namespace Do_IT
             reader2.Close();
             Forms.conn.Close();
             Forms.additemtolocation.Show();
-            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from aisle {aisle} bay {bay}");
+            ViewEmployeeActions.Action(2, $"{barcode} delocated from aisle {aisle} bay {bay}");
             Forms.itemsinabay = new ItemsInABay();
             this.Dispose();
         }
@@ -141,7 +141,7 @@ namespace Do_IT
             Forms.locationmanagement.Show();
             Forms.itemsinabay = new ItemsInABay();
             MessageBox.Show("Product Delocated");
-            Forms.viewemployeeactions.Action(2, $"{barcode} delocated from aisle {aisle} bay {bay}");
+            ViewEmployeeActions.Action(2, $"{barcode} delocated from aisle {aisle} bay {bay}");
             this.Dispose();
             
         }

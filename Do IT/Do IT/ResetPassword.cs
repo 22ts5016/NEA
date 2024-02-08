@@ -44,7 +44,7 @@ namespace Do_IT
                             MessageBox.Show("Password reset");
                             reader.Close();
                             Forms.conn.Close();
-                            Forms.viewemployeeactions.Action(4, $"{InputTextBox.Text} password was reset");
+                            ViewEmployeeActions.Action(4, $"{InputTextBox.Text} password was reset");
                         }
                         else
                         {

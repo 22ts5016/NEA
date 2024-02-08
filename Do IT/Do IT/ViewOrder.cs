@@ -40,7 +40,7 @@ namespace Do_IT
             if (Regex.IsMatch(OrderNumberTextBox.Text, RegExFormats.anynumber))
             {
                 Forms.conn.Open();
-                SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status FROM Customers, OrderInfo, OrderTypes, OrderStatusTypes WHERE OrderInfo.OrderID = {OrderNumberTextBox.Text} AND OrderInfo.CustomerID = Customers.CustomerID AND OrderInfo.OrderType = OrderTypes.OrderTypeID AND OrderInfo.Status = OrderStatusTypes.StatusID", Forms.conn);
+                SQLiteCommand sql = new SQLiteCommand($"SELECT Customers.CustomerID, OrderTypes.OrderType, Title, Forename, Surname, Address, Postcode, PhoneNumber, Email, OrderStatusTypes.Status FROM Customers, OrderInfo, OrderTypes, OrderStatusTypes WHERE OrderInfo.OrderID = '{OrderNumberTextBox.Text}' AND OrderInfo.CustomerID = Customers.CustomerID AND OrderInfo.OrderType = OrderTypes.OrderTypeID AND OrderInfo.Status = OrderStatusTypes.StatusID", Forms.conn);
                 SQLiteDataReader reader = sql.ExecuteReader();
 
                 if (reader.Read())
@@ -51,7 +51,7 @@ namespace Do_IT
                         CollectOrderButton.Visible = true;
                     }
 
-                    SQLiteCommand sql2 = new SQLiteCommand($"SELECT OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderEntry, Products WHERE OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.OrderID = {OrderNumberTextBox.Text} Group By OrderEntry.Barcode", Forms.conn);
+                    SQLiteCommand sql2 = new SQLiteCommand($"SELECT OrderEntry.Barcode, ProductName, Price, Quantity, Image, sum(Quantity * Price) as TotalPrice FROM OrderInfo, OrderEntry, Products WHERE OrderEntry.OrderID = OrderInfo.OrderID AND Products.Barcode = OrderEntry.Barcode AND OrderInfo.OrderID = '{OrderNumberTextBox.Text}' Group By OrderEntry.Barcode", Forms.conn);
                     SQLiteDataReader reader2 = sql2.ExecuteReader();
                     if (reader2.Read())
                     {
@@ -214,7 +214,7 @@ namespace Do_IT
 
         private void AddItemsToLayoutPanel(SQLiteDataReader reader)
         {
-            Label temp = new Label();
+            Label temp;
             string barcode, productname;
             int quantity;
             do

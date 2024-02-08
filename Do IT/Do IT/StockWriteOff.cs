@@ -46,7 +46,7 @@ namespace Do_IT
             {
                 if (Regex.IsMatch(BarcodeTextBox.Text, RegExFormats.anynumber))
                 {
-                    if (ProductQuery.CheckBarcodeInDataBase(barcode))
+                    if (ProductQuery.CheckBarcodeInDatabase(barcode))
                     {
                         string barcodeandindex = barcode + "_" + WriteOffReasonComboBox.SelectedIndex + "_";
                         if (!CheckDuplicatesInList(barcodeandindex))
@@ -281,7 +281,7 @@ namespace Do_IT
                 Forms.conn.Close();
                 foreach(string action in actionsneeded)
                 {
-                    Forms.viewemployeeactions.Action(1, action);
+                    ViewEmployeeActions.Action(1, action);
                 }
                 MessageBox.Show("Items successfully written off");
                 Forms.mainmenu.Show();

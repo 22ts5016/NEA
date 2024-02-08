@@ -44,7 +44,7 @@ namespace Do_IT
                     MessageBox.Show("Location Removed");
                     reader.Close();
                     Forms.conn.Close();
-                    Forms.viewemployeeactions.Action(2, $"aisle {AisleTextBox.Text} bay {BayTextBox.Text} removed");
+                    ViewEmployeeActions.Action(2, $"aisle {AisleTextBox.Text} bay {BayTextBox.Text} removed");
                 }
                 else
                 {

@@ -85,7 +85,7 @@ namespace Do_IT
             MessageBox.Show("Order collected!");
             Forms.collectorder = new CollectOrder();
             Forms.mainmenu.Show();
-            Forms.viewemployeeactions.Action(3, $"Order Num: {OrderNumberTextBox.Text} Collected");
+            ViewEmployeeActions.Action(3, $"Order Num: {OrderNumberTextBox.Text} Collected");
             this.Dispose();
         }
 
