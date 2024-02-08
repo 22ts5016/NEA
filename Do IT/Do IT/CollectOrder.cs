@@ -40,8 +40,8 @@ namespace Do_IT
                         if (Convert.ToInt32(reader["Status"]) == 1)
                         {
                             OrderNumberTextBox.ReadOnly = true;
-                            CollectorderForLabel.Text += (string)reader["Forename"] + " " + (string)reader["Surname"];
-                            CollectorderForLabel.Visible = true;
+                            CollectOrderForLabel.Text += (string)reader["Forename"] + " " + (string)reader["Surname"];
+                            CollectOrderForLabel.Visible = true;
                             CollectButton.Visible = true;
                             ViewOrderButton.Visible = true;
                         }
@@ -79,7 +79,7 @@ namespace Do_IT
         private void CollectButton_Click(object sender, EventArgs e)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"UPDATE OrderInfo SET Status = 2 WHERE OrderID = {OrderNumberTextBox.Text}", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"UPDATE OrderInfo SET Status = 2 WHERE OrderID = '{OrderNumberTextBox.Text}'", Forms.conn);
             sql.ExecuteNonQuery();
             Forms.conn.Close();
             MessageBox.Show("Order collected!");

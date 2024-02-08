@@ -33,7 +33,7 @@
             this.OrderNumberTextBox = new System.Windows.Forms.TextBox();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.CollectorderForLabel = new System.Windows.Forms.Label();
+            this.CollectOrderForLabel = new System.Windows.Forms.Label();
             this.CollectButton = new System.Windows.Forms.Button();
             this.ViewOrderButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -86,13 +86,13 @@
             // 
             // CollectorderForLabel
             // 
-            this.CollectorderForLabel.AutoSize = true;
-            this.CollectorderForLabel.Location = new System.Drawing.Point(78, 117);
-            this.CollectorderForLabel.Name = "CollectorderForLabel";
-            this.CollectorderForLabel.Size = new System.Drawing.Size(92, 13);
-            this.CollectorderForLabel.TabIndex = 11;
-            this.CollectorderForLabel.Text = "Collect Order For: ";
-            this.CollectorderForLabel.Visible = false;
+            this.CollectOrderForLabel.AutoSize = true;
+            this.CollectOrderForLabel.Location = new System.Drawing.Point(78, 117);
+            this.CollectOrderForLabel.Name = "CollectorderForLabel";
+            this.CollectOrderForLabel.Size = new System.Drawing.Size(92, 13);
+            this.CollectOrderForLabel.TabIndex = 11;
+            this.CollectOrderForLabel.Text = "Collect Order For: ";
+            this.CollectOrderForLabel.Visible = false;
             // 
             // CollectButton
             // 
@@ -124,7 +124,7 @@
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.ViewOrderButton);
             this.Controls.Add(this.CollectButton);
-            this.Controls.Add(this.CollectorderForLabel);
+            this.Controls.Add(this.CollectOrderForLabel);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.OrderNumberTextBox);
@@ -144,7 +144,7 @@
         private System.Windows.Forms.Label OrderNumberLabel;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Label CollectorderForLabel;
+        private System.Windows.Forms.Label CollectOrderForLabel;
         private System.Windows.Forms.Button CollectButton;
         private System.Windows.Forms.Button ViewOrderButton;
         public System.Windows.Forms.TextBox OrderNumberTextBox;
