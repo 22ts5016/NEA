@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,7 +49,7 @@ namespace Do_IT
                     break;
                 case 1:
                     SpecificComboBox.Visible = true;
-                    SQLiteCommand sql = new SQLiteCommand($"SELECT Username FROM Employees WHERE Role < '{CurrentUser.clearance}' OR 4 = {CurrentUser.clearance}", Forms.conn);
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT Username FROM Employees WHERE Role < '{CurrentUser.clearance}' OR 4 = '{CurrentUser.clearance}'", Forms.conn);
                     SQLiteDataReader reader = sql.ExecuteReader();
                     while (reader.Read())
                     {
