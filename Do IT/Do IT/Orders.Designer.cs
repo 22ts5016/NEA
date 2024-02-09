@@ -86,7 +86,7 @@
             this.Controls.Add(this.MainMenuButton);
             this.Name = "Orders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Orders";
+            this.Text = "S";
             this.ResumeLayout(false);
 
         }

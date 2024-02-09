@@ -27,13 +27,13 @@ namespace Do_IT
         public static void Action(int type, string action)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand("SELECT ActionID FROM Actions ORDER BY ActionID DESC", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand("SELECT MAX(ActionID) FROM Actions", Forms.conn);
             SQLiteDataReader reader;
             reader = sql.ExecuteReader();
             reader.Read();
-            string actionid = (int.Parse(reader["ActionID"].ToString()) + 1).ToString();
+            string actionID = (int.Parse(reader["MAX(ActionID)"].ToString()) + 1).ToString();
             reader.Close();
-            SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionid}', '{CurrentUser.employeeID}', '{CurrentUser.clearance}', '{type}', '{action}')", Forms.conn);
+            SQLiteCommand sql2 = new SQLiteCommand($"INSERT INTO Actions VALUES ('{actionID}', '{CurrentUser.employeeID}', '{CurrentUser.clearance}', '{type}', '{action}')", Forms.conn);
             sql2.ExecuteNonQuery();
             Forms.conn.Close();
         }
@@ -49,7 +49,7 @@ namespace Do_IT
                     break;
                 case 1:
                     SpecificComboBox.Visible = true;
-                    SQLiteCommand sql = new SQLiteCommand($"SELECT Username FROM Employees WHERE Role < '{CurrentUser.clearance}' OR 4 = '{CurrentUser.clearance}'", Forms.conn);
+                    SQLiteCommand sql = new SQLiteCommand($"SELECT Username FROM Employees WHERE Role < {CurrentUser.clearance} OR 4 = {CurrentUser.clearance}", Forms.conn);
                     SQLiteDataReader reader = sql.ExecuteReader();
                     while (reader.Read())
                     {
@@ -80,7 +80,7 @@ namespace Do_IT
             switch (SearchByComboBox.SelectedIndex)
             {
                 case 0:
-                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionTypes.ActionType, Action FROM Employees, Actions, ActionTypes WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND (Actions.Role < '{CurrentUser.clearance}' OR 4 = {CurrentUser.clearance}) ORDER BY ActionID DESC", Forms.conn);
+                    sql = new SQLiteCommand($"SELECT Forename, Surname, Employees.EmployeeID, ActionTypes.ActionType, Action FROM Employees, Actions, ActionTypes WHERE Employees.EmployeeID = Actions.EmployeeID AND Actions.ActionType = ActionTypeID AND (Actions.Role < {CurrentUser.clearance} OR 4 = {CurrentUser.clearance}) ORDER BY ActionID DESC", Forms.conn);
                     break;
                 case 1:
                     if(SpecificComboBox.SelectedIndex == -1)

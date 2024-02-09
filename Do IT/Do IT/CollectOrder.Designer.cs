@@ -84,11 +84,11 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // CollectorderForLabel
+            // CollectOrderForLabel
             // 
             this.CollectOrderForLabel.AutoSize = true;
             this.CollectOrderForLabel.Location = new System.Drawing.Point(78, 117);
-            this.CollectOrderForLabel.Name = "CollectorderForLabel";
+            this.CollectOrderForLabel.Name = "CollectOrderForLabel";
             this.CollectOrderForLabel.Size = new System.Drawing.Size(92, 13);
             this.CollectOrderForLabel.TabIndex = 11;
             this.CollectOrderForLabel.Text = "Collect Order For: ";
