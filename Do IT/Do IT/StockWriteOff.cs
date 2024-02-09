@@ -155,7 +155,7 @@ namespace Do_IT
         private void CountTextBox_TextChanged(object sender, EventArgs e)
         {
             TextBox inputtextbox = sender as TextBox;
-            if(!Regex.IsMatch(inputtextbox.Text, RegExFormats.anynumber))
+            if(!Regex.IsMatch(inputtextbox.Text, RegExFormats.anynumber) || inputtextbox.Text == "0")
             {
                 MessageBox.Show("Invalid input");
                 inputtextbox.Text = "1";
@@ -274,7 +274,7 @@ namespace Do_IT
                     Label reasonlabel = table.Controls[4] as Label;
                     int count = int.Parse(table.Controls[2].Text);
                     string barcode = table.Name.Split('_')[0];
-                    SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET StockCount = (StockCount - {count}) WHERE Barcode = {barcode}", Forms.conn);
+                    SQLiteCommand sql = new SQLiteCommand($"UPDATE Products SET StockCount = (StockCount - {count}) WHERE Barcode = '{barcode}'", Forms.conn);
                     sql.ExecuteNonQuery();
                     actionsneeded.Add($"{count} of {barcode} written off because of: {reasonlabel.Text}");
                 }
@@ -293,7 +293,7 @@ namespace Do_IT
         private bool CheckValidWriteOffAmounts(string barcode, int value)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"SELECT StockCount FROM Products WHERE Barcode = {barcode}", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"SELECT StockCount FROM Products WHERE Barcode = '{barcode}'", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
             bool valid = false;
             if (reader.Read())

@@ -81,7 +81,7 @@ namespace Do_IT
         private void ViewCustomer_Load(object sender, EventArgs e)
         {
             Forms.conn.Open();
-            SQLiteCommand sql = new SQLiteCommand($"PRAGMA table_info('Customers') ", Forms.conn);
+            SQLiteCommand sql = new SQLiteCommand($"PRAGMA table_info('Customers')", Forms.conn);
             SQLiteDataReader reader = sql.ExecuteReader();
 
             while (reader.Read())
